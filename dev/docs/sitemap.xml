@@ -16,6 +16,16 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://trovu.net/developers/</loc>
+         <lastmod>2023-11-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://trovu.net/editors/</loc>
+         <lastmod>2023-11-18</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://trovu.net/editors/policy/</loc>
          <lastmod>2023-11-18</lastmod>
          <changefreq>daily</changefreq>
