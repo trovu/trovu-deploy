@@ -41,12 +41,27 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://trovu.net/shortcuts/includes/</loc>
+         <loc>https://trovu.net/shortcuts/</loc>
+         <lastmod>2023-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://trovu.net/shortcuts/deprecated/</loc>
+         <lastmod>2023-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://trovu.net/shortcuts/include/</loc>
          <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://trovu.net/shortcuts/namespaces/</loc>
+         <lastmod>2023-11-28</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://trovu.net/shortcuts/url/</loc>
          <lastmod>2023-11-28</lastmod>
          <changefreq>daily</changefreq>
     </url>
