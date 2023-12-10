@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:base="en">
+	<title>Blog | trovu.net</title>
+	<subtitle>News and info around trovu.net</subtitle>
+	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
+	<link href="https://trovu.net/blog/blog/"/>
+	<updated>2023-12-09T00:00:00Z</updated>
+	<id>https://trovu.net/blog/</id>
+	<author>
+		<name>Georg Jähnig</name>
+		<email>georg@trovu.net</email>
+	</author>
+	
+	<entry>
+		<title>Stay informed about Trovu</title>
+		<link href="https://trovu.net/blog/stay-informed/"/>
+		<updated>2023-12-09T00:00:00Z</updated>
+		<id>https://trovu.net/blog/stay-informed/</id>
+		<content type="html">&lt;p&gt;This blog will keep you updated about news around &lt;a href=&quot;https://trovu.net&quot;&gt;Trovu&lt;/a&gt;. You can follow it via &lt;a href=&quot;https://trovu.net/blog/feed/&quot;&gt;RSS&lt;/a&gt;:&lt;/p&gt;
+&lt;pre class=&quot;language-md&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-md&quot;&gt;https://trovu.net/blog/feed/&lt;/code&gt;&lt;/pre&gt;
+</content>
+	</entry>
+</feed>
