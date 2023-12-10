@@ -5,8 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Blog | trovu.net</title>
 		<meta name="description" content="News and info around trovu.net">
-		<link rel="alternate" href="/blog/feed/feed.xml" type="application/atom+xml" title="Blog | trovu.net">
-		<link rel="alternate" href="/blog/feed/feed.json" type="application/json" title="Blog | trovu.net">
+		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
 		<style>* { box-sizing: border-box; }
 /* Defaults */
@@ -209,6 +208,9 @@ header {
 	text-align: right;
 	margin-left: -1.5rem;
 }
+.postlist-description {
+	flex-basis: 100%;
+}
 .postlist-date,
 .postlist-item:before {
 	font-size: 0.8125em; /* 13px /16 */
@@ -236,7 +238,6 @@ header {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	text-transform: capitalize;
 	font-style: italic;
 }
 .postlist-item > .post-tag {
@@ -292,6 +293,7 @@ h2 + .header-anchor {
 					<li class="nav-item"><a href="../../docs/">Docs</a></li>
 					<li class="nav-item"><a href="../../docs/privacy">Privacy</a></li>
 					<li class="nav-item"><a href="https://github.com/trovu/">Github</a></li>
+					<li class="nav-item"><a href="/blog/feed/"><img src="/blog/img/rss.svg" width="14" height="14"></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -303,16 +305,7 @@ h2 + .header-anchor {
 <ul>
 
 	
-	<li><a href="/blog/tags/another-tag/" class="post-tag">another tag</a></li>
-
-	
-	<li><a href="/blog/tags/number-2/" class="post-tag">number 2</a></li>
-
-	
-	<li><a href="/blog/tags/second-tag/" class="post-tag">second tag</a></li>
-
-	
-	<li><a href="/blog/tags/posts-with-two-tags/" class="post-tag">posts with two tags</a></li>
+	<li><a href="/blog/tags/rss/" class="post-tag">rss</a></li>
 
 </ul>
 

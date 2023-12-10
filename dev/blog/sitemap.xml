@@ -5,8 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Blog | trovu.net</title>
 		<meta name="description" content="News and info around trovu.net">
-		<link rel="alternate" href="/feed/feed.xml" type="application/atom+xml" title="Blog | trovu.net">
-		<link rel="alternate" href="/feed/feed.json" type="application/json" title="Blog | trovu.net">
+		<link rel="alternate" href="/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
 		<style>/**
  * okaidia theme for JavaScript, CSS and HTML
@@ -377,6 +376,9 @@ header {
 	text-align: right;
 	margin-left: -1.5rem;
 }
+.postlist-description {
+	flex-basis: 100%;
+}
 .postlist-date,
 .postlist-item:before {
 	font-size: 0.8125em; /* 13px /16 */
@@ -404,7 +406,6 @@ header {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	text-transform: capitalize;
 	font-style: italic;
 }
 .postlist-item > .post-tag {
@@ -460,6 +461,7 @@ h2 + .header-anchor {
 					<li class="nav-item"><a href="../../docs/">Docs</a></li>
 					<li class="nav-item"><a href="../../docs/privacy">Privacy</a></li>
 					<li class="nav-item"><a href="https://github.com/trovu/">Github</a></li>
+					<li class="nav-item"><a href="/feed/"><img src="/img/rss.svg" width="14" height="14"></a></li>
 				</ul>
 			</nav>
 		</header>
@@ -469,60 +471,30 @@ h2 + .header-anchor {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2023-12-09">09 December 2023</time></li>
+	<li><time datetime="2023-12-10">10 December 2023</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 	
 	<url>
-		<loc>https://trovu.net/blog/firstpost/</loc>
-		<lastmod>2018-05-01</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/secondpost/</loc>
-		<lastmod>2018-07-04</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/thirdpost/</loc>
-		<lastmod>2018-08-24</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/fourthpost/</loc>
-		<lastmod>2018-09-30</lastmod>
+		<loc>https://trovu.net/blog/stay-informed/</loc>
+		<lastmod>2023-12-09</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2023-12-09</lastmod>
+		<lastmod>2023-12-10</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2023-12-09</lastmod>
+		<lastmod>2023-12-10</lastmod>
 	</url>
 	
 	<url>
-		<loc>https://trovu.net/blog/tags/another-tag/</loc>
-		<lastmod>2023-12-09</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/number-2/</loc>
-		<lastmod>2023-12-09</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/second-tag/</loc>
-		<lastmod>2023-12-09</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/posts-with-two-tags/</loc>
-		<lastmod>2023-12-09</lastmod>
+		<loc>https://trovu.net/blog/tags/rss/</loc>
+		<lastmod>2023-12-10</lastmod>
 	</url>
 </urlset>
 
