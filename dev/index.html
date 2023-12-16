@@ -9,7 +9,7 @@
     />
     <meta name="theme-color" content="#343a40" />
 
-    <link rel="stylesheet" href="style.css?js=index.638307aa.js" />
+    <link rel="stylesheet" href="style.css?js=index.694b77a9.js" />
 
     <title>trovu.net – Web shortcuts: social, private, free.</title>
   </head>
@@ -214,53 +214,104 @@
           </div>
         </form>
       </section>
-      <div id="examples-and-about" class="container">
+      <div id="suggestions" class="container">
         <div class="row">
           <div class="col-sm-12">
-            <div class="card">
-              <div class="card-header"><strong>Example queries</strong></div>
-              <div class="card-body">
-                <dl class="row">
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=g+berlin">g berlin</a>
-                  </dt>
-                  <dd class="col-sm-8">search Google for "berlin"</dd>
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=w+berlin">w berlin</a>
-                  </dt>
-                  <dd class="col-sm-8">
-                    open Wikipedia article for Berlin (in language from
-                    settings)
-                  </dd>
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=fr.w+berlin">fr.w berlin</a>
-                  </dt>
-                  <dd class="col-sm-8">
-                    override language from settings: use French Wikipedia
-                  </dd>
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=gd+london,manchester"
-                      >gd london, manchester</a
+            <ul>
+              <li>
+                <div class="main ${suggestion.reachable ? `` : ` unreachable`}">
+                  <span class="left">
+                    <span class="keyword">db</span>
+                    <span class="argument-names">Start, Ziel</span>
+                  </span>
+                  <span class="right">
+                    <span class="title">DB-Auskunft</span>
+                    <span class="namespace">.de</span>
+                  </span>
+                </div>
+                <div class="description-and-tags">
+                  <span class="left">Examples:</span>
+                  <span class="right"><span class="tag">some-tag</span></span>
+                </div>
+              </li>
+              <li aria-selected="true">
+                <div class="main ${suggestion.reachable ? `` : ` unreachable`}">
+                  <span class="left">
+                    <span class="keyword">db</span>
+                    <span class="argument-names">Start, Ziel</span>
+                  </span>
+                  <span class="right">
+                    <span class="title">DB-Auskunft</span>
+                    <span class="namespace">.de</span>
+                  </span>
+                </div>
+                <div class="description-and-tags">
+                  <span class="left">Examples:</span>
+                  <span class="right"><span class="tag">some-tag</span></span>
+                </div>
+                <div class="examples">
+                  <span class="left">
+                    <span class="query">db berlin, hamburg</span>
+                  </span>
+                  <span class="right">
+                    <span class="description"
+                      >Nächste Bahn-Verbindung von Berlin nach Hamburg</span
                     >
-                  </dt>
-                  <dd class="col-sm-8">
-                    find a route on Google Maps from London to Manchester
-                  </dd>
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=gfl+ber,lpa">gfl ber, lpa</a>
-                  </dt>
-                  <dd class="col-sm-8">
-                    Google Flights search from Berlin to Las Palmas
-                  </dd>
-                  <dt class="col-sm-4">
-                    <a href="/process/#query=ytd+cats">ytd cats</a>
-                  </dt>
-                  <dd class="col-sm-8">
-                    Cat videos on Youtube, sorted by date
-                  </dd>
-                </dl>
-              </div>
-            </div>
+                  </span>
+                  <span class="left">
+                    <span class="query">db b, hh</span>
+                  </span>
+                  <span class="right">
+                    <span class="description"
+                      >Nächste Bahn-Verbindung von Berlin nach Hamburg, Eingabe
+                      über Autokennzeichen</span
+                    >
+                  </span>
+                  <span class="left">
+                    <span class="query">db sxf, txl</span>
+                  </span>
+                  <span class="right">
+                    <span class="description"
+                      >Nächste Bahn-Verbindung von Flughafen Berlin-Tegel zum
+                      Flughafen Berlin-Schönefeld, Eingabe über
+                      IATA-Flughafencodes</span
+                    >
+                  </span>
+                </div>
+              </li>
+              <li>
+                <div class="main ${suggestion.reachable ? `` : ` unreachable`}">
+                  <span class="left">
+                    <span class="keyword">db</span>
+                    <span class="argument-names">Start, Ziel</span>
+                  </span>
+                  <span class="right">
+                    <span class="title">DB-Auskunft</span>
+                    <span class="namespace">.de</span>
+                  </span>
+                </div>
+                <div class="description-and-tags">
+                  <span class="left">Examples:</span>
+                  <span class="right"><span class="tag">some-tag</span></span>
+                </div>
+              </li>
+              <li>
+                <div class="main ${suggestion.reachable ? `` : ` unreachable`}">
+                  <span class="left">
+                    <span class="keyword">db</span>
+                    <span class="argument-names">Start, Ziel</span>
+                  </span>
+                  <span class="right">
+                    <span class="title">DB-Auskunft</span>
+                    <span class="namespace">.de</span>
+                  </span>
+                </div>
+                <div class="description-and-tags">
+                  <span class="left">Examples:</span>
+                  <span class="right"><span class="tag">some-tag</span></span>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
@@ -296,6 +347,6 @@
       </div>
     </footer>
 
-    <script type="module" src="index.638307aa.js"></script>
+    <script type="module" src="index.694b77a9.js"></script>
   </body>
 </html>
