@@ -35,14 +35,36 @@ export default class Suggestions2 {
   constructor(namespaceInfos) {
     this.namespacesInfos = namespaceInfos;
 
-    const queryInput = document.querySelector('#query');
+    this.queryInput = document.querySelector('#query');
     this.suggestionsList = document.querySelector('#suggestions ul');
 
-    queryInput.addEventListener('input', this.updateSuggestions);
+    this.queryInput.addEventListener('input', (event) => {
+      this.position = 0;
+      this.updateSuggestions(event);
+    });
     // Also update on focus,
     // for case when input is already filled (because no shortcut was not found).
-    queryInput.addEventListener('focus', this.updateSuggestions);
+    this.queryInput.addEventListener('focus', this.updateSuggestions);
     // queryInput.addEventListener('awesomplete-select', this.select);
+    this.position = 0;
+    this.suggestions = [];
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        this.position = Math.max(1, this.position - 1);
+        this.updateSuggestions(event);
+      }
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        this.position = Math.min(this.suggestions.length, this.position + 1);
+        this.updateSuggestions(event);
+      }
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        this.select(event);
+      }
+    });
   }
 
   /**
@@ -59,31 +81,46 @@ export default class Suggestions2 {
       ' ',
       2,
     );
-    let suggestions = this.getSuggestions(keyword);
-    suggestions = suggestions.slice(0, 500);
-    this.suggestionsList.innerHTML = '';
-    for (const suggestion of suggestions) {
-      const li = this.renderSuggestion(suggestion, inputText);
-      this.suggestionsList.appendChild(li);
-    }
+    this.suggestions = this.getSuggestions(keyword);
+    this.suggestions = this.suggestions.slice(0, 50);
+    this.renderSuggestions(this.suggestions);
   };
+
+  renderSuggestions(suggestions) {
+    const fragment = document.createDocumentFragment();
+    suggestions.forEach((suggestion, index) => {
+      const li = this.renderSuggestion(suggestion, index + 1);
+      fragment.appendChild(li);
+    });
+    this.suggestionsList.innerHTML = '';
+    this.suggestionsList.appendChild(fragment);
+  }
 
   /**
    * Render a suggestion item.
    */
-  renderSuggestion(suggestion) {
+  renderSuggestion(suggestion, index) {
     const li = document.createElement('li', {
       role: 'option',
     });
-    li.innerHTML += getSuggestionMain(suggestion);
-    li.innerHTML += getSuggestionDescriptionAndTags(suggestion);
-    li.innerHTML += getSuggestionExamples(suggestion);
+    li.innerHTML += this.getSuggestionMain(suggestion);
+    li.innerHTML += this.getSuggestionDescriptionAndTags(suggestion);
+    li.innerHTML += this.getSuggestionExamples(suggestion);
+    li.setAttribute('aria-selected', index == this.position ? 'true' : 'false');
+    li.addEventListener('click', (event) => {
+      const suggestions = document.querySelectorAll('#suggestions li');
+      suggestions.forEach((suggestion) => {
+        suggestion.setAttribute('aria-selected', 'false');
+      });
+      li.setAttribute('aria-selected', 'true');
+    });
     return li;
+  }
 
-    function getSuggestionMain(suggestion) {
-      const argument_names_str = getArgumentsStr(suggestion.arguments);
+  getSuggestionMain(suggestion) {
+    const argument_names_str = this.getArgumentsStr(suggestion.arguments);
 
-      const main = `
+    const main = `
       &lt;div class="main ${suggestion.reachable ? `` : ` unreachable`}">
         &lt;span class="left">  
         &lt;span class="keyword">${suggestion.keyword}&lt;/span>  
@@ -95,41 +132,41 @@ export default class Suggestions2 {
         &lt;/span>
       &lt;/div>
     `;
-      return main;
-    }
+    return main;
+  }
 
-    function getSuggestionDescriptionAndTags(suggestion) {
-      if (!suggestion.description &amp;&amp; !suggestion.tags) {
-        return '';
+  getSuggestionDescriptionAndTags(suggestion) {
+    if (!suggestion.description &amp;&amp; !suggestion.tags) {
+      return '';
+    }
+    let description = '';
+    // If there is a description, use it.
+    if (suggestion.description) {
+      description = suggestion.description;
+      // If it's empty and there are examples, use 'Examples'.
+    } else if (suggestion.examples &amp;&amp; Array.isArray(suggestion.examples)) {
+      description = 'Examples:';
+    }
+    let tags = '';
+    if (suggestion.tags &amp;&amp; Array.isArray(suggestion.tags)) {
+      for (const tag of suggestion.tags) {
+        tags += `&lt;span class="tag">${tag}&lt;/span> `;
       }
-      let description = '';
-      // If there is a description, use it.
-      if (suggestion.description) {
-        description = suggestion.description;
-        // If it's empty and there are examples, use 'Examples'.
-      } else if (suggestion.examples &amp;&amp; Array.isArray(suggestion.examples)) {
-        description = 'Examples:';
-      }
-      let tags = '';
-      if (suggestion.tags &amp;&amp; Array.isArray(suggestion.tags)) {
-        for (const tag of suggestion.tags) {
-          tags += `&lt;span class="tag">${tag}&lt;/span> `;
-        }
-      }
-      const descriptionAndTags = `&lt;div class="description-and-tags">
+    }
+    const descriptionAndTags = `&lt;div class="description-and-tags">
         &lt;span class="left">${description}&lt;/span>
         &lt;span class="right">${tags}&lt;/span>
       &lt;/div>`;
-      return descriptionAndTags;
-    }
+    return descriptionAndTags;
+  }
 
-    function getSuggestionExamples(suggestion) {
-      if (!suggestion.examples || !Array.isArray(suggestion.examples)) {
-        return '';
-      }
-      let examplesInnerDiv = '';
-      for (const example of suggestion.examples) {
-        examplesInnerDiv += `
+  getSuggestionExamples(suggestion) {
+    if (!suggestion.examples || !Array.isArray(suggestion.examples)) {
+      return '';
+    }
+    let examplesInnerDiv = '';
+    for (const example of suggestion.examples) {
+      examplesInnerDiv += `
           &lt;span class="left">  
             &lt;span class="query">${suggestion.keyword} ${
               example.arguments || ''
@@ -138,26 +175,25 @@ export default class Suggestions2 {
           &lt;span class="right">
             &lt;span class="description">${example.description}&lt;/span>  
           &lt;/span>`;
-      }
-      const examples = `&lt;div class="examples">${examplesInnerDiv}&lt;/div>`;
-      return examples;
     }
+    const examples = `&lt;div class="examples">${examplesInnerDiv}&lt;/div>`;
+    return examples;
+  }
 
-    function getArgumentsStr(args) {
-      const icons = {
-        city: '🏙',
-        date: '📅',
-        time: '🕒',
-      };
-      return Object.entries(args)
-        .map(([key, value]) => {
-          const type = Object.values(value)[0].type ?? null;
-          return icons[type]
-            ? `&lt;span title="${type}">${icons[type]}&lt;/span>&amp;nbsp;&amp;#x202F;${key}`
-            : key;
-        })
-        .join(', ');
-    }
+  getArgumentsStr(args) {
+    const icons = {
+      city: '🏙',
+      date: '📅',
+      time: '🕒',
+    };
+    return Object.entries(args)
+      .map(([key, value]) => {
+        const type = Object.values(value)[0].type ?? null;
+        return icons[type]
+          ? `&lt;span title="${type}">${icons[type]}&lt;/span>&amp;nbsp;&amp;#x202F;${key}`
+          : key;
+      })
+      .join(', ');
   }
 
   /**
@@ -284,10 +320,9 @@ export default class Suggestions2 {
    * @param {string} keyword – The keyword from the query.
    */
   sortMatches(matches) {
+    const compareKeywords = (a, b) => a.keyword.localeCompare(b.keyword);
     for (const key in matches) {
-      matches[key].sort((a, b) => {
-        return a.keyword &lt; b.keyword ? -1 : 1;
-      });
+      matches[key].sort(compareKeywords);
     }
   }
 
@@ -296,39 +331,19 @@ export default class Suggestions2 {
    *
    * @param {object} event – The fired event.
    */
-  select = (event) => {
-    event.preventDefault();
-
-    const inputText = event.target.value;
+  select(event) {
+    const inputText = this.queryInput.value;
     const input = QueryParser.parse(inputText);
-    const suggestion = event.text.label;
-
-    if (event.originalEvent.type === 'click') {
-      // Unselect all at first because Awesomplete apparently doesn't.
-      document.querySelectorAll('#query-form li').forEach((li) => {
-        li.setAttribute('aria-selected', 'false');
-      });
-      this.awesomplete.goto(suggestion.position);
-      return;
-    }
-
+    const suggestion = this.suggestions[this.position - 1];
     let newInputText = suggestion.keyword;
-
     // Prefix with namespace if not reachable.
     if (!suggestion.reachable) {
       newInputText = `${suggestion.namespace}.${newInputText}`;
     }
-
-    // Append argumentString.
     newInputText = `${newInputText} ${input.argumentString}`;
-
-    // Default: replace with suggested.
-    this.awesomplete.replace({
-      value: `${newInputText}`,
-    });
-
+    this.queryInput.value = newInputText;
     this.updateSuggestions(event);
-  };
+  }
 }
 </code></pre>
         </article>
@@ -346,7 +361,7 @@ export default class Suggestions2 {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Dec 19 2023 20:37:13 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Dec 19 2023 23:33:12 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
