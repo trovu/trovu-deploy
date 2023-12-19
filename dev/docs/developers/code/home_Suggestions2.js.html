@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: Suggestions.js</title>
+    <title>JSDoc: Source: home/Suggestions2.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: Suggestions.js</h1>
+    <h1 class="page-title">Source: home/Suggestions2.js</h1>
 
     
 
@@ -26,41 +26,23 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/** @module Suggestions */
-import Helper from './Helper.js';
-import QueryParser from './QueryParser.js';
-import Awesomplete from 'awesomplete';
-import 'awesomplete/awesomplete.css';
+            <pre class="prettyprint source linenums"><code>/** @module Suggestions2 */
+import Helper from '../Helper.js';
+import QueryParser from '../QueryParser.js';
 import 'font-awesome/css/font-awesome.min.css';
 
-/** Set and manage the Suggestions. */
-
-export default class Suggestions {
-  constructor(namespaceInfos, submitQuery) {
+export default class Suggestions2 {
+  constructor(namespaceInfos) {
     this.namespacesInfos = namespaceInfos;
-    this.submitQuery = submitQuery;
 
     const queryInput = document.querySelector('#query');
-
-    this.awesomplete = new Awesomplete(queryInput, {
-      container: function (input) {
-        return input.parentNode.parentNode;
-      },
-      minChars: 1,
-      maxItems: 15,
-      filter: function (text, input) {
-        return true;
-      },
-      list: [],
-      sort: false,
-      item: this.renderAwesompleteItem,
-    });
+    this.suggestionsList = document.querySelector('#suggestions ul');
 
     queryInput.addEventListener('input', this.updateSuggestions);
     // Also update on focus,
     // for case when input is already filled (because no shortcut was not found).
     queryInput.addEventListener('focus', this.updateSuggestions);
-    queryInput.addEventListener('awesomplete-select', this.select);
+    // queryInput.addEventListener('awesomplete-select', this.select);
   }
 
   /**
@@ -77,24 +59,25 @@ export default class Suggestions {
       ' ',
       2,
     );
-    const suggestions = this.getSuggestions(keyword);
-
-    this.awesomplete.list =
-      this.convertSuggestionsToAwesompleteList(suggestions);
-
-    this.awesomplete.evaluate();
+    let suggestions = this.getSuggestions(keyword);
+    suggestions = suggestions.slice(0, 500);
+    this.suggestionsList.innerHTML = '';
+    for (const suggestion of suggestions) {
+      const li = this.renderSuggestion(suggestion, inputText);
+      this.suggestionsList.appendChild(li);
+    }
   };
 
   /**
    * Render a suggestion item.
    */
-  renderAwesompleteItem(listItem, input, id) {
+  renderSuggestion(suggestion) {
     const li = document.createElement('li', {
       role: 'option',
     });
-    li.innerHTML += getSuggestionMain(listItem.label);
-    li.innerHTML += getSuggestionDescriptionAndTags(listItem.label);
-    li.innerHTML += getSuggestionExamples(listItem.label);
+    li.innerHTML += getSuggestionMain(suggestion);
+    li.innerHTML += getSuggestionDescriptionAndTags(suggestion);
+    li.innerHTML += getSuggestionExamples(suggestion);
     return li;
 
     function getSuggestionMain(suggestion) {
@@ -116,23 +99,20 @@ export default class Suggestions {
     }
 
     function getSuggestionDescriptionAndTags(suggestion) {
-      if (!listItem.label.description &amp;&amp; !listItem.label.tags) {
+      if (!suggestion.description &amp;&amp; !suggestion.tags) {
         return '';
       }
       let description = '';
       // If there is a description, use it.
-      if (listItem.label.description) {
-        description = listItem.label.description;
+      if (suggestion.description) {
+        description = suggestion.description;
         // If it's empty and there are examples, use 'Examples'.
-      } else if (
-        listItem.label.examples &amp;&amp;
-        Array.isArray(listItem.label.examples)
-      ) {
+      } else if (suggestion.examples &amp;&amp; Array.isArray(suggestion.examples)) {
         description = 'Examples:';
       }
       let tags = '';
-      if (listItem.label.tags &amp;&amp; Array.isArray(listItem.label.tags)) {
-        for (const tag of listItem.label.tags) {
+      if (suggestion.tags &amp;&amp; Array.isArray(suggestion.tags)) {
+        for (const tag of suggestion.tags) {
           tags += `&lt;span class="tag">${tag}&lt;/span> `;
         }
       }
@@ -144,14 +124,14 @@ export default class Suggestions {
     }
 
     function getSuggestionExamples(suggestion) {
-      if (!listItem.label.examples || !Array.isArray(listItem.label.examples)) {
+      if (!suggestion.examples || !Array.isArray(suggestion.examples)) {
         return '';
       }
       let examplesInnerDiv = '';
-      for (const example of listItem.label.examples) {
+      for (const example of suggestion.examples) {
         examplesInnerDiv += `
           &lt;span class="left">  
-            &lt;span class="query">${listItem.label.keyword} ${
+            &lt;span class="query">${suggestion.keyword} ${
               example.arguments || ''
             }&lt;/span>  
           &lt;/span>
@@ -312,25 +292,6 @@ export default class Suggestions {
   }
 
   /**
-   * Convert Suggestions to Awesomplete list format.
-   *
-   * @param {array} suggestions – The found suggestions.
-   *
-   * @return {array} list – The found suggestions, converted for Awesomplete.
-   */
-  convertSuggestionsToAwesompleteList(suggestions) {
-    const list = [];
-    for (const [index, suggestion] of suggestions.entries()) {
-      suggestion.position = index;
-      const item = {
-        value: '', // We are not using this on select.
-        label: suggestion,
-      };
-      list.push(item);
-    }
-    return list;
-  }
-  /**
    * Handle selection of a suggestion.
    *
    * @param {object} event – The fired event.
@@ -366,11 +327,6 @@ export default class Suggestions {
       value: `${newInputText}`,
     });
 
-    // Remove for now as I can't see its sense.
-    // if (input.args.length == suggestion.argumentCount) {
-    //   this.submitQuery();
-    //   return;
-    // }
     this.updateSuggestions(event);
   };
 }

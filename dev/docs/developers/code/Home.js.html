@@ -30,8 +30,9 @@
 import '../../scss/style.scss';
 import Env from './Env.js';
 import Helper from './Helper.js';
-import Suggestions from './Suggestions';
+// import Suggestions from './Suggestions';
 import Settings from './home/Settings.js';
+import Suggestions2 from './home/Suggestions2.js';
 import BSN from 'bootstrap.native/dist/bootstrap-native.esm.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -50,9 +51,6 @@ export default class Home {
 
     this.env = new Env();
 
-    // Must be done before env.populate()
-    // otherwise Chrome does not autodiscover.
-
     // Init environment.
     await this.env.populate();
 
@@ -70,21 +68,22 @@ export default class Home {
     document.querySelector('.navbar a.reload').onclick = this.reload;
     document.documentElement.setAttribute('data-page-loaded', 'true');
 
-    // Run the function on page load and window resize
+    Home.setHeights();
+  }
+
+  static setHeights() {
     Home.setMaxHeightForSuggestions();
-    // window.onload = Home.setMaxHeightForSuggestions;
     window.onresize = Home.setMaxHeightForSuggestions;
 
-    // Set the bottom position of the fade-out-overlay.
     const footerHeight = document.querySelector('footer').offsetHeight;
-    document.querySelector('.fade-out-overlay').style.bottom =
+    document.querySelector('#fade-out-overlay').style.bottom =
       footerHeight + 'px';
-    console.log(footerHeight);
   }
 
   static setMaxHeightForSuggestions() {
     const suggestionsDiv = document.querySelector('#suggestions');
-    suggestionsDiv.style.maxHeight = '100px';
+    // Fallback value.
+    suggestionsDiv.style.maxHeight = '200px';
     const suggestionsTop = document
       .querySelector('#suggestions')
       .getBoundingClientRect().top;
@@ -92,7 +91,6 @@ export default class Home {
       .querySelector('footer')
       .getBoundingClientRect().top;
     suggestionsDiv.style.maxHeight = footerTop - suggestionsTop + 'px';
-    console.log(suggestionsTop, footerTop);
   }
 
   /**
@@ -124,7 +122,8 @@ export default class Home {
         break;
     }
 
-    new Suggestions(this.env.namespaceInfos, this.submitQuery);
+    // new Suggestions(this.env.namespaceInfos, this.submitQuery);
+    new Suggestions2(this.env.namespaceInfos, this.submitQuery);
     document.querySelector('#query').focus();
     document.querySelector('#query').addEventListener('input', (event) => {
       // Toggle display of navbar and examples.
@@ -135,6 +134,7 @@ export default class Home {
         document.querySelector('nav.navbar').style.display = 'none';
         document.querySelector('#intro').style.display = 'none';
       }
+      Home.setHeights();
     });
   }
 
@@ -236,13 +236,13 @@ export default class Home {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-Suggestions2.html">Suggestions2</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Dec 19 2023 18:28:28 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Tue Dec 19 2023 20:37:13 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
