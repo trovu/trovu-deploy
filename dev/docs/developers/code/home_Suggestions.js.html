@@ -49,15 +49,8 @@ export default class Suggestions {
    * @param {object} event – The fired event.
    */
   updateSuggestions = (event) => {
-    const inputText = event.target.value;
-
-    // Only search by keyword / first word of user input.
-    const [keyword, argumentString] = Helper.splitKeepRemainder(
-      inputText,
-      ' ',
-      2,
-    );
-    this.suggestions = this.getSuggestions(keyword);
+    const query = event.target.value;
+    this.suggestions = this.getSuggestions(query);
     this.suggestions = this.suggestions.slice(0, 200);
     this.renderSuggestions(this.suggestions);
   };
@@ -306,7 +299,7 @@ export default class Suggestions {
         argSpan.appendChild(iconText);
       }
 
-      const argText = document.createTextNode(type ? key : `${key}, `);
+      const argText = document.createTextNode(key);
       argSpan.appendChild(argText);
 
       argsFragment.appendChild(argSpan);
@@ -327,8 +320,8 @@ export default class Suggestions {
    *
    * @return {array} suggestions – The found suggestions.
    */
-  getSuggestions(keyword) {
-    const matches = this.getMatches(keyword);
+  getSuggestions(query) {
+    const matches = this.getMatches(query);
     this.sort(matches);
 
     let suggestions = [];
@@ -357,7 +350,7 @@ export default class Suggestions {
    *
    * @return {object} matches – The found matches, grouped by type of match.
    */
-  getMatches(keyword) {
+  getMatches(query) {
     const matches = {
       keywordFullReachable: [],
       keywordFullUnreachable: [],
@@ -372,14 +365,26 @@ export default class Suggestions {
       urlMiddleReachable: [],
       urlMiddleUnreachable: [],
     };
+    const env = QueryParser.parse(query);
+    const [regExp, filters] = this.getRegExpAndFilters(query);
 
-    const keywordRegex = new RegExp(keyword, 'i');
     for (const namespaceInfo of Object.values(this.namespacesInfos)) {
       for (const shortcut of Object.values(namespaceInfo.shortcuts)) {
         if (shortcut.deprecated || shortcut.removed) {
           continue;
         }
-        if (keyword == shortcut.keyword) {
+        if (filters.namespace &amp;&amp; filters.namespace != shortcut.namespace) {
+          continue;
+        }
+        if (
+          filters.tag &amp;&amp;
+          (!shortcut.tags || !shortcut.tags.includes(filters.tag)) &amp;&amp;
+          (!shortcut.tags ||
+            !shortcut.tags.some((tag) => tag.includes(filters.tag)))
+        ) {
+          continue;
+        }
+        if (env.keyword == shortcut.keyword) {
           if (shortcut.reachable) {
             matches.keywordFullReachable.push(shortcut);
           } else {
@@ -387,7 +392,7 @@ export default class Suggestions {
           }
           continue;
         }
-        let pos = shortcut.keyword.search(keywordRegex);
+        let pos = shortcut.keyword.search(regExp);
         if (pos == 0) {
           if (shortcut.reachable) {
             matches.keywordBeginReachable.push(shortcut);
@@ -396,7 +401,7 @@ export default class Suggestions {
           }
           continue;
         }
-        pos = shortcut.title.search(keywordRegex);
+        pos = shortcut.title.search(regExp);
         if (pos == 0) {
           if (shortcut.reachable) {
             matches.titleBeginReachable.push(shortcut);
@@ -415,7 +420,7 @@ export default class Suggestions {
         }
         if (shortcut.tags &amp;&amp; Array.isArray(shortcut.tags)) {
           for (const tag of shortcut.tags) {
-            const pos = tag.search(keywordRegex);
+            const pos = tag.search(regExp);
             if (pos > -1) {
               if (shortcut.reachable) {
                 matches.tagMiddleReachable.push(shortcut);
@@ -425,7 +430,7 @@ export default class Suggestions {
             }
           }
         }
-        pos = shortcut.url.search(keywordRegex);
+        pos = shortcut.url.search(regExp);
         if (pos > 0) {
           if (shortcut.reachable) {
             matches.urlMiddleReachable.push(shortcut);
@@ -437,6 +442,32 @@ export default class Suggestions {
       }
     }
     return matches;
+  }
+
+  getRegExpAndFilters(query) {
+    const filters = {};
+    const queryParts = query.split(' ');
+    const remainingQueryParts = [];
+    for (const part of queryParts) {
+      if (part.startsWith('ns:')) {
+        filters.namespace = part.slice(3);
+        continue;
+      }
+      if (part.startsWith('tag:')) {
+        filters.tag = part.slice(4);
+        continue;
+      }
+      const [extraNamespaceName, keyword] = QueryParser.getExtraNamespace(part);
+      if (extraNamespaceName) {
+        filters.namespace = extraNamespaceName;
+        remainingQueryParts.push(keyword);
+        continue;
+      }
+      remainingQueryParts.push(part);
+    }
+    const remainingQuery = remainingQueryParts.join(' ');
+    const regexp = new RegExp(remainingQuery, 'i');
+    return [regexp, filters];
   }
 
   /**
@@ -492,7 +523,7 @@ export default class Suggestions {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Dec 20 2023 03:01:46 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Dec 21 2023 02:55:35 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
