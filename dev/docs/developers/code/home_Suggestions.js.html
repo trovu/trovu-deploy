@@ -32,13 +32,15 @@ import QueryParser from '../QueryParser.js';
 import 'font-awesome/css/font-awesome.min.css';
 
 export default class Suggestions {
-  constructor(querySelector, suggestionsSelector, namespaceInfos) {
-    this.namespacesInfos = namespaceInfos;
+  constructor(querySelector, suggestionsSelector, env) {
+    this.env = env;
     this.queryInput = document.querySelector(querySelector);
     this.suggestionsDiv = document.querySelector(suggestionsSelector);
+    this.helpDiv = document.querySelector('#help');
     this.selected = 0;
     this.suggestions = [];
     this.setListeners();
+    this.updateSuggestions();
   }
 
   /**
@@ -46,8 +48,8 @@ export default class Suggestions {
    *
    * @param {object} event – The fired event.
    */
-  updateSuggestions = (event) => {
-    const query = event.target.value;
+  updateSuggestions = () => {
+    const query = this.queryInput.value;
     this.suggestions = this.getSuggestions(query);
     this.suggestions = this.suggestions.slice(0, 200);
     this.renderSuggestions(this.suggestions);
@@ -56,21 +58,21 @@ export default class Suggestions {
   setListeners() {
     this.queryInput.addEventListener('input', (event) => {
       this.selected = 0;
-      this.updateSuggestions(event);
+      this.updateSuggestions();
     });
     // Also update on focus,
     // for case when input is already filled (because no shortcut was not found).
-    this.queryInput.addEventListener('focus', this.updateSuggestions);
+    // this.queryInput.addEventListener('focus', this.updateSuggestions);
     this.queryInput.addEventListener('keydown', (event) => {
       if (event.key === 'ArrowUp') {
         event.preventDefault();
         this.selected = Math.max(1, this.selected - 1);
-        this.updateSuggestions(event);
+        this.updateSuggestions();
       }
       if (event.key === 'ArrowDown') {
         event.preventDefault();
         this.selected = Math.min(this.suggestions.length, this.selected + 1);
-        this.updateSuggestions(event);
+        this.updateSuggestions();
       }
       if (event.key === 'Enter') {
         this.pick(event);
@@ -83,12 +85,10 @@ export default class Suggestions {
       this.suggestionsDiv.removeChild(this.suggestionsDiv.firstChild);
     }
     if (suggestions.length === 0) {
-      const emptyDiv = document.createElement('div');
-      emptyDiv.textContent = '∅';
-      emptyDiv.className = 'empty';
-      this.suggestionsDiv.appendChild(emptyDiv);
+      this.helpDiv.textContent = 'No matching shortcuts found.';
       return;
     }
+    this.helpDiv.textContent = '';
 
     this.suggestionsList = document.createElement('ul');
     this.suggestionsDiv.appendChild(this.suggestionsList);
@@ -121,7 +121,7 @@ export default class Suggestions {
     fragment.appendChild(this.getExamples(suggestion));
     li.appendChild(fragment);
     li.addEventListener('click', () => {
-      this.updateAriaSelected(index);
+      this.updateAriaSelected(index - 1);
       this.selected = index;
       this.queryInput.focus();
     });
@@ -205,6 +205,7 @@ export default class Suggestions {
     // On click, set the query input value to "ns:NAMESPACE".
     namespaceSpan.addEventListener('click', () => {
       this.queryInput.value = `ns:${suggestion.namespace}`;
+      this.queryInput.dispatchEvent(new Event('input'));
     });
     namespaceSpan.addEventListener('mouseover', () => {
       namespaceSpan.style.cursor = 'pointer';
@@ -241,6 +242,7 @@ export default class Suggestions {
         // On click, set the query input value to "tag:TAG".
         tagSpan.addEventListener('click', () => {
           this.queryInput.value = `tag:${tag}`;
+          this.queryInput.dispatchEvent(new Event('input'));
         });
         tagSpan.addEventListener('mouseover', () => {
           tagSpan.style.cursor = 'pointer';
@@ -271,7 +273,11 @@ export default class Suggestions {
       querySpan.textContent = `${suggestion.keyword} ${
         example.arguments || ''
       }`;
-      leftSpan.appendChild(querySpan);
+      // Surrond query with link to /process.
+      const queryLink = document.createElement('a');
+      queryLink.href = this.env.getProcessUrl({ query: querySpan.textContent });
+      queryLink.appendChild(querySpan);
+      leftSpan.appendChild(queryLink);
 
       const rightSpan = document.createElement('span');
       rightSpan.className = 'right';
@@ -330,10 +336,19 @@ export default class Suggestions {
    */
   getSuggestions(query) {
     const matches = this.getMatches(query);
-    this.sort(matches);
 
+    if (matches.showOnHome.length > 0) {
+      // sort matches.showOnHome by showOnHome integer
+      matches.showOnHome.sort((a, b) => {
+        return a.showOnHome - b.showOnHome;
+      });
+      return matches.showOnHome;
+    }
+
+    this.sort(matches);
     let suggestions = [];
     suggestions = suggestions.concat(
+      matches.showOnHome,
       matches.keywordFullReachable,
       matches.keywordFullUnreachable,
       matches.keywordBeginReachable,
@@ -360,6 +375,7 @@ export default class Suggestions {
    */
   getMatches(query) {
     const matches = {
+      showOnHome: [],
       keywordFullReachable: [],
       keywordFullUnreachable: [],
       keywordBeginReachable: [],
@@ -376,20 +392,27 @@ export default class Suggestions {
     const env = QueryParser.parse(query);
     const [regExp, filters] = this.getRegExpAndFilters(query);
 
-    for (const namespaceInfo of Object.values(this.namespacesInfos)) {
+    for (const namespaceInfo of Object.values(this.env.namespaceInfos)) {
       for (const shortcut of Object.values(namespaceInfo.shortcuts)) {
         if (shortcut.deprecated || shortcut.removed) {
           continue;
+        }
+        if (query == '') {
+          if (shortcut.showOnHome &amp;&amp; shortcut.reachable) {
+            matches.showOnHome.push(shortcut);
+            continue;
+          }
         }
         if (filters.namespace &amp;&amp; filters.namespace != shortcut.namespace) {
           continue;
         }
         if (
           filters.tag &amp;&amp;
-          (!shortcut.tags || !shortcut.tags.includes(filters.tag)) &amp;&amp;
-          (!shortcut.tags ||
-            !shortcut.tags.some((tag) => tag.includes(filters.tag)))
+          (!shortcut.tags || !shortcut.tags.includes(filters.tag))
         ) {
+          continue;
+        }
+        if (filters.url &amp;&amp; !shortcut.url.includes(filters.url)) {
           continue;
         }
         if (env.keyword == shortcut.keyword) {
@@ -465,6 +488,10 @@ export default class Suggestions {
         filters.tag = part.slice(4);
         continue;
       }
+      if (part.startsWith('url:')) {
+        filters.url = part.slice(4);
+        continue;
+      }
       const [extraNamespaceName, keyword] = QueryParser.getExtraNamespace(part);
       if (extraNamespaceName) {
         filters.namespace = extraNamespaceName;
@@ -503,7 +530,6 @@ export default class Suggestions {
     const inputText = this.queryInput.value;
     const input = QueryParser.parse(inputText);
     const suggestion = this.suggestions[this.selected - 1];
-    console.log('pick', suggestion);
     let newInputText = suggestion.keyword;
     // Prefix with namespace if not reachable.
     if (!suggestion.reachable) {
@@ -512,7 +538,7 @@ export default class Suggestions {
     newInputText = `${newInputText} ${input.argumentString}`;
     this.queryInput.value = newInputText;
     this.selected = 0;
-    this.updateSuggestions(event);
+    this.updateSuggestions();
   }
 }
 </code></pre>
@@ -531,7 +557,7 @@ export default class Suggestions {
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Dec 21 2023 04:03:15 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Fri Dec 22 2023 23:39:19 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
