@@ -30,8 +30,8 @@
 import '../../scss/style.scss';
 import Env from './Env.js';
 import Helper from './Helper.js';
-import Suggestions from './Suggestions';
 import Settings from './home/Settings.js';
+import Suggestions from './home/Suggestions.js';
 import BSN from 'bootstrap.native/dist/bootstrap-native.esm.min.js';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -50,9 +50,6 @@ export default class Home {
 
     this.env = new Env();
 
-    // Must be done before env.populate()
-    // otherwise Chrome does not autodiscover.
-
     // Init environment.
     await this.env.populate();
 
@@ -69,6 +66,30 @@ export default class Home {
     document.getElementById('query-form').onsubmit = this.submitQuery;
     document.querySelector('.navbar a.reload').onclick = this.reload;
     document.documentElement.setAttribute('data-page-loaded', 'true');
+
+    Home.setHeights();
+  }
+
+  static setHeights() {
+    Home.setMaxHeightForSuggestions();
+    window.onresize = Home.setMaxHeightForSuggestions;
+
+    const footerHeight = document.querySelector('footer').offsetHeight;
+    document.querySelector('#fade-out-overlay').style.bottom =
+      footerHeight + 'px';
+  }
+
+  static setMaxHeightForSuggestions() {
+    const suggestionsDiv = document.querySelector('#suggestions');
+    // Fallback value.
+    suggestionsDiv.style.maxHeight = '200px';
+    const suggestionsTop = document
+      .querySelector('#suggestions')
+      .getBoundingClientRect().top;
+    const footerTop = document
+      .querySelector('footer')
+      .getBoundingClientRect().top;
+    suggestionsDiv.style.maxHeight = footerTop - suggestionsTop + 'px';
   }
 
   /**
@@ -100,20 +121,35 @@ export default class Home {
         break;
     }
 
-    new Suggestions(this.env.namespaceInfos, this.submitQuery);
+    this.suggestions = new Suggestions('#query', '#suggestions', this.env);
+    this.setToggleByQuery(Home);
+  }
+
+  setToggleByQuery(Home) {
     document.querySelector('#query').focus();
-    document.querySelector('#query').addEventListener('input', (event) => {
-      // Toggle display of navbar and examples.
-      if (event.target.value.trim() === '') {
-        document.querySelector('nav.navbar').style.display = 'block';
-        document.querySelector('#examples-and-about').style.display = 'block';
-        document.querySelector('#intro').style.display = 'block';
-      } else {
-        document.querySelector('nav.navbar').style.display = 'none';
-        document.querySelector('#examples-and-about').style.display = 'none';
-        document.querySelector('#intro').style.display = 'none';
-      }
+    document.querySelector('#query').addEventListener('input', () => {
+      this.toggleByQuery();
     });
+    document.querySelector('#suggestions').addEventListener('click', () => {
+      this.toggleByQuery();
+    });
+  }
+
+  toggleByQuery() {
+    // Toggle display of navbar and examples.
+    if (
+      document.querySelector('#query').value.trim() === '' &amp;&amp;
+      this.suggestions.selected === 0
+    ) {
+      document.querySelector('nav.navbar').style.display = 'block';
+      document.querySelector('#intro').style.display = 'block';
+      document.querySelector('#alert').style.display = 'block';
+    } else {
+      document.querySelector('nav.navbar').style.display = 'none';
+      document.querySelector('#intro').style.display = 'none';
+      document.querySelector('#alert').style.display = 'none';
+    }
+    Home.setHeights();
   }
 
   setLocationHash() {
@@ -214,13 +250,13 @@ export default class Home {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed Dec 20 2023 23:45:11 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Dec 23 2023 01:55:19 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
