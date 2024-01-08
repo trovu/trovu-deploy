@@ -471,7 +471,7 @@ h2 + .header-anchor {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2023-12-27">27 December 2023</time></li>
+	<li><time datetime="2024-01-08">08 January 2024</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -484,17 +484,17 @@ h2 + .header-anchor {
 	
 	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2023-12-27</lastmod>
+		<lastmod>2024-01-08</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2023-12-27</lastmod>
+		<lastmod>2024-01-08</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2023-12-27</lastmod>
+		<lastmod>2024-01-08</lastmod>
 	</url>
 </urlset>
 
