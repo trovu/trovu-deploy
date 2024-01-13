@@ -18,7 +18,7 @@
 		<id>https://trovu.net/blog/configurl/</id>
 		<content type="html">&lt;p&gt;Until now, to use Trovu with advanced settings and personal shortcuts, you needed a Github account.
 Now, these features are accessible &lt;a href=&quot;https://trovu.net/docs/users/advanced/#via-a-self-hosted-file&quot;&gt;with a self-hosted file&lt;/a&gt;, which can remain private if hosted under a non-public URL.&lt;/p&gt;
-&lt;p&gt;To do this, create a file following the &lt;code&gt;config.yml&lt;/code&gt; syntax. A new feature allows you to create shortcuts directly within the config file:&lt;/p&gt;
+&lt;p&gt;To do this, create a file following the &lt;code&gt;config.yml&lt;/code&gt; syntax. The new feature allows you to create shortcuts directly within the config file:&lt;/p&gt;
 &lt;pre class=&quot;language-yml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; en
 &lt;span class=&quot;token key atrule&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; us
 &lt;span class=&quot;token key atrule&quot;&gt;namespaces&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
@@ -33,7 +33,9 @@ Now, these features are accessible &lt;a href=&quot;https://trovu.net/docs/users
               &lt;span class=&quot;token key atrule&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//example.com/&lt;span class=&quot;token punctuation&quot;&gt;?&lt;/span&gt;q=&amp;lt;param1&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Host this file anywhere your browser can access it.
 This could be a public URL, within an intranet, or on your &lt;code&gt;localhost&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Then, open Trovu with &lt;code&gt;https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then, open Trovu with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE
+&lt;/code&gt;&lt;/pre&gt;
 </content>
 	</entry>
 	

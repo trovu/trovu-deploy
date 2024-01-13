@@ -477,7 +477,7 @@ h2 + .header-anchor {
 
 <p>Until now, to use Trovu with advanced settings and personal shortcuts, you needed a Github account.
 Now, these features are accessible <a href="https://trovu.net/docs/users/advanced/#via-a-self-hosted-file">with a self-hosted file</a>, which can remain private if hosted under a non-public URL.</p>
-<p>To do this, create a file following the <code>config.yml</code> syntax. A new feature allows you to create shortcuts directly within the config file:</p>
+<p>To do this, create a file following the <code>config.yml</code> syntax. The new feature allows you to create shortcuts directly within the config file:</p>
 <pre class="language-yml" tabindex="0"><code class="language-yml"><span class="token key atrule">language</span><span class="token punctuation">:</span> en
 <span class="token key atrule">country</span><span class="token punctuation">:</span> us
 <span class="token key atrule">namespaces</span><span class="token punctuation">:</span>
@@ -492,7 +492,9 @@ Now, these features are accessible <a href="https://trovu.net/docs/users/advance
               <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//example.com/<span class="token punctuation">?</span>q=&lt;param1<span class="token punctuation">></span></code></pre>
 <p>Host this file anywhere your browser can access it.
 This could be a public URL, within an intranet, or on your <code>localhost</code>.</p>
-<p>Then, open Trovu with <code>https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE</code>.</p>
+<p>Then, open Trovu with:</p>
+<pre><code>https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE
+</code></pre>
 
 <ul class="links-nextprev"><li>Previous: <a href="/blog/stay-informed/">Stay informed about Trovu</a></li>
 </ul>
