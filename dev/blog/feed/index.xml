@@ -4,12 +4,40 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/blog/"/>
-	<updated>2023-12-09T00:00:00Z</updated>
+	<updated>2024-01-14T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>New: User Settings via Self-Hosted File</title>
+		<link href="https://trovu.net/blog/configurl/"/>
+		<updated>2024-01-14T00:00:00Z</updated>
+		<id>https://trovu.net/blog/configurl/</id>
+		<content type="html">&lt;p&gt;Until now, to use Trovu with advanced settings and personal shortcuts, you needed a Github account.
+Now, these features are accessible &lt;a href=&quot;https://trovu.net/docs/users/advanced/#via-a-self-hosted-file&quot;&gt;with a self-hosted file&lt;/a&gt;, which can remain private if hosted under a non-public URL.&lt;/p&gt;
+&lt;p&gt;To do this, create a file following the &lt;code&gt;config.yml&lt;/code&gt; syntax. The new feature allows you to create shortcuts directly within the config file:&lt;/p&gt;
+&lt;pre class=&quot;language-yml&quot; tabindex=&quot;0&quot;&gt;&lt;code class=&quot;language-yml&quot;&gt;&lt;span class=&quot;token key atrule&quot;&gt;language&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; en
+&lt;span class=&quot;token key atrule&quot;&gt;country&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; us
+&lt;span class=&quot;token key atrule&quot;&gt;namespaces&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; o
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; en
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; .us
+    &lt;span class=&quot;token punctuation&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;token key atrule&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; my
+      &lt;span class=&quot;token key atrule&quot;&gt;shortcuts&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;token key atrule&quot;&gt;examplekeyword 0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;token key atrule&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//example.com/
+          &lt;span class=&quot;token key atrule&quot;&gt;examplekeyword 1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;token key atrule&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; https&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;//example.com/&lt;span class=&quot;token punctuation&quot;&gt;?&lt;/span&gt;q=&amp;lt;param1&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Host this file anywhere your browser can access it.
+This could be a public URL, within an intranet, or on your &lt;code&gt;localhost&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Then, open Trovu with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Stay informed about Trovu</title>
