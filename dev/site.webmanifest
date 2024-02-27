@@ -1,6 +1,27 @@
 {
     "name": "trovu - search with shortcuts.",
     "short_name": "Trovu",
+    "description": "Search 1000+ websites in a command-line way, with curated and personal shortcuts, organized by namespaces, allowing multiple and typed arguments, with maximum privacy. It's like DuckDuckGo bangs, but on steroids. And it's free.",
+    "id": "net.trovu",
+    "launch_handler": {
+        "client_mode": [
+            "navigate-existing",
+            "auto"
+        ]
+    },
+    "orientation": "any",
+    "screenshots": [
+        {
+            "src": "img/portrait.jpg",
+            "sizes": "2400x1080",
+            "type": "image/jpg"
+        },
+        {
+            "src": "img/landscape.jpg",
+            "sizes": "1080x2400",
+            "type": "image/jpg"
+        }
+    ],
     "icons": [
         {
             "src": "https://trovu.net/favicon.ico",
