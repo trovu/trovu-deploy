@@ -3,7 +3,7 @@
 	<title>Blog | trovu.net</title>
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
-	<link href="https://trovu.net/blog/"/>
+	<link href="https://trovu.net/blog/" test />
 	<updated>2024-01-14T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
