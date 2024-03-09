@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>New: User Settings via Self-Hosted File</title>
-		<meta name="description" content="… which can be private.">
+		<title>New: App for Smartphones</title>
+		<meta name="description" content="The PWA (Progressive Web App) simplifies using Trovu on smartphones.">
 		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
 		<style>/**
@@ -468,41 +468,27 @@ h2 + .header-anchor {
 
 		<main id="skip">
 			
-<h1>New: User Settings via Self-Hosted File</h1>
+<h1>New: App for Smartphones</h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-01-14">14 January 2024</time></li>
-	<li><a href="/blog/tags/config/" class="post-tag">config</a></li>
+	<li><time datetime="2024-03-09">09 March 2024</time></li>
+	<li><a href="/blog/tags/mobile/" class="post-tag">mobile</a>, </li>
+	<li><a href="/blog/tags/app/" class="post-tag">app</a></li>
 </ul>
 
-<p>Until now, to use Trovu with advanced settings and personal shortcuts, you needed a Github account.
-Now, these features are accessible <a href="https://trovu.net/docs/users/advanced/#via-a-self-hosted-file">with a self-hosted file</a>, which can remain private if hosted under a non-public URL.</p>
-<p>To do this, create a file following the <code>config.yml</code> syntax. The new feature allows you to create shortcuts directly within the config file:</p>
-<pre class="language-yml" tabindex="0"><code class="language-yml"><span class="token key atrule">language</span><span class="token punctuation">:</span> en
-<span class="token key atrule">country</span><span class="token punctuation">:</span> us
-<span class="token key atrule">namespaces</span><span class="token punctuation">:</span>
-    <span class="token punctuation">-</span> o
-    <span class="token punctuation">-</span> en
-    <span class="token punctuation">-</span> .us
-    <span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> my
-      <span class="token key atrule">shortcuts</span><span class="token punctuation">:</span>
-          <span class="token key atrule">examplekeyword 0</span><span class="token punctuation">:</span>
-              <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//example.com/
-          <span class="token key atrule">examplekeyword 1</span><span class="token punctuation">:</span>
-              <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//example.com/<span class="token punctuation">?</span>q=&lt;param1<span class="token punctuation">></span></code></pre>
-<p>Host this file anywhere your browser can access it.
-This could be a public URL, within an intranet, or on your <code>localhost</code>.</p>
-<p>Then, open Trovu with:</p>
-<pre><code>https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_FILE
-</code></pre>
+<p>Using Trovu on your smartphone just got easier. With the new PWA, you can access a full-screen Trovu experience, including its suggestions, directly from your phone's home screen with just a tap.</p>
+<p>To install the app, <a href="/blog/docs/users/integration/#pwa-progressive-web-app">see the docs</a>.</p>
+<p><a href="img/screenshot.1.jpg" target="_blank" rel="noopener noreferrer"><picture><source type="image/avif" srcset="/blog/img/cE96uF81s7-300.avif 300w"><source type="image/webp" srcset="/blog/img/cE96uF81s7-300.webp 300w"><img alt="Screenshot 1" loading="lazy" decoding="async" src="/blog/img/cE96uF81s7-300.jpeg" width="300" height="666"></picture></a>
+<a href="img/screenshot.2.jpg" target="_blank" rel="noopener noreferrer"><picture><source type="image/avif" srcset="/blog/img/DlV-xD8wWk-300.avif 300w"><source type="image/webp" srcset="/blog/img/DlV-xD8wWk-300.webp 300w"><img alt="Screenshot 2" loading="lazy" decoding="async" src="/blog/img/DlV-xD8wWk-300.jpeg" width="300" height="666"></picture></a>
+<a href="img/screenshot.3.jpg" target="_blank" rel="noopener noreferrer"><picture><source type="image/avif" srcset="/blog/img/XjO55rtMzi-300.avif 300w"><source type="image/webp" srcset="/blog/img/XjO55rtMzi-300.webp 300w"><img alt="Screenshot 3" loading="lazy" decoding="async" src="/blog/img/XjO55rtMzi-300.jpeg" width="300" height="666"></picture></a></p>
 
-<ul class="links-nextprev"><li>Previous: <a href="/blog/stay-informed/">Stay informed about Trovu</a></li><li>Next: <a href="/blog/pwa/">New: App for Smartphones</a></li>
+<ul class="links-nextprev"><li>Previous: <a href="/blog/configurl/">New: User Settings via Self-Hosted File</a></li>
 </ul>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- Current page: /blog/configurl/ -->
+		<!-- Current page: /blog/pwa/ -->
 	</body>
 </html>

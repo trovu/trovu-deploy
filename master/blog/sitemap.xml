@@ -471,7 +471,7 @@ h2 + .header-anchor {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-03-08">08 March 2024</time></li>
+	<li><time datetime="2024-03-09">09 March 2024</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -488,23 +488,38 @@ h2 + .header-anchor {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/pwa/</loc>
+		<lastmod>2024-03-09</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2024-03-08</lastmod>
+		<lastmod>2024-03-09</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2024-03-08</lastmod>
+		<lastmod>2024-03-09</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/config/</loc>
-		<lastmod>2024-03-08</lastmod>
+		<lastmod>2024-03-09</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/mobile/</loc>
+		<lastmod>2024-03-09</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/app/</loc>
+		<lastmod>2024-03-09</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2024-03-08</lastmod>
+		<lastmod>2024-03-09</lastmod>
 	</url>
 </urlset>
 
