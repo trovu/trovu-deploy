@@ -508,17 +508,17 @@ h2 + .header-anchor {
 	</url>
 	
 	<url>
-		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2024-03-11</lastmod>
-	</url>
-	
-	<url>
 		<loc>https://trovu.net/blog/tags/mobile/</loc>
 		<lastmod>2024-03-11</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/app/</loc>
+		<lastmod>2024-03-11</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/rss/</loc>
 		<lastmod>2024-03-11</lastmod>
 	</url>
 </urlset>
