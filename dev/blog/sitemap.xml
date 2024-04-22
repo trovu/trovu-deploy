@@ -447,6 +447,9 @@ a[href].header-anchor:focus,
 
 h2 + .header-anchor {
 	font-size: 1.5em;
+}
+main li {
+	margin-bottom: 1em;
 }</style>
 	</head>
 	<body>
@@ -471,7 +474,7 @@ h2 + .header-anchor {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-03-21">21 March 2024</time></li>
+	<li><time datetime="2024-04-22">22 April 2024</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -493,33 +496,53 @@ h2 + .header-anchor {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/videos-summary-advanced/</loc>
+		<lastmod>2024-03-31</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/config/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/mobile/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/app/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2024-03-21</lastmod>
+		<lastmod>2024-04-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/video/</loc>
+		<lastmod>2024-04-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/advanced/</loc>
+		<lastmod>2024-04-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/short/</loc>
+		<lastmod>2024-04-22</lastmod>
 	</url>
 </urlset>
 

@@ -4,12 +4,25 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2024-03-09T00:00:00Z</updated>
+	<updated>2024-03-31T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>New videos: Summary &amp; Advanced Usage</title>
+		<link href="https://trovu.net/blog/videos-summary-advanced/"/>
+		<updated>2024-03-31T00:00:00Z</updated>
+		<id>https://trovu.net/blog/videos-summary-advanced/</id>
+		<content type="html">&lt;p&gt;I&#39;ve created two new videos about Trovu:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A short summary video pitches Trovu&#39;s features in less than 30 seconds. It comes with large subtitles so can be also shared well to mobile devices. &lt;a href=&quot;https://www.youtube.com/watch?v=gOUNhCion9M&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://trovu.net/blog/img/2TOqfzzHeG-500.avif 500w&quot; sizes=&quot;&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://trovu.net/blog/img/2TOqfzzHeG-500.webp 500w&quot; sizes=&quot;&quot;&gt;&lt;img alt=&quot;Summary&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://trovu.net/blog/img/2TOqfzzHeG-500.jpeg&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;A tutorial video on how to &lt;a href=&quot;https://trovu.net/blog/docs/users/advanced&quot;&gt;create custom settings and personal shortcuts&lt;/a&gt;:&lt;a href=&quot;https://www.youtube.com/watch?v=DA9GjWr4WbY&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://trovu.net/blog/img/SmCFLblYrh-500.avif 500w&quot; sizes=&quot;&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://trovu.net/blog/img/SmCFLblYrh-500.webp 500w&quot; sizes=&quot;&quot;&gt;&lt;img alt=&quot;Advanced usage&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://trovu.net/blog/img/SmCFLblYrh-500.jpeg&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>New: App for Smartphones</title>
