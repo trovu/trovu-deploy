@@ -474,7 +474,7 @@ main li {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-05-16">16 May 2024</time></li>
+	<li><time datetime="2024-05-18">18 May 2024</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -502,47 +502,47 @@ main li {
 	
 	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/config/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/mobile/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/app/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/video/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/advanced/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/short/</loc>
-		<lastmod>2024-05-16</lastmod>
+		<lastmod>2024-05-18</lastmod>
 	</url>
 </urlset>
 
