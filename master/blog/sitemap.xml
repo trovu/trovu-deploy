@@ -450,6 +450,33 @@ h2 + .header-anchor {
 }
 main li {
 	margin-bottom: 1em;
+}
+
+div.trovu-call {
+  display: block;
+  background: #487b7f;
+  color: white;
+  margin: 0;
+	padding: 0;
+	border: 0;
+}
+div.trovu-call a,
+div.trovu-call a:link,
+div.trovu-call a:visited {
+  display: inline-block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-decoration: none; 
+  color: white;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
+}
+
+div.trovu-call span {
+  background: #aaa;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
 }</style>
 	</head>
 	<body>
@@ -501,6 +528,11 @@ main li {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/how-i-use-trovu/</loc>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/</loc>
 		<lastmod>2024-05-22</lastmod>
 	</url>
@@ -512,6 +544,11 @@ main li {
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/config/</loc>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/beginner/</loc>
 		<lastmod>2024-05-22</lastmod>
 	</url>
 	

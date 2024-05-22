@@ -4,12 +4,137 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2024-03-31T00:00:00Z</updated>
+	<updated>2024-05-22T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>How I Use trovu.net</title>
+		<link href="https://trovu.net/blog/how-i-use-trovu/"/>
+		<updated>2024-05-22T00:00:00Z</updated>
+		<id>https://trovu.net/blog/how-i-use-trovu/</id>
+		<content type="html">&lt;p&gt;Many of my friends have known Trovu for years, and they fall into exactly two groups:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;quot;Nice, but I don&#39;t see why this would be useful to me.&amp;quot;&lt;/li&gt;
+&lt;li&gt;&amp;quot;This is awesome, I can&#39;t use the Internet without it anymore.&amp;quot;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There&#39;s nothing in between. No one seems to be using it just occasionally.&lt;/p&gt;
+&lt;p&gt;I&#39;m part of the latter group, and to help you join us, I will show you how I use Trovu.&lt;/p&gt;
+&lt;h2 id=&quot;my-setup&quot; tabindex=&quot;-1&quot;&gt;My Setup &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;First, here&#39;s how Trovu is integrated into my devices:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I use &lt;a href=&quot;https://trovu.net/docs/users/advanced/&quot;&gt;custom settings and shortcuts&lt;/a&gt; in &lt;a href=&quot;https://github.com/georgjaehnig/trovu-data-user/&quot;&gt;my own trovu-data-user repo&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;On my desktop browser, I have &lt;a href=&quot;https://trovu.net/docs/users/integration#chrome&quot;&gt;integrated Trovu as a search engine&lt;/a&gt; and made it the default. My URL is:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;https://trovu.net/process/?#github=georgjaehnig&amp;amp;query=%s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;On my Android phone, I use either the &lt;a href=&quot;https://trovu.net/docs/users/integration#pwa-progressive-web-app&quot;&gt;new Trovu PWA&lt;/a&gt; or the third-party app &lt;a href=&quot;https://trovu.net/docs/users/integration#searchbar-ex-search-widget&quot;&gt;SearchBar Ex&lt;/a&gt;:
+&lt;ul&gt;
+&lt;li&gt;SearchBar Ex immediately opens the Android keyboard after launching, but it has no suggestions.&lt;/li&gt;
+&lt;li&gt;The PWA has suggestions, but the virtual keyboard only opens after an additional tap into the search input. (Let me know if you know how to make it show immediately.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;advanced-googling&quot; tabindex=&quot;-1&quot;&gt;(Advanced) Googling &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;My most frequent shortcut is &lt;code&gt;g&lt;/code&gt; for Google. But sometimes, I need a more complicated Google search, and Trovu has shortcuts for these:&lt;/p&gt;
+&lt;h3 id=&quot;google-for-results-only-in-a-certain-language&quot; tabindex=&quot;-1&quot;&gt;Google for results only in a certain language: &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gol%20pl%2C%20berlin&quot;&gt;gol pl, berlin&lt;/a&gt;&lt;/div&gt;
+will yield results about Berlin only on Polish websites.
+&lt;h3 id=&quot;google-search-only-on-wikipedia-sites&quot; tabindex=&quot;-1&quot;&gt;Google search only on Wikipedia sites: &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=wg%20berlin&amp;language=de&quot;&gt;wg berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;This is like adding &lt;code&gt;site:de.wikipedia.org&lt;/code&gt; to my Google search query. It will list only results from that domain, thus all Wikipedia articles that mention &lt;em&gt;Berlin&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I prefer this over the actual Wikipedia shortcut &lt;code&gt;w&lt;/code&gt; because it&#39;s much faster and allows for more fuzzy searches.&lt;/p&gt;
+&lt;p&gt;I can also search other languages by prefixing it with the language code:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=fr.wg%20berlin&quot;&gt;fr.wg berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;This will perform a Google search with &lt;code&gt;site:fr.wikipedia.org&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&quot;same-for-reddit-and-x-twitter&quot; tabindex=&quot;-1&quot;&gt;Same for Reddit and X (Twitter): &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=rg%20berlin&quot;&gt;rg berlin&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=xg%20berlin&quot;&gt;xg berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;These will only show results from &lt;code&gt;reddit.com&lt;/code&gt; or &lt;code&gt;x.com&lt;/code&gt;, making for a fast and fuzzy-allowing Reddit or X search, sometimes better than their built-in searches.&lt;/p&gt;
+&lt;p&gt;So, while anything can be done directly with Google, it&#39;s much shorter with Trovu&#39;s shortcuts.&lt;/p&gt;
+&lt;h2 id=&quot;navigation-and-travel&quot; tabindex=&quot;-1&quot;&gt;Navigation &amp;amp; Travel &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&quot;train-connections&quot; tabindex=&quot;-1&quot;&gt;Train Connections &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;I live in Germany and often take the train. There&#39;s an old and hidden UI for the train timetables, originally made for the text-based &lt;a href=&quot;https://en.wikipedia.org/wiki/Lynx_(web_browser)&quot;&gt;Lynx web browser&lt;/a&gt;. It works to this day and is very fast; one only needs to know its URL—or use the Trovu shortcut.&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=dbt%20berlin%2C%20hamburg&amp;country=de&quot;&gt;dbt berlin, hamburg&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;will show the next train from Berlin to Hamburg.&lt;/p&gt;
+&lt;p&gt;I can also add the time, and if I want, the date:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=dbt%20berlin%2C%20hamburg%2C%2010%2C%208.12.&amp;country=de&quot;&gt;dbt berlin, hamburg, 10, 8.12.&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Note that while this interface is fast, it does not show current delays or non-planned interruptions (roughly any outage newer than 24 hours). For that, I use the regular interface:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=db%20berlin%2C%20hamburg&amp;country=de&quot;&gt;db berlin, hamburg&lt;/a&gt;&lt;/div&gt;
+&lt;h4 id=&quot;typed-arguments&quot; tabindex=&quot;-1&quot;&gt;Typed Arguments &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;All of these arguments are &lt;a href=&quot;https://trovu.net/docs/shortcuts/url#argument-types&quot;&gt;typed&lt;/a&gt;, so I can also do this:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=db%20b%2C%20hh%2C%20%2B2%2C%20fr&amp;country=de&quot;&gt;db b, hh, +2, fr&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;from&lt;/em&gt; and &lt;em&gt;to&lt;/em&gt; are of type &lt;a href=&quot;https://trovu.net/docs/shortcuts/url#city&quot;&gt;city&lt;/a&gt;, so they can take an &lt;a href=&quot;https://github.com/trovu/trovu/tree/master/data/types/city&quot;&gt;abbreviation of a city name&lt;/a&gt;. Usually, these are the ones used on vehicle registration plates.&lt;/p&gt;
+&lt;p&gt;The &lt;em&gt;time&lt;/em&gt; and &lt;em&gt;date&lt;/em&gt; are, yes, &lt;a href=&quot;https://trovu.net/docs/shortcuts/url#time&quot;&gt;time&lt;/a&gt; and &lt;a href=&quot;https://trovu.net/docs/shortcuts/url#date&quot;&gt;date&lt;/a&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I can count up from the current time or date, so &lt;code&gt;+2&lt;/code&gt; means &lt;em&gt;in 2 hours&lt;/em&gt; or &lt;em&gt;in 2 days&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;For &lt;em&gt;date&lt;/em&gt;, I can also use day-of-week abbreviations, e.g., &lt;code&gt;mo&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;filter-for-regional-trains&quot; tabindex=&quot;-1&quot;&gt;Filter for Regional Trains &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;Cheaper connections can be found if I limit my search to only regional trains (suitable for the &lt;a href=&quot;https://en.wikipedia.org/wiki/Deutschlandticket&quot;&gt;Deutschlandticket&lt;/a&gt;). I can do so by calling:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=dbn%20berlin%2C%20hamburg&quot;&gt;dbn berlin, hamburg&lt;/a&gt;&lt;/div&gt;
+&lt;h3 id=&quot;google-maps&quot; tabindex=&quot;-1&quot;&gt;Google Maps &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;To find a place on Google Maps, I use:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gm%20berlin&quot;&gt;gm berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;If I need a certain street in some city, I use two arguments:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gm%20hamburg%2C%20hauptstra%C3%9Fe&quot;&gt;gm hamburg, hauptstraße&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Here, the first argument is typed again as &lt;em&gt;city&lt;/em&gt;, so I can use a city name abbreviation:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gm%20hh%2C%20hauptstra%C3%9Fe&quot;&gt;gm hh, hauptstraße&lt;/a&gt;&lt;/div&gt;
+&lt;h4 id=&quot;navigation&quot; tabindex=&quot;-1&quot;&gt;Navigation &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h4&gt;
+&lt;p&gt;To find directions from one place to another, I call:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gd%20berlin%2C%20hamburg&quot;&gt;gd berlin, hamburg&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;Again, city name abbreviations work too:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gd%20b%2C%20hh&quot;&gt;gd b, hh&lt;/a&gt;&lt;/div&gt;
+&lt;h3 id=&quot;google-flights&quot; tabindex=&quot;-1&quot;&gt;Google Flights &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;My favorite way to search flights is via Google Flights:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gfl%20ber%2C%20ibiza%2C%20fr%2C%20mo&quot;&gt;gfl ber, ibiza, fr, mo&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;It opens Google Flights and shows direct results for return flights from &lt;code&gt;BER&lt;/code&gt; (Berlin) to Ibiza, going there on the next Friday and coming back on the next Monday.&lt;/p&gt;
+&lt;p&gt;For one-way flights, I use:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=gfl1%20ber%2C%20ibiza%2C%2010&quot;&gt;gfl1 ber, ibiza, 10&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;The date here denotes the 10th of the current month. If it is already in the past, it translates to the 10th of next month.&lt;/p&gt;
+&lt;h2 id=&quot;programming&quot; tabindex=&quot;-1&quot;&gt;Programming &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;As a developer, I often need to look up libraries and forums:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=npm%20yaml&quot;&gt;npm yaml&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;will search for Node packages related to YAML.&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=sof%20yaml&quot;&gt;sof yaml&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;will search Stack Overflow for questions around YAML.&lt;/p&gt;
+&lt;h2 id=&quot;dictionaries&quot; tabindex=&quot;-1&quot;&gt;Dictionaries &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I speak a few languages and often learn new ones. For a dictionary of most languages, I only need their ISO code:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=en%20baum&amp;language=de&quot;&gt;en baum&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=fr%20baum&amp;language=de&quot;&gt;fr baum&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=pl%20baum&amp;language=de&quot;&gt;pl baum&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;These shortcuts will call dictionaries from English, French, and Polish into German—because German is &lt;a href=&quot;https://trovu.net/docs/users/advanced#language&quot;&gt;the language I defined in my setup&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Though, I can override this language by prefixing with another code:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=es.en%20baum&amp;language=de&quot;&gt;es.en baum&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=es.fr%20baum&amp;language=de&quot;&gt;es.fr baum&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=es.pl%20baum&amp;language=de&quot;&gt;es.pl baum&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;These will call the dictionaries into Spanish instead.&lt;/p&gt;
+&lt;h2 id=&quot;media&quot; tabindex=&quot;-1&quot;&gt;Media &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=yt%20berlin&quot;&gt;yt berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;searches for YouTube videos about Berlin.&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=ytd%20berlin&quot;&gt;ytd berlin&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;does the same but sorts them by date (newest first).&lt;/p&gt;
+&lt;p&gt;There are also a few torrent search engines; my preferred one is BTDigg:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=btg%20berlin&quot;&gt;btg berlin&lt;/a&gt;&lt;/div&gt;
+&lt;h2 id=&quot;shopping&quot; tabindex=&quot;-1&quot;&gt;Shopping &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;I search for books and other products on Amazon:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=a%20smartphone&quot;&gt;a smartphone&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;For things from China, I look on Temu and AliExpress:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=tmu%20camera&quot;&gt;tmu camera&lt;/a&gt;&lt;/div&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=axp%20camera&quot;&gt;axp camera&lt;/a&gt;&lt;/div&gt;
+&lt;h2 id=&quot;do-i-remember-all-shortcut-keywords&quot; tabindex=&quot;-1&quot;&gt;Do I Remember All Shortcut Keywords? &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The ones I mentioned, yes. These are not many, and I use them regularly.&lt;/p&gt;
+&lt;p&gt;If there&#39;s a shortcut that I know or assume exists but I just don&#39;t know its keyword or syntax, I call &amp;quot;my&amp;quot; Trovu page, that is, Trovu with my current settings:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=trovu&quot;&gt;trovu&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;I am then on &lt;code&gt;https://trovu.net/?#github=georgjaehnig&lt;/code&gt; and have the suggestions available just while typing.&lt;/p&gt;
+&lt;h2 id=&quot;curious-about-yours&quot; tabindex=&quot;-1&quot;&gt;Curious About Yours &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;If you are already a Trovu user, too, I&#39;d be curious about your setup and practice. Please share it in our &lt;a href=&quot;https://github.com/trovu/trovu/discussions&quot;&gt;Github Discussions&lt;/a&gt;, or as a reply to the &lt;a href=&quot;https://x.com/trovu_net&quot;&gt;X post&lt;/a&gt;.&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>New videos: Summary &amp; Advanced Usage</title>

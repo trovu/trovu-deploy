@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How I Use trovu.net</title>
+		<meta name="description" content="A Practical Beginner&#39;s Guide">
+		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+	--font-family: -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+	--color-gray-20: #e0e0e0;
+	--color-gray-50: #C0C0C0;
+	--color-gray-90: #333;
+
+	--background-color: #fff;
+
+	--text-color: var(--color-gray-90);
+	--text-color-link: #082840;
+	--text-color-link-active: #5f2b48;
+	--text-color-link-visited: #17050F;
+
+	--syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-gray-20: #e0e0e0;
+		--color-gray-50: #C0C0C0;
+		--color-gray-90: #dad8d8;
+
+		/* --text-color is assigned to --color-gray-_ above */
+		--text-color-link: #1493fb;
+		--text-color-link-active: #6969f7;
+		--text-color-link-visited: #a6a6f8;
+
+		--background-color: #15202b;
+	}
+}
+
+
+/* Global stylesheet */
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+html {
+	overflow-y: scroll;
+}
+body {
+	max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+p:last-child {
+	margin-bottom: 0;
+}
+p {
+	line-height: 1.5;
+}
+
+li {
+	line-height: 1.5;
+}
+
+a[href] {
+	color: var(--text-color-link);
+}
+a[href]:visited {
+	color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+main {
+	padding: 1rem;
+}
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.links-nextprev {
+	list-style: none;
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1em 0;
+}
+
+table {
+	margin: 1em 0;
+}
+table td,
+table th {
+	padding-right: 1em;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375; /* 22px /16 */
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+}
+code {
+	word-break: break-all;
+}
+
+/* Header */
+header {
+	display: flex;
+	gap: 1em .5em;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1em;
+}
+.home-link {
+	font-size: 1em; /* 16px /16 */
+	font-weight: 700;
+	margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+	text-decoration: none;
+}
+
+/* Nav */
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+.nav-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+	text-decoration: none;
+}
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+	list-style: none;
+	padding: 0;
+	padding-left: 1.5rem;
+}
+.postlist-item {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+}
+.postlist-item:before {
+	display: inline-block;
+	pointer-events: none;
+	content: "" counter(start-from, decimal-leading-zero) ". ";
+	line-height: 100%;
+	text-align: right;
+	margin-left: -1.5rem;
+}
+.postlist-description {
+	flex-basis: 100%;
+}
+.postlist-date,
+.postlist-item:before {
+	font-size: 0.8125em; /* 13px /16 */
+	color: var(--color-gray-90);
+}
+.postlist-date {
+	word-spacing: -0.5px;
+}
+.postlist-link {
+	font-size: 1.1875em; /* 19px /16 */
+	font-weight: 700;
+	flex-basis: calc(100% - 1.5rem);
+	padding-left: .25em;
+	padding-right: .5em;
+	text-underline-position: from-font;
+	text-underline-offset: 0;
+	text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+	font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+}
+.postlist-item > .post-tag {
+	align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: .5em;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.post-metadata time {
+	margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+	text-decoration: none;
+	font-style: normal;
+	font-size: 1em;
+	margin-left: .1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+	color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+	text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+	color: #aaa;
+}
+
+h2 + .header-anchor {
+	font-size: 1.5em;
+}
+main li {
+	margin-bottom: 1em;
+}
+
+div.trovu-call {
+  display: block;
+  background: #487b7f;
+  color: white;
+  margin: 0;
+	padding: 0;
+	border: 0;
+}
+div.trovu-call a,
+div.trovu-call a:link,
+div.trovu-call a:visited {
+  display: inline-block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-decoration: none; 
+  color: white;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
+}
+
+div.trovu-call span {
+  background: #aaa;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/blog/" class="home-link">Blog | trovu.net</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="../../">Home</a></li>
+					<li class="nav-item"><a href="../../docs/">Docs</a></li>
+					<li class="nav-item"><a href="../../docs/privacy">Privacy</a></li>
+					<li class="nav-item"><a href="https://github.com/trovu/">Github</a></li>
+					<li class="nav-item"><a href="/blog/feed/"><img src="/blog/img/rss.svg" width="14" height="14"></a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>How I Use trovu.net</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-05-22">22 May 2024</time></li>
+	<li><a href="/blog/tags/config/" class="post-tag">config</a>, </li>
+	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a></li>
+</ul>
+
+<p>Many of my friends have known Trovu for years, and they fall into exactly two groups:</p>
+<ul>
+<li>&quot;Nice, but I don't see why this would be useful to me.&quot;</li>
+<li>&quot;This is awesome, I can't use the Internet without it anymore.&quot;</li>
+</ul>
+<p>There's nothing in between. No one seems to be using it just occasionally.</p>
+<p>I'm part of the latter group, and to help you join us, I will show you how I use Trovu.</p>
+<h2 id="my-setup" tabindex="-1">My Setup <a class="header-anchor" href="#my-setup">#</a></h2>
+<p>First, here's how Trovu is integrated into my devices:</p>
+<ul>
+<li>I use <a href="https://trovu.net/docs/users/advanced/">custom settings and shortcuts</a> in <a href="https://github.com/georgjaehnig/trovu-data-user/">my own trovu-data-user repo</a>.</li>
+<li>On my desktop browser, I have <a href="https://trovu.net/docs/users/integration#chrome">integrated Trovu as a search engine</a> and made it the default. My URL is:</li>
+</ul>
+<pre><code>https://trovu.net/process/?#github=georgjaehnig&amp;query=%s
+</code></pre>
+<ul>
+<li>On my Android phone, I use either the <a href="https://trovu.net/docs/users/integration#pwa-progressive-web-app">new Trovu PWA</a> or the third-party app <a href="https://trovu.net/docs/users/integration#searchbar-ex-search-widget">SearchBar Ex</a>:
+<ul>
+<li>SearchBar Ex immediately opens the Android keyboard after launching, but it has no suggestions.</li>
+<li>The PWA has suggestions, but the virtual keyboard only opens after an additional tap into the search input. (Let me know if you know how to make it show immediately.)</li>
+</ul>
+</li>
+</ul>
+<h2 id="advanced-googling" tabindex="-1">(Advanced) Googling <a class="header-anchor" href="#advanced-googling">#</a></h2>
+<p>My most frequent shortcut is <code>g</code> for Google. But sometimes, I need a more complicated Google search, and Trovu has shortcuts for these:</p>
+<h3 id="google-for-results-only-in-a-certain-language" tabindex="-1">Google for results only in a certain language: <a class="header-anchor" href="#google-for-results-only-in-a-certain-language">#</a></h3>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gol%20pl%2C%20berlin">gol pl, berlin</a></div>
+will yield results about Berlin only on Polish websites.
+<h3 id="google-search-only-on-wikipedia-sites" tabindex="-1">Google search only on Wikipedia sites: <a class="header-anchor" href="#google-search-only-on-wikipedia-sites">#</a></h3>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=wg%20berlin&language=de">wg berlin</a></div>
+<p>This is like adding <code>site:de.wikipedia.org</code> to my Google search query. It will list only results from that domain, thus all Wikipedia articles that mention <em>Berlin</em>.</p>
+<p>I prefer this over the actual Wikipedia shortcut <code>w</code> because it's much faster and allows for more fuzzy searches.</p>
+<p>I can also search other languages by prefixing it with the language code:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=fr.wg%20berlin">fr.wg berlin</a></div>
+<p>This will perform a Google search with <code>site:fr.wikipedia.org</code>.</p>
+<h3 id="same-for-reddit-and-x-twitter" tabindex="-1">Same for Reddit and X (Twitter): <a class="header-anchor" href="#same-for-reddit-and-x-twitter">#</a></h3>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=rg%20berlin">rg berlin</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=xg%20berlin">xg berlin</a></div>
+<p>These will only show results from <code>reddit.com</code> or <code>x.com</code>, making for a fast and fuzzy-allowing Reddit or X search, sometimes better than their built-in searches.</p>
+<p>So, while anything can be done directly with Google, it's much shorter with Trovu's shortcuts.</p>
+<h2 id="navigation-and-travel" tabindex="-1">Navigation &amp; Travel <a class="header-anchor" href="#navigation-and-travel">#</a></h2>
+<h3 id="train-connections" tabindex="-1">Train Connections <a class="header-anchor" href="#train-connections">#</a></h3>
+<p>I live in Germany and often take the train. There's an old and hidden UI for the train timetables, originally made for the text-based <a href="https://en.wikipedia.org/wiki/Lynx_(web_browser)">Lynx web browser</a>. It works to this day and is very fast; one only needs to know its URL—or use the Trovu shortcut.</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dbt%20berlin%2C%20hamburg&country=de">dbt berlin, hamburg</a></div>
+<p>will show the next train from Berlin to Hamburg.</p>
+<p>I can also add the time, and if I want, the date:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dbt%20berlin%2C%20hamburg%2C%2010%2C%208.12.&country=de">dbt berlin, hamburg, 10, 8.12.</a></div>
+<p>Note that while this interface is fast, it does not show current delays or non-planned interruptions (roughly any outage newer than 24 hours). For that, I use the regular interface:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=db%20berlin%2C%20hamburg&country=de">db berlin, hamburg</a></div>
+<h4 id="typed-arguments" tabindex="-1">Typed Arguments <a class="header-anchor" href="#typed-arguments">#</a></h4>
+<p>All of these arguments are <a href="https://trovu.net/docs/shortcuts/url#argument-types">typed</a>, so I can also do this:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=db%20b%2C%20hh%2C%20%2B2%2C%20fr&country=de">db b, hh, +2, fr</a></div>
+<p><em>from</em> and <em>to</em> are of type <a href="https://trovu.net/docs/shortcuts/url#city">city</a>, so they can take an <a href="https://github.com/trovu/trovu/tree/master/data/types/city">abbreviation of a city name</a>. Usually, these are the ones used on vehicle registration plates.</p>
+<p>The <em>time</em> and <em>date</em> are, yes, <a href="https://trovu.net/docs/shortcuts/url#time">time</a> and <a href="https://trovu.net/docs/shortcuts/url#date">date</a>:</p>
+<ul>
+<li>I can count up from the current time or date, so <code>+2</code> means <em>in 2 hours</em> or <em>in 2 days</em>.</li>
+<li>For <em>date</em>, I can also use day-of-week abbreviations, e.g., <code>mo</code>.</li>
+</ul>
+<h4 id="filter-for-regional-trains" tabindex="-1">Filter for Regional Trains <a class="header-anchor" href="#filter-for-regional-trains">#</a></h4>
+<p>Cheaper connections can be found if I limit my search to only regional trains (suitable for the <a href="https://en.wikipedia.org/wiki/Deutschlandticket">Deutschlandticket</a>). I can do so by calling:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dbn%20berlin%2C%20hamburg">dbn berlin, hamburg</a></div>
+<h3 id="google-maps" tabindex="-1">Google Maps <a class="header-anchor" href="#google-maps">#</a></h3>
+<p>To find a place on Google Maps, I use:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20berlin">gm berlin</a></div>
+<p>If I need a certain street in some city, I use two arguments:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20hamburg%2C%20hauptstra%C3%9Fe">gm hamburg, hauptstraße</a></div>
+<p>Here, the first argument is typed again as <em>city</em>, so I can use a city name abbreviation:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20hh%2C%20hauptstra%C3%9Fe">gm hh, hauptstraße</a></div>
+<h4 id="navigation" tabindex="-1">Navigation <a class="header-anchor" href="#navigation">#</a></h4>
+<p>To find directions from one place to another, I call:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gd%20berlin%2C%20hamburg">gd berlin, hamburg</a></div>
+<p>Again, city name abbreviations work too:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gd%20b%2C%20hh">gd b, hh</a></div>
+<h3 id="google-flights" tabindex="-1">Google Flights <a class="header-anchor" href="#google-flights">#</a></h3>
+<p>My favorite way to search flights is via Google Flights:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gfl%20ber%2C%20ibiza%2C%20fr%2C%20mo">gfl ber, ibiza, fr, mo</a></div>
+<p>It opens Google Flights and shows direct results for return flights from <code>BER</code> (Berlin) to Ibiza, going there on the next Friday and coming back on the next Monday.</p>
+<p>For one-way flights, I use:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gfl1%20ber%2C%20ibiza%2C%2010">gfl1 ber, ibiza, 10</a></div>
+<p>The date here denotes the 10th of the current month. If it is already in the past, it translates to the 10th of next month.</p>
+<h2 id="programming" tabindex="-1">Programming <a class="header-anchor" href="#programming">#</a></h2>
+<p>As a developer, I often need to look up libraries and forums:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=npm%20yaml">npm yaml</a></div>
+<p>will search for Node packages related to YAML.</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=sof%20yaml">sof yaml</a></div>
+<p>will search Stack Overflow for questions around YAML.</p>
+<h2 id="dictionaries" tabindex="-1">Dictionaries <a class="header-anchor" href="#dictionaries">#</a></h2>
+<p>I speak a few languages and often learn new ones. For a dictionary of most languages, I only need their ISO code:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=en%20baum&language=de">en baum</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=fr%20baum&language=de">fr baum</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=pl%20baum&language=de">pl baum</a></div>
+<p>These shortcuts will call dictionaries from English, French, and Polish into German—because German is <a href="https://trovu.net/docs/users/advanced#language">the language I defined in my setup</a>.</p>
+<p>Though, I can override this language by prefixing with another code:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=es.en%20baum&language=de">es.en baum</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=es.fr%20baum&language=de">es.fr baum</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=es.pl%20baum&language=de">es.pl baum</a></div>
+<p>These will call the dictionaries into Spanish instead.</p>
+<h2 id="media" tabindex="-1">Media <a class="header-anchor" href="#media">#</a></h2>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=yt%20berlin">yt berlin</a></div>
+<p>searches for YouTube videos about Berlin.</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=ytd%20berlin">ytd berlin</a></div>
+<p>does the same but sorts them by date (newest first).</p>
+<p>There are also a few torrent search engines; my preferred one is BTDigg:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=btg%20berlin">btg berlin</a></div>
+<h2 id="shopping" tabindex="-1">Shopping <a class="header-anchor" href="#shopping">#</a></h2>
+<p>I search for books and other products on Amazon:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=a%20smartphone">a smartphone</a></div>
+<p>For things from China, I look on Temu and AliExpress:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=tmu%20camera">tmu camera</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=axp%20camera">axp camera</a></div>
+<h2 id="do-i-remember-all-shortcut-keywords" tabindex="-1">Do I Remember All Shortcut Keywords? <a class="header-anchor" href="#do-i-remember-all-shortcut-keywords">#</a></h2>
+<p>The ones I mentioned, yes. These are not many, and I use them regularly.</p>
+<p>If there's a shortcut that I know or assume exists but I just don't know its keyword or syntax, I call &quot;my&quot; Trovu page, that is, Trovu with my current settings:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=trovu">trovu</a></div>
+<p>I am then on <code>https://trovu.net/?#github=georgjaehnig</code> and have the suggestions available just while typing.</p>
+<h2 id="curious-about-yours" tabindex="-1">Curious About Yours <a class="header-anchor" href="#curious-about-yours">#</a></h2>
+<p>If you are already a Trovu user, too, I'd be curious about your setup and practice. Please share it in our <a href="https://github.com/trovu/trovu/discussions">Github Discussions</a>, or as a reply to the <a href="https://x.com/trovu_net">X post</a>.</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/blog/videos-summary-advanced/">New videos: Summary &amp; Advanced Usage</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /blog/how-i-use-trovu/ -->
+	</body>
+</html>
