@@ -563,6 +563,11 @@ div.trovu-call span {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/tags/rss/</loc>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/tags/video/</loc>
 		<lastmod>2024-05-22</lastmod>
 	</url>
@@ -574,11 +579,6 @@ div.trovu-call span {
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/short/</loc>
-		<lastmod>2024-05-22</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/rss/</loc>
 		<lastmod>2024-05-22</lastmod>
 	</url>
 </urlset>
