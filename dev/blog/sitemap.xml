@@ -450,6 +450,33 @@ h2 + .header-anchor {
 }
 main li {
 	margin-bottom: 1em;
+}
+
+div.trovu-call {
+  display: block;
+  background: #487b7f;
+  color: white;
+  margin: 0;
+	padding: 0;
+	border: 0;
+}
+div.trovu-call a,
+div.trovu-call a:link,
+div.trovu-call a:visited {
+  display: inline-block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-decoration: none; 
+  color: white;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
+}
+
+div.trovu-call span {
+  background: #aaa;
+  padding: 0.4em; 
+  margin: 0;
+	border: 0;
 }</style>
 	</head>
 	<body>
@@ -474,7 +501,7 @@ main li {
 <h1></h1>
 
 <ul class="post-metadata">
-	<li><time datetime="2024-05-03">03 May 2024</time></li>
+	<li><time datetime="2024-05-22">22 May 2024</time></li>
 </ul>
 
 <?xml version="1.0" encoding="utf-8"?>
@@ -501,48 +528,58 @@ main li {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/how-i-use-trovu/</loc>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/config/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/beginner/</loc>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/mobile/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/app/</loc>
-		<lastmod>2024-05-03</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/video/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/advanced/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/short/</loc>
-		<lastmod>2024-05-03</lastmod>
+		<lastmod>2024-05-22</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/rss/</loc>
+		<lastmod>2024-05-22</lastmod>
 	</url>
 </urlset>
 
