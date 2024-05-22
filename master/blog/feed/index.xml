@@ -46,7 +46,7 @@
 &lt;p&gt;will yield results about Berlin only on websites in German – because German is &lt;a href=&quot;https://trovu.net/docs/users/advanced#language&quot;&gt;the language I defined in my setup&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For other languages, I can prefix with the language code:&lt;/p&gt;
 &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=pl.gol%20berlin&quot;&gt;pl.gol berlin&lt;/a&gt;&lt;/div&gt;
-&lt;p&gt;will show esults only on Polish websites.&lt;/p&gt;
+&lt;p&gt;will show results only from Polish websites.&lt;/p&gt;
 &lt;h3 id=&quot;google-search-only-on-wikipedia-sites&quot; tabindex=&quot;-1&quot;&gt;Google search only on Wikipedia sites: &lt;a class=&quot;header-anchor&quot; href=&quot;https://trovu.net/blog/how-i-use-trovu/&quot;&gt;#&lt;/a&gt;&lt;/h3&gt;
 &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=wg%20berlin&amp;language=de&quot;&gt;wg berlin&lt;/a&gt;&lt;/div&gt;
 &lt;p&gt;This is like adding &lt;code&gt;site:de.wikipedia.org&lt;/code&gt; to my Google search query. It will list only results from that domain, thus all Wikipedia articles that mention &lt;em&gt;Berlin&lt;/em&gt;.&lt;/p&gt;
