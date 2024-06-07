@@ -4,7 +4,7 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2024-05-22T00:00:00Z</updated>
+	<updated>2024-06-07T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
@@ -12,11 +12,95 @@
 	</author>
 	
 	<entry>
-		<title>How I Use trovu.net</title>
+		<title>How I Use Trovu (Kilian)</title>
+		<link href="https://trovu.net/blog/how-i-use-trovu-kilian/"/>
+		<updated>2024-06-07T00:00:00Z</updated>
+		<id>https://trovu.net/blog/how-i-use-trovu-kilian/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://kilian.evang.name/&quot;&gt;Kilian Evang&lt;/a&gt; has been using Trovu and its predecessors since 2007. In the German blog &amp;quot;Techniktagebuch&amp;quot; (English: &amp;quot;Technology Diary&amp;quot;) he &lt;a href=&quot;https://techniktagebuch.tumblr.com/post/749989061656182784&quot;&gt;wrote about his experience&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;At the top of the browser, in the address bar, you can enter not only URLs. You can also enter a search term and be directed to the search results page of the default search engine, usually Google. This saves you the step of opening the search engine&#39;s homepage and finding your way around – ensuring the cursor is in the search field, etc.&lt;/p&gt;
+&lt;p&gt;But there are many websites offering search functions where I don&#39;t want to navigate their homepages each time I search. That&#39;s why I have set my default search engine to &lt;a href=&quot;http://trovu.net/&quot;&gt;trovu.net&lt;/a&gt;. This means I start each search query in the address bar with a cryptic shortcut.&lt;/p&gt;
+&lt;p&gt;However, I have numerous websites at my fingertips. Depending on the shortcut, I&#39;m immediately directed to the search results on the corresponding website. Without moving my fingers from the keyboard, Ctrl+L takes me directly to the address bar. For a Unix nerd like me, it&#39;s ideal, almost like a #commandline for the web. &lt;a href=&quot;https://www.youtube.com/shorts/gOUNhCion9M&quot;&gt;This YouTube Short&lt;/a&gt; illustrates the principle.&lt;/p&gt;
+&lt;p&gt;Trovu is developed by &lt;a href=&quot;https://jaehnig.org/&quot;&gt;Georg Jähnig&lt;/a&gt;, following his predecessors Serchilo and FindFind.it. He presented Serchilo in 2007 at the Computer Linguistics Student Conference (TaCoS) in Tübingen, which I co-organized.&lt;/p&gt;
+&lt;p&gt;Since then, I have continuously used Serchilo and its successors. Mobile browsers and search widgets for smartphone home screens have been configurable in a similar manner since the 2010s. Trovu is free, open-source, data-efficient, and ad-free, funded by &lt;a href=&quot;https://en.wikipedia.org/wiki/Affiliate_marketing&quot;&gt;affiliate links&lt;/a&gt; – for example, if I search on Amazon through Trovu and make a purchase, Georg gets a small commission.&lt;/p&gt;
+&lt;p&gt;Many useful shortcuts are predefined, but you can also define your own and overwrite predefined shortcuts.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;In 2024, I switched from Google to DuckDuckGo without retraining my muscle memory: the shortcut &lt;code&gt;g&lt;/code&gt; is still for web search, now redefined to call DuckDuckGo, and &lt;code&gt;gi&lt;/code&gt; for image search.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In 2013, when Google Reader was discontinued, I redefined &lt;code&gt;r&lt;/code&gt; to call Feedly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;For websites I frequently visit, I often don&#39;t use a search term but use the shortcut like a bookmark. Trovu usually calls the homepage of the respective website, but this can be configured.&lt;/p&gt;
+&lt;p&gt;Editing shortcuts was done nerdily via a MediaWiki with Serchilo, via a Drupal-based website with FindFind.it, and nerdily again with Trovu by pushing a configuration file on GitHub.&lt;/p&gt;
+&lt;p&gt;Here is a subjective and arbitrary selection of my 5 most important use cases for Trovu and the associated shortcuts:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Looking up a word in a bilingual online dictionary&lt;/strong&gt;: For example, to know what &lt;em&gt;Zahn&lt;/em&gt; means in Danish, I enter the &lt;a href=&quot;https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes&quot;&gt;ISO-639-2 code&lt;/a&gt; for Danish, &lt;code&gt;da&lt;/code&gt;, followed by the search word: &lt;/p&gt;&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=da%20zahn&amp;language=de&quot;&gt;da zahn&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Trovu directs me to a German-Danish online dictionary, knowing my default language is German.&lt;/p&gt;
+&lt;p&gt;To search in an English-Danish dictionary, I prefix the shortcut with the respective namespace shortcut, changing my default language for this query to English: &lt;/p&gt;&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=en.da%20tooth&amp;language=de&quot;&gt;en.da tooth&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;Entering &lt;/p&gt;&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=fr%20tooth&amp;language=de&quot;&gt;fr tooth&lt;/a&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;takes me to a German-French dictionary, &lt;a href=&quot;https://www.leo.org/&quot;&gt;LEO.org&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;To use &lt;a href=&quot;https://www.dict.cc/&quot;&gt;dict.cc&lt;/a&gt;, there&#39;s also a namespace:&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=dcc.fr%20tooth&amp;language=de&quot;&gt;dcc.fr tooth&lt;/a&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Personal shortcuts for my websites&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=vw&amp;github=texttheater&quot;&gt;vw&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for the wiki of the &lt;a href=&quot;https://neutsch.org/&quot;&gt;Society for Strengthening Verbs&lt;/a&gt;,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=vv&amp;github=texttheater&quot;&gt;vv&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;to go directly to the list of strong verbs,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=vf&amp;github=texttheater&quot;&gt;vf&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for the forum,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=lt&amp;github=texttheater&quot;&gt;lt&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;to call a keyword at &lt;a href=&quot;https://labenz.neutsch.org/&quot;&gt;Freut euch des Labenz!&lt;/a&gt;,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=ls%20query&amp;github=texttheater&quot;&gt;ls query&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;to search all definitions there,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=tn%20query&amp;github=texttheater&quot;&gt;tn query&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;to search my &lt;a href=&quot;https://tweetnest.texttheater.net/&quot;&gt;tweet archive&lt;/a&gt;,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=tttt%20query&amp;github=texttheater&quot;&gt;tttt query&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;to search my &lt;a href=&quot;https://texttheater.net/&quot;&gt;blog&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Navigating the various functions of &lt;a href=&quot;https://www.kleinanzeigen.de/&quot;&gt;Kleinanzeigen.de&lt;/a&gt; (formerly eBay-kleinanzeigen )&lt;/strong&gt;:&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=kaz&amp;country=de&quot;&gt;kaz&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for searching or opening the homepage,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=kazn&amp;country=de&quot;&gt;kazn&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for messages,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=kaza&amp;country=de&quot;&gt;kaza&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for my ads,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=kazm&amp;country=de&quot;&gt;kazm&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for my watchlist, and&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=kaz%2B&amp;country=de&quot;&gt;kaz+&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for the new ad form.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Amazon searches&lt;/strong&gt;:&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=a%20query&amp;country=de&quot;&gt;a query&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;searches Amazon,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=ao%20query&amp;country=de&quot;&gt;ao query&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;my order history. Using the form on the website, I would constantly confuse the two search fields.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Handling URLs behind paywalls, poorly formatted recipes, or missing pages&lt;/strong&gt;: Prefixed with the appropriate shortcut in Trovu, problematic URLs are handled:&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=atd%20https%3A%2F%2Fexample.com%2F&quot;&gt;atd https://example.com/&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for &lt;a href=&quot;https://en.wikipedia.org/wiki/Archive.today&quot;&gt;Archive.today&lt;/a&gt;,&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=ckd%20https%3A%2F%2Frecipesbycarina.com%2Ffrench-crepe-recipe%2F&quot;&gt;ckd https://recipesbycarina.com/french-crepe-recipe/&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for &lt;a href=&quot;https://cooked.wiki/&quot;&gt;Cooked.wiki&lt;/a&gt;, and&lt;/p&gt;
+ &lt;div class=&quot;trovu-call&quot;&gt;&lt;span class=&quot;arrow&quot;&gt;&amp;gt;&lt;/span&gt;&lt;a href=&quot;https://trovu.net/process/index.html#query=wbm%20https%3A%2F%2Fexample.com%2F&quot;&gt;wbm https://example.com/&lt;/a&gt;&lt;/div&gt;
+&lt;p&gt;for the &lt;a href=&quot;https://en.wikipedia.org/wiki/Wayback_Machine&quot;&gt;Wayback Machine&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;[1] I don&#39;t have to. If my search query doesn&#39;t start with a word defined as a shortcut in Trovu, it directs me to my preferred default search engine in Trovu, DuckDuckGo.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>How I Use trovu.net (Georg)</title>
 		<link href="https://trovu.net/blog/how-i-use-trovu/"/>
 		<updated>2024-05-22T00:00:00Z</updated>
 		<id>https://trovu.net/blog/how-i-use-trovu/</id>
-		<content type="html">&lt;p&gt;Many of my friends have known Trovu for years, and they fall into exactly two groups:&lt;/p&gt;
+		<content type="html">&lt;p&gt;I have started creating this project in 2005, many of my friends have known it for years, and they fall into exactly two groups:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&amp;quot;Nice, but I don&#39;t see why this would be useful to me.&amp;quot;&lt;/li&gt;
 &lt;li&gt;&amp;quot;This is awesome, I can&#39;t use the Internet without it anymore.&amp;quot;&lt;/li&gt;
