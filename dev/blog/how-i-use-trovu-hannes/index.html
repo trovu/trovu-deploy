@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How I Use Trovu (Hannes)</title>
+		<meta name="description" content="The only downside of Trovu: if you get used to it, you don&#39;t want to miss it.">
+		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-active: #5f2b48;
+  --text-color-link-visited: #17050f;
+
+  --syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
+
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+header {
+  border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*='language-']) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+}
+
+/* Header */
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current='page'] {
+  text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+  list-style: none;
+  padding: 0;
+  padding-left: 1.5rem;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  counter-increment: start-from -1;
+  margin-bottom: 1em;
+}
+.postlist-item:before {
+  display: inline-block;
+  pointer-events: none;
+  content: '' counter(start-from, decimal-leading-zero) '. ';
+  line-height: 100%;
+  text-align: right;
+  margin-left: -1.5rem;
+}
+.postlist-description {
+  flex-basis: 100%;
+}
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+main li {
+  margin-bottom: 1em;
+}
+
+div.trovu-call {
+  display: block;
+  background: #487b7f;
+  color: white;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+div.trovu-call a,
+div.trovu-call a:link,
+div.trovu-call a:visited {
+  display: inline-block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-decoration: none;
+  color: white;
+  padding: 0.4em;
+  margin: 0;
+  border: 0;
+}
+
+div.trovu-call span {
+  background: #aaa;
+  padding: 0.4em;
+  margin: 0;
+  border: 0;
+}
+
+img.full-width {
+  width: 100%;
+  height: auto;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/blog/" class="home-link">Blog | trovu.net</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="../../">Home</a></li>
+					<li class="nav-item"><a href="../../docs/">Docs</a></li>
+					<li class="nav-item"><a href="../../docs/privacy">Privacy</a></li>
+					<li class="nav-item"><a href="https://github.com/trovu/">Github</a></li>
+					<li class="nav-item"><a href="/blog/feed/"><img src="/blog/img/rss.svg" width="14" height="14"></a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>How I Use Trovu (Hannes)</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-06-12">12 June 2024</time></li>
+	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a>, </li>
+	<li><a href="/blog/tags/testimonial/" class="post-tag">testimonial</a></li>
+</ul>
+
+<p><em><a href="https://www.linkedin.com/in/johannesneubarth">Hannes Neubarth</a> has been using Trovu and its predecessors for more than 10 years.</em></p>
+<div><picture><source type="image/jpeg" srcset="/blog/img/pzPYsFB1a7-320.jpeg 320w, /blog/img/pzPYsFB1a7-480.jpeg 480w, /blog/img/pzPYsFB1a7-768.jpeg 768w, /blog/img/pzPYsFB1a7-1024.jpeg 1024w" sizes="100vw"><source type="image/webp" srcset="/blog/img/pzPYsFB1a7-320.webp 320w, /blog/img/pzPYsFB1a7-480.webp 480w, /blog/img/pzPYsFB1a7-768.webp 768w, /blog/img/pzPYsFB1a7-1024.webp 1024w" sizes="100vw"><img alt="Johannes Neubarth" loading="lazy" decoding="async" class="full-width" src="/blog/img/pzPYsFB1a7-320.jpeg" width="1024" height="512"></picture></div>
+<p>Hi folks, my name is Hannes, and I have been using Trovu for several years now. It is a real productivity booster, helps me save a lot of time, and I recommend everyone use it, without exception.</p>
+<p>The reason why we all need Trovu is very simple. Most of the time when you work with a browser, you already know where you want to go: You want to see a list of search results on Google, look up your friend's address on a map, or view all bicycles in your favorite web shop.</p>
+<p>In all these cases, the usual procedure is:</p>
+<ol>
+<li>Open the main website,</li>
+<li>Fill out one or several search fields,</li>
+<li>Hit enter,</li>
+<li>Wait for the results.</li>
+</ol>
+<p>We all do this dozens of times a day, hundreds of times per month, probably more. Trovu helps you do the same thing much faster:</p>
+<ol>
+<li>Write the shortcut for a website in the address bar,</li>
+<li>Add some search terms,</li>
+<li>Hit enter.</li>
+</ol>
+<p>All you need to do is add another search engine to your browser, and you are ready to go.</p>
+<p>If you want to give it a try, I recommend starting with a few simple commands first:</p>
+<ul>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=g%20pulp%20fiction">g pulp fiction</a></div> search for Pulp Fiction on Google
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=w%20pulp%20fiction">w pulp fiction</a></div> look it up on Wikipedia
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=a%20pulp%20fiction">a pulp fiction</a></div> find it on Amazon
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20berlin%2C%20alexanderplatz&country=de">gm berlin, alexanderplatz</a></div> look up an address on Google Maps
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=yt%20funny%20cats">yt funny cats</a></div> find videos with funny cats
+</li>
+</ul>
+<p>That's it. Start with a handful of commands. If you use them regularly, you will quickly notice how helpful they are. There are more commands available, but do not get intimidated: You only need to remember the ones that you use often.</p>
+<p>When you are ready, you can extend the list step by step. Searching for new commands is easy. Just visit <a href="https://trovu.net/">trovu.net</a>, enter a search term, and find the commands that are already defined. Here are a few more that I use regularly:</p>
+<ul>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=en%20cat">en cat</a></div> translate a word to/from English
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gtr%20Translate%20a%20whole%20sentence">gtr Translate a whole sentence</a></div> use Google Translate
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gi%20funny%20cat">gi funny cat</a></div> search on Google Images
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=osm%20berlin%2C%20alexanderplatz">osm berlin, alexanderplatz</a></div> search on OpenStreetMap
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=we%20frankfurt">we frankfurt</a></div> weather forecast for Frankfurt
+</li>
+</ul>
+<p>Sometimes I want to add a personal command that is not relevant to other people. For this reason, I have created a <a href="https://github.com/neubarth/trovu-data-user">GitHub repository</a> and <a href="https://trovu.net/docs/users/advanced/">defined some commands just for myself</a>. This is especially useful when I am at work:</p>
+<ul>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=jira%201234&github=neubarth">jira 1234</a></div> search for a ticket in my company's JIRA
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=conf%20release%20process&github=neubarth">conf release process</a></div> search in my company's Confluence
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=tt&github=neubarth">tt</a></div> open my company's time tracking page
+</li>
+<li>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=mvn%20spring-boot&github=neubarth">mvn spring-boot</a></div> search for Maven/Gradle artifacts
+</li>
+</ul>
+<p>As you see, I use Trovu at work. I also use Trovu on my phone and my second laptop. Actually, I <a href="https://trovu.net/docs/users/integration/">install it</a> whenever I'm on a new computer. Because that's the only downside of Trovu – if you get used to it, you don't want to miss it. Never ever.</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/blog/how-i-use-trovu-kilian/">How I Use Trovu (Kilian)</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /blog/how-i-use-trovu-hannes/ -->
+	</body>
+</html>

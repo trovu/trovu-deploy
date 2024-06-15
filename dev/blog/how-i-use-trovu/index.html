@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>How I Use trovu.net</title>
+		<title>How I Use trovu.net (Georg)</title>
 		<meta name="description" content="A Practical Beginner&#39;s Guide">
 		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
@@ -178,278 +178,280 @@ pre[class*="language-diff-"] {
 * { box-sizing: border-box; }
 /* Defaults */
 :root {
-	--font-family: -apple-system, system-ui, sans-serif;
-	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
 }
 
 /* Theme colors */
 :root {
-	--color-gray-20: #e0e0e0;
-	--color-gray-50: #C0C0C0;
-	--color-gray-90: #333;
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333;
 
-	--background-color: #fff;
+  --background-color: #fff;
 
-	--text-color: var(--color-gray-90);
-	--text-color-link: #082840;
-	--text-color-link-active: #5f2b48;
-	--text-color-link-visited: #17050F;
+  --text-color: var(--color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-active: #5f2b48;
+  --text-color-link-visited: #17050f;
 
-	--syntax-tab-size: 2;
+  --syntax-tab-size: 2;
 }
 
 @media (prefers-color-scheme: dark) {
-	:root {
-		--color-gray-20: #e0e0e0;
-		--color-gray-50: #C0C0C0;
-		--color-gray-90: #dad8d8;
+  :root {
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
 
-		/* --text-color is assigned to --color-gray-_ above */
-		--text-color-link: #1493fb;
-		--text-color-link-active: #6969f7;
-		--text-color-link-visited: #a6a6f8;
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
 
-		--background-color: #15202b;
-	}
+    --background-color: #15202b;
+  }
 }
-
 
 /* Global stylesheet */
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
 body {
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
 }
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
 body {
-	max-width: 40em;
+  max-width: 40em;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
 .visually-hidden {
-	clip: rect(0 0 0 0);
-	clip-path: inset(50%);
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	white-space: nowrap;
-	width: 1px;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 p:last-child {
-	margin-bottom: 0;
+  margin-bottom: 0;
 }
 p {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 li {
-	line-height: 1.5;
+  line-height: 1.5;
 }
 
 a[href] {
-	color: var(--text-color-link);
+  color: var(--text-color-link);
 }
 a[href]:visited {
-	color: var(--text-color-link-visited);
+  color: var(--text-color-link-visited);
 }
 a[href]:hover,
 a[href]:active {
-	color: var(--text-color-link-active);
+  color: var(--text-color-link-active);
 }
 
 main {
-	padding: 1rem;
+  padding: 1rem;
 }
 main :first-child {
-	margin-top: 0;
+  margin-top: 0;
 }
 
 header {
-	border-bottom: 1px dashed var(--color-gray-20);
+  border-bottom: 1px dashed var(--color-gray-20);
 }
 header:after {
-	content: "";
-	display: table;
-	clear: both;
+  content: '';
+  display: table;
+  clear: both;
 }
 
 .links-nextprev {
-	list-style: none;
-	border-top: 1px dashed var(--color-gray-20);
-	padding: 1em 0;
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
 }
 
 table {
-	margin: 1em 0;
+  margin: 1em 0;
 }
 table td,
 table th {
-	padding-right: 1em;
+  padding-right: 1em;
 }
 
 pre,
 code {
-	font-family: var(--font-family-monospace);
+  font-family: var(--font-family-monospace);
 }
-pre:not([class*="language-"]) {
-	margin: .5em 0;
-	line-height: 1.375; /* 22px /16 */
-	-moz-tab-size: var(--syntax-tab-size);
-	-o-tab-size: var(--syntax-tab-size);
-	tab-size: var(--syntax-tab-size);
-	-webkit-hyphens: none;
-	-ms-hyphens: none;
-	hyphens: none;
-	direction: ltr;
-	text-align: left;
-	white-space: pre;
-	word-spacing: normal;
-	word-break: normal;
+pre:not([class*='language-']) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
 }
 code {
-	word-break: break-all;
+  word-break: break-all;
 }
 
 /* Header */
 header {
-	display: flex;
-	gap: 1em .5em;
-	flex-wrap: wrap;
-	align-items: center;
-	padding: 1em;
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
 }
 .home-link {
-	font-size: 1em; /* 16px /16 */
-	font-weight: 700;
-	margin-right: 2em;
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
 }
 .home-link:link:not(:hover) {
-	text-decoration: none;
+  text-decoration: none;
 }
 
 /* Nav */
 .nav {
-	display: flex;
-	padding: 0;
-	margin: 0;
-	list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 .nav-item {
-	display: inline-block;
-	margin-right: 1em;
+  display: inline-block;
+  margin-right: 1em;
 }
 .nav-item a[href]:not(:hover) {
-	text-decoration: none;
+  text-decoration: none;
 }
-.nav a[href][aria-current="page"] {
-	text-decoration: underline;
+.nav a[href][aria-current='page'] {
+  text-decoration: underline;
 }
 
 /* Posts list */
 .postlist {
-	list-style: none;
-	padding: 0;
-	padding-left: 1.5rem;
+  list-style: none;
+  padding: 0;
+  padding-left: 1.5rem;
 }
 .postlist-item {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: baseline;
-	counter-increment: start-from -1;
-	margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  counter-increment: start-from -1;
+  margin-bottom: 1em;
 }
 .postlist-item:before {
-	display: inline-block;
-	pointer-events: none;
-	content: "" counter(start-from, decimal-leading-zero) ". ";
-	line-height: 100%;
-	text-align: right;
-	margin-left: -1.5rem;
+  display: inline-block;
+  pointer-events: none;
+  content: '' counter(start-from, decimal-leading-zero) '. ';
+  line-height: 100%;
+  text-align: right;
+  margin-left: -1.5rem;
 }
 .postlist-description {
-	flex-basis: 100%;
+  flex-basis: 100%;
 }
 .postlist-date,
 .postlist-item:before {
-	font-size: 0.8125em; /* 13px /16 */
-	color: var(--color-gray-90);
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
 }
 .postlist-date {
-	word-spacing: -0.5px;
+  word-spacing: -0.5px;
 }
 .postlist-link {
-	font-size: 1.1875em; /* 19px /16 */
-	font-weight: 700;
-	flex-basis: calc(100% - 1.5rem);
-	padding-left: .25em;
-	padding-right: .5em;
-	text-underline-position: from-font;
-	text-underline-offset: 0;
-	text-decoration-thickness: 1px;
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
 }
 .postlist-item-active .postlist-link {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 /* Tags */
 .post-tag {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	font-style: italic;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
 }
 .postlist-item > .post-tag {
-	align-self: center;
+  align-self: center;
 }
 
 /* Tags list */
 .post-metadata {
-	display: inline-flex;
-	flex-wrap: wrap;
-	gap: .5em;
-	list-style: none;
-	padding: 0;
-	margin: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 .post-metadata time {
-	margin-right: 1em;
+  margin-right: 1em;
 }
 
 /* Direct Links / Markdown Headers */
 .header-anchor {
-	text-decoration: none;
-	font-style: normal;
-	font-size: 1em;
-	margin-left: .1em;
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
 }
 a[href].header-anchor,
 a[href].header-anchor:visited {
-	color: transparent;
+  color: transparent;
 }
 a[href].header-anchor:focus,
 a[href].header-anchor:hover {
-	text-decoration: underline;
+  text-decoration: underline;
 }
 a[href].header-anchor:focus,
 :hover > a[href].header-anchor {
-	color: #aaa;
+  color: #aaa;
 }
 
 h2 + .header-anchor {
-	font-size: 1.5em;
+  font-size: 1.5em;
 }
 main li {
-	margin-bottom: 1em;
+  margin-bottom: 1em;
 }
 
 div.trovu-call {
@@ -457,26 +459,31 @@ div.trovu-call {
   background: #487b7f;
   color: white;
   margin: 0;
-	padding: 0;
-	border: 0;
+  padding: 0;
+  border: 0;
 }
 div.trovu-call a,
 div.trovu-call a:link,
 div.trovu-call a:visited {
   display: inline-block;
   font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-  text-decoration: none; 
+  text-decoration: none;
   color: white;
-  padding: 0.4em; 
+  padding: 0.4em;
   margin: 0;
-	border: 0;
+  border: 0;
 }
 
 div.trovu-call span {
   background: #aaa;
-  padding: 0.4em; 
+  padding: 0.4em;
   margin: 0;
-	border: 0;
+  border: 0;
+}
+
+img.full-width {
+  width: 100%;
+  height: auto;
 }</style>
 	</head>
 	<body>
@@ -498,7 +505,7 @@ div.trovu-call span {
 
 		<main id="skip">
 			
-<h1>How I Use trovu.net</h1>
+<h1>How I Use trovu.net (Georg)</h1>
 
 <ul class="post-metadata">
 	<li><time datetime="2024-05-22">22 May 2024</time></li>
@@ -506,7 +513,7 @@ div.trovu-call span {
 	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a></li>
 </ul>
 
-<p>Many of my friends have known Trovu for years, and they fall into exactly two groups:</p>
+<p>I have started creating this project in 2005, many of my friends have known it for years, and they fall into exactly two groups:</p>
 <ul>
 <li>&quot;Nice, but I don't see why this would be useful to me.&quot;</li>
 <li>&quot;This is awesome, I can't use the Internet without it anymore.&quot;</li>
@@ -532,8 +539,11 @@ div.trovu-call span {
 <h2 id="advanced-googling" tabindex="-1">(Advanced) Googling <a class="header-anchor" href="#advanced-googling">#</a></h2>
 <p>My most frequent shortcut is <code>g</code> for Google. But sometimes, I need a more complicated Google search, and Trovu has shortcuts for these:</p>
 <h3 id="google-for-results-only-in-a-certain-language" tabindex="-1">Google for results only in a certain language: <a class="header-anchor" href="#google-for-results-only-in-a-certain-language">#</a></h3>
-<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gol%20pl%2C%20berlin">gol pl, berlin</a></div>
-will yield results about Berlin only on Polish websites.
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gol%20berlin&language=de">gol berlin</a></div>
+<p>will yield results about Berlin only on websites in German – because German is <a href="https://trovu.net/docs/users/advanced#language">the language I defined in my setup</a>.</p>
+<p>For other languages, I can prefix with the language code:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=pl.gol%20berlin">pl.gol berlin</a></div>
+<p>will show results only from Polish websites.</p>
 <h3 id="google-search-only-on-wikipedia-sites" tabindex="-1">Google search only on Wikipedia sites: <a class="header-anchor" href="#google-search-only-on-wikipedia-sites">#</a></h3>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=wg%20berlin&language=de">wg berlin</a></div>
 <p>This is like adding <code>site:de.wikipedia.org</code> to my Google search query. It will list only results from that domain, thus all Wikipedia articles that mention <em>Berlin</em>.</p>
@@ -566,19 +576,19 @@ will yield results about Berlin only on Polish websites.
 </ul>
 <h4 id="filter-for-regional-trains" tabindex="-1">Filter for Regional Trains <a class="header-anchor" href="#filter-for-regional-trains">#</a></h4>
 <p>Cheaper connections can be found if I limit my search to only regional trains (suitable for the <a href="https://en.wikipedia.org/wiki/Deutschlandticket">Deutschlandticket</a>). I can do so by calling:</p>
-<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dbn%20berlin%2C%20hamburg">dbn berlin, hamburg</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dbn%20berlin%2C%20hamburg&country=de">dbn berlin, hamburg</a></div>
 <h3 id="google-maps" tabindex="-1">Google Maps <a class="header-anchor" href="#google-maps">#</a></h3>
 <p>To find a place on Google Maps, I use:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20berlin">gm berlin</a></div>
 <p>If I need a certain street in some city, I use two arguments:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20hamburg%2C%20hauptstra%C3%9Fe">gm hamburg, hauptstraße</a></div>
 <p>Here, the first argument is typed again as <em>city</em>, so I can use a city name abbreviation:</p>
-<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20hh%2C%20hauptstra%C3%9Fe">gm hh, hauptstraße</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gm%20hh%2C%20hauptstra%C3%9Fe&country=de">gm hh, hauptstraße</a></div>
 <h4 id="navigation" tabindex="-1">Navigation <a class="header-anchor" href="#navigation">#</a></h4>
 <p>To find directions from one place to another, I call:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gd%20berlin%2C%20hamburg">gd berlin, hamburg</a></div>
 <p>Again, city name abbreviations work too:</p>
-<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gd%20b%2C%20hh">gd b, hh</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gd%20b%2C%20hh&country=de">gd b, hh</a></div>
 <h3 id="google-flights" tabindex="-1">Google Flights <a class="header-anchor" href="#google-flights">#</a></h3>
 <p>My favorite way to search flights is via Google Flights:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=gfl%20ber%2C%20ibiza%2C%20fr%2C%20mo">gfl ber, ibiza, fr, mo</a></div>
@@ -597,7 +607,7 @@ will yield results about Berlin only on Polish websites.
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=en%20baum&language=de">en baum</a></div>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=fr%20baum&language=de">fr baum</a></div>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=pl%20baum&language=de">pl baum</a></div>
-<p>These shortcuts will call dictionaries from English, French, and Polish into German—because German is <a href="https://trovu.net/docs/users/advanced#language">the language I defined in my setup</a>.</p>
+<p>These shortcuts will call dictionaries from English, French, and Polish into German — again because German is <a href="https://trovu.net/docs/users/advanced#language">the language I defined in my setup</a>.</p>
 <p>Though, I can override this language by prefixing with another code:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=es.en%20baum&language=de">es.en baum</a></div>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=es.fr%20baum&language=de">es.fr baum</a></div>
@@ -609,7 +619,7 @@ will yield results about Berlin only on Polish websites.
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=ytd%20berlin">ytd berlin</a></div>
 <p>does the same but sorts them by date (newest first).</p>
 <p>There are also a few torrent search engines; my preferred one is BTDigg:</p>
-<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=btg%20berlin">btg berlin</a></div>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=btd%20berlin">btd berlin</a></div>
 <h2 id="shopping" tabindex="-1">Shopping <a class="header-anchor" href="#shopping">#</a></h2>
 <p>I search for books and other products on Amazon:</p>
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=a%20smartphone">a smartphone</a></div>
@@ -622,9 +632,9 @@ will yield results about Berlin only on Polish websites.
 <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=trovu">trovu</a></div>
 <p>I am then on <code>https://trovu.net/?#github=georgjaehnig</code> and have the suggestions available just while typing.</p>
 <h2 id="curious-about-yours" tabindex="-1">Curious About Yours <a class="header-anchor" href="#curious-about-yours">#</a></h2>
-<p>If you are already a Trovu user, too, I'd be curious about your setup and practice. Please share it in our <a href="https://github.com/trovu/trovu/discussions">Github Discussions</a>, or as a reply to the <a href="https://x.com/trovu_net">X post</a>.</p>
+<p>If you are already a Trovu user, too, I'd be curious about your setup and practice. Please share it in our <a href="https://github.com/trovu/trovu/discussions">Github Discussions</a>, or as a reply to the <a href="https://x.com/jorges/status/1793395395344658920">X post</a>.</p>
 
-<ul class="links-nextprev"><li>Previous: <a href="/blog/videos-summary-advanced/">New videos: Summary &amp; Advanced Usage</a></li>
+<ul class="links-nextprev"><li>Previous: <a href="/blog/videos-summary-advanced/">New videos: Summary &amp; Advanced Usage</a></li><li>Next: <a href="/blog/how-i-use-trovu-kilian/">How I Use Trovu (Kilian)</a></li>
 </ul>
 
 		</main>

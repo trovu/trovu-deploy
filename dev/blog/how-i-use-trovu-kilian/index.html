@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>How I Use Trovu (Kilian)</title>
+		<meta name="description" content="The Command Line for the WWW">
+		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
+		
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
+/* Defaults */
+:root {
+  --font-family: -apple-system, system-ui, sans-serif;
+  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono,
+    Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New,
+    Courier, monospace;
+}
+
+/* Theme colors */
+:root {
+  --color-gray-20: #e0e0e0;
+  --color-gray-50: #c0c0c0;
+  --color-gray-90: #333;
+
+  --background-color: #fff;
+
+  --text-color: var(--color-gray-90);
+  --text-color-link: #082840;
+  --text-color-link-active: #5f2b48;
+  --text-color-link-visited: #17050f;
+
+  --syntax-tab-size: 2;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-gray-20: #e0e0e0;
+    --color-gray-50: #c0c0c0;
+    --color-gray-90: #dad8d8;
+
+    /* --text-color is assigned to --color-gray-_ above */
+    --text-color-link: #1493fb;
+    --text-color-link-active: #6969f7;
+    --text-color-link-visited: #a6a6f8;
+
+    --background-color: #15202b;
+  }
+}
+
+/* Global stylesheet */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0 auto;
+  font-family: var(--font-family);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+html {
+  overflow-y: scroll;
+}
+body {
+  max-width: 40em;
+}
+
+/* https://www.a11yproject.com/posts/how-to-hide-content/ */
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+p {
+  line-height: 1.5;
+}
+
+li {
+  line-height: 1.5;
+}
+
+a[href] {
+  color: var(--text-color-link);
+}
+a[href]:visited {
+  color: var(--text-color-link-visited);
+}
+a[href]:hover,
+a[href]:active {
+  color: var(--text-color-link-active);
+}
+
+main {
+  padding: 1rem;
+}
+main :first-child {
+  margin-top: 0;
+}
+
+header {
+  border-bottom: 1px dashed var(--color-gray-20);
+}
+header:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.links-nextprev {
+  list-style: none;
+  border-top: 1px dashed var(--color-gray-20);
+  padding: 1em 0;
+}
+
+table {
+  margin: 1em 0;
+}
+table td,
+table th {
+  padding-right: 1em;
+}
+
+pre,
+code {
+  font-family: var(--font-family-monospace);
+}
+pre:not([class*='language-']) {
+  margin: 0.5em 0;
+  line-height: 1.375; /* 22px /16 */
+  -moz-tab-size: var(--syntax-tab-size);
+  -o-tab-size: var(--syntax-tab-size);
+  tab-size: var(--syntax-tab-size);
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+}
+code {
+  word-break: break-all;
+}
+
+/* Header */
+header {
+  display: flex;
+  gap: 1em 0.5em;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 1em;
+}
+.home-link {
+  font-size: 1em; /* 16px /16 */
+  font-weight: 700;
+  margin-right: 2em;
+}
+.home-link:link:not(:hover) {
+  text-decoration: none;
+}
+
+/* Nav */
+.nav {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav a[href][aria-current='page'] {
+  text-decoration: underline;
+}
+
+/* Posts list */
+.postlist {
+  list-style: none;
+  padding: 0;
+  padding-left: 1.5rem;
+}
+.postlist-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  counter-increment: start-from -1;
+  margin-bottom: 1em;
+}
+.postlist-item:before {
+  display: inline-block;
+  pointer-events: none;
+  content: '' counter(start-from, decimal-leading-zero) '. ';
+  line-height: 100%;
+  text-align: right;
+  margin-left: -1.5rem;
+}
+.postlist-description {
+  flex-basis: 100%;
+}
+.postlist-date,
+.postlist-item:before {
+  font-size: 0.8125em; /* 13px /16 */
+  color: var(--color-gray-90);
+}
+.postlist-date {
+  word-spacing: -0.5px;
+}
+.postlist-link {
+  font-size: 1.1875em; /* 19px /16 */
+  font-weight: 700;
+  flex-basis: calc(100% - 1.5rem);
+  padding-left: 0.25em;
+  padding-right: 0.5em;
+  text-underline-position: from-font;
+  text-underline-offset: 0;
+  text-decoration-thickness: 1px;
+}
+.postlist-item-active .postlist-link {
+  font-weight: bold;
+}
+
+/* Tags */
+.post-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-style: italic;
+}
+.postlist-item > .post-tag {
+  align-self: center;
+}
+
+/* Tags list */
+.post-metadata {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.post-metadata time {
+  margin-right: 1em;
+}
+
+/* Direct Links / Markdown Headers */
+.header-anchor {
+  text-decoration: none;
+  font-style: normal;
+  font-size: 1em;
+  margin-left: 0.1em;
+}
+a[href].header-anchor,
+a[href].header-anchor:visited {
+  color: transparent;
+}
+a[href].header-anchor:focus,
+a[href].header-anchor:hover {
+  text-decoration: underline;
+}
+a[href].header-anchor:focus,
+:hover > a[href].header-anchor {
+  color: #aaa;
+}
+
+h2 + .header-anchor {
+  font-size: 1.5em;
+}
+main li {
+  margin-bottom: 1em;
+}
+
+div.trovu-call {
+  display: block;
+  background: #487b7f;
+  color: white;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+div.trovu-call a,
+div.trovu-call a:link,
+div.trovu-call a:visited {
+  display: inline-block;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-decoration: none;
+  color: white;
+  padding: 0.4em;
+  margin: 0;
+  border: 0;
+}
+
+div.trovu-call span {
+  background: #aaa;
+  padding: 0.4em;
+  margin: 0;
+  border: 0;
+}
+
+img.full-width {
+  width: 100%;
+  height: auto;
+}</style>
+	</head>
+	<body>
+		<a href="#skip" class="visually-hidden">Skip to main content</a>
+
+		<header>
+			<a href="/blog/" class="home-link">Blog | trovu.net</a>
+			<nav>
+				<h2 class="visually-hidden">Top level navigation menu</h2>
+				<ul class="nav">
+					<li class="nav-item"><a href="../../">Home</a></li>
+					<li class="nav-item"><a href="../../docs/">Docs</a></li>
+					<li class="nav-item"><a href="../../docs/privacy">Privacy</a></li>
+					<li class="nav-item"><a href="https://github.com/trovu/">Github</a></li>
+					<li class="nav-item"><a href="/blog/feed/"><img src="/blog/img/rss.svg" width="14" height="14"></a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<main id="skip">
+			
+<h1>How I Use Trovu (Kilian)</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="2024-06-07">07 June 2024</time></li>
+	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a>, </li>
+	<li><a href="/blog/tags/testimonial/" class="post-tag">testimonial</a></li>
+</ul>
+
+<p><em><a href="https://kilian.evang.name/">Kilian Evang</a> has been using Trovu and its predecessors since 2007. In the German blog &quot;Techniktagebuch&quot; (English: &quot;Technology Diary&quot;) he <a href="https://techniktagebuch.tumblr.com/post/749989061656182784">wrote about his experience</a>.</em></p>
+<p>At the top of the browser, in the address bar, you can enter not only URLs. You can also enter a search term and be directed to the search results page of the default search engine, usually Google. This saves you the step of opening the search engine's homepage and finding your way around – ensuring the cursor is in the search field, etc.</p>
+<p>But there are many websites offering search functions where I don't want to navigate their homepages each time I search. That's why I have set my default search engine to <a href="http://trovu.net/">trovu.net</a>. This means I start each search query in the address bar with a cryptic shortcut.</p>
+<p>However, I have numerous websites at my fingertips. Depending on the shortcut, I'm immediately directed to the search results on the corresponding website. Without moving my fingers from the keyboard, Ctrl+L takes me directly to the address bar. For a Unix nerd like me, it's ideal, almost like a #commandline for the web. <a href="https://www.youtube.com/shorts/gOUNhCion9M">This YouTube Short</a> illustrates the principle.</p>
+<p>Trovu is developed by <a href="https://jaehnig.org/">Georg Jähnig</a>, following his predecessors Serchilo and FindFind.it. He presented Serchilo in 2007 at the Computer Linguistics Student Conference (TaCoS) in Tübingen, which I co-organized.</p>
+<p>Since then, I have continuously used Serchilo and its successors. Mobile browsers and search widgets for smartphone home screens have been configurable in a similar manner since the 2010s. Trovu is free, open-source, data-efficient, and ad-free, funded by <a href="https://en.wikipedia.org/wiki/Affiliate_marketing">affiliate links</a> – for example, if I search on Amazon through Trovu and make a purchase, Georg gets a small commission.</p>
+<p>Many useful shortcuts are predefined, but you can also define your own and overwrite predefined shortcuts.</p>
+<ul>
+<li>
+<p>In 2024, I switched from Google to DuckDuckGo without retraining my muscle memory: the shortcut <code>g</code> is still for web search, now redefined to call DuckDuckGo, and <code>gi</code> for image search.</p>
+</li>
+<li>
+<p>In 2013, when Google Reader was discontinued, I redefined <code>r</code> to call Feedly.</p>
+</li>
+</ul>
+<p>For websites I frequently visit, I often don't use a search term but use the shortcut like a bookmark. Trovu usually calls the homepage of the respective website, but this can be configured.</p>
+<p>Editing shortcuts was done nerdily via a MediaWiki with Serchilo, via a Drupal-based website with FindFind.it, and nerdily again with Trovu by pushing a configuration file on GitHub.</p>
+<p>Here is a subjective and arbitrary selection of my 5 most important use cases for Trovu and the associated shortcuts:</p>
+<ol>
+<li>
+<p><strong>Looking up a word in a bilingual online dictionary</strong>: For example, to know what <em>Zahn</em> means in Danish, I enter the <a href="https://en.wikipedia.org/wiki/List_of_ISO_639-2_codes">ISO-639-2 code</a> for Danish, <code>da</code>, followed by the search word: </p><div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=da%20zahn&language=de">da zahn</a></div><p></p>
+<p>Trovu directs me to a German-Danish online dictionary, knowing my default language is German.</p>
+<p>To search in an English-Danish dictionary, I prefix the shortcut with the respective namespace shortcut, changing my default language for this query to English: </p><div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=en.da%20tooth&language=de">en.da tooth</a></div><p></p>
+<p>Entering </p><div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=fr%20tooth&language=de">fr tooth</a></div><p></p>
+<p>takes me to a German-French dictionary, <a href="https://www.leo.org/">LEO.org</a>.</p>
+<p>To use <a href="https://www.dict.cc/">dict.cc</a>, there's also a namespace:</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=dcc.fr%20tooth&language=de">dcc.fr tooth</a></div>
+</li>
+<li>
+<p><strong>Personal shortcuts for my websites</strong>:</p>
+<div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=vw&github=texttheater">vw</a></div>
+<p>for the wiki of the <a href="https://neutsch.org/">Society for Strengthening Verbs</a>,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=vv&github=texttheater">vv</a></div>
+<p>to go directly to the list of strong verbs,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=vf&github=texttheater">vf</a></div>
+<p>for the forum,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=lt&github=texttheater">lt</a></div>
+<p>to call a keyword at <a href="https://labenz.neutsch.org/">Freut euch des Labenz!</a>,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=ls%20query&github=texttheater">ls query</a></div>
+<p>to search all definitions there,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=tn%20query&github=texttheater">tn query</a></div>
+<p>to search my <a href="https://tweetnest.texttheater.net/">tweet archive</a>,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=tttt%20query&github=texttheater">tttt query</a></div>
+<p>to search my <a href="https://texttheater.net/">blog</a>.</p>
+</li>
+<li>
+<p><strong>Navigating the various functions of <a href="https://www.kleinanzeigen.de/">Kleinanzeigen.de</a> (formerly eBay-kleinanzeigen )</strong>:</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=kaz&country=de">kaz</a></div>
+<p>for searching or opening the homepage,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=kazn&country=de">kazn</a></div>
+<p>for messages,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=kaza&country=de">kaza</a></div>
+<p>for my ads,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=kazm&country=de">kazm</a></div>
+<p>for my watchlist, and</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=kaz%2B&country=de">kaz+</a></div>
+<p>for the new ad form.</p>
+</li>
+<li>
+<p><strong>Amazon searches</strong>:</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=a%20query&country=de">a query</a></div>
+<p>searches Amazon,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=ao%20query&country=de">ao query</a></div>
+<p>my order history. Using the form on the website, I would constantly confuse the two search fields.</p>
+</li>
+<li>
+<p><strong>Handling URLs behind paywalls, poorly formatted recipes, or missing pages</strong>: Prefixed with the appropriate shortcut in Trovu, problematic URLs are handled:</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=atd%20https%3A%2F%2Fexample.com%2F">atd https://example.com/</a></div>
+<p>for <a href="https://en.wikipedia.org/wiki/Archive.today">Archive.today</a>,</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=ckd%20https%3A%2F%2Frecipesbycarina.com%2Ffrench-crepe-recipe%2F">ckd https://recipesbycarina.com/french-crepe-recipe/</a></div>
+<p>for <a href="https://cooked.wiki/">Cooked.wiki</a>, and</p>
+ <div class="trovu-call"><span class="arrow">&gt;</span><a href="https://trovu.net/process/index.html#query=wbm%20https%3A%2F%2Fexample.com%2F">wbm https://example.com/</a></div>
+<p>for the <a href="https://en.wikipedia.org/wiki/Wayback_Machine">Wayback Machine</a>.</p>
+</li>
+</ol>
+<p>[1] I don't have to. If my search query doesn't start with a word defined as a shortcut in Trovu, it directs me to my preferred default search engine in Trovu, DuckDuckGo.</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/blog/how-i-use-trovu/">How I Use trovu.net (Georg)</a></li><li>Next: <a href="/blog/how-i-use-trovu-hannes/">How I Use Trovu (Hannes)</a></li>
+</ul>
+
+		</main>
+
+		<footer></footer>
+
+		<!-- Current page: /blog/how-i-use-trovu-kilian/ -->
+	</body>
+</html>
