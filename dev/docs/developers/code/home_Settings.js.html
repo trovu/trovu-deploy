@@ -27,7 +27,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/** @module Settings */
-import countriesList from 'countries-list';
+import countriesList from "countries-list";
 
 /** Settings methods. */
 
@@ -38,12 +38,10 @@ export default class Settings {
     this.setLanguagesAndCountriesList();
     this.displaySettings();
 
-    document
-      .querySelector('#settings')
-      .addEventListener('hidden.bs.modal', this.saveSettings);
+    document.querySelector("#settings").addEventListener("hidden.bs.modal", this.saveSettings);
 
     window.addEventListener(
-      'hashchange',
+      "hashchange",
       function () {
         window.location.reload();
       },
@@ -57,37 +55,37 @@ export default class Settings {
   displaySettings() {
     // Set settings fields in navbar.
     const language = countriesList.languages[this.env.language];
-    document.querySelector('.navbar .language').innerText = this.env.language;
-    document.querySelector('.navbar .language').title = language.name;
+    document.querySelector(".navbar .language").innerText = this.env.language;
+    document.querySelector(".navbar .language").title = language.name;
 
     const country = countriesList.countries[this.env.country.toUpperCase()];
-    document.querySelector('.navbar .country').innerText = country.emoji;
-    document.querySelector('.navbar .country').title = country.name;
+    document.querySelector(".navbar .country").innerText = country.emoji;
+    document.querySelector(".navbar .country").title = country.name;
 
     // Set settings fields in settings modal.
-    document.querySelector('#languageSetting').value = this.env.language;
-    document.querySelector('#countrySetting').value = this.env.country;
-    document.querySelector('#githubSetting').value = this.env.github || '';
+    document.querySelector("#languageSetting").value = this.env.language;
+    document.querySelector("#countrySetting").value = this.env.country;
+    document.querySelector("#githubSetting").value = this.env.github || "";
 
     // Show and hide settings tabs depending on Github setting.
     if (this.env.github) {
-      document.querySelector('.using-advanced').classList.remove('d-none');
-      document.querySelector('.using-basic').classList.add('d-none');
+      document.querySelector(".using-advanced").classList.remove("d-none");
+      document.querySelector(".using-basic").classList.add("d-none");
     } else {
-      document.querySelector('.using-basic').classList.remove('d-none');
-      document.querySelector('.using-advanced').classList.add('d-none');
+      document.querySelector(".using-basic").classList.remove("d-none");
+      document.querySelector(".using-advanced").classList.add("d-none");
     }
   }
 
   saveSettings = () => {
-    this.env.language = document.querySelector('#languageSetting').value;
-    this.env.country = document.querySelector('#countrySetting').value;
-    this.env.github = document.querySelector('#githubSetting').value;
+    this.env.language = document.querySelector("#languageSetting").value;
+    this.env.country = document.querySelector("#countrySetting").value;
+    this.env.github = document.querySelector("#githubSetting").value;
 
     this.env.setToLocalStorage();
 
     const paramStr = this.env.buildUrlParamStr();
-    window.location.hash = '#' + paramStr;
+    window.location.hash = "#" + paramStr;
   };
 
   setLanguagesAndCountriesList() {
@@ -101,8 +99,8 @@ export default class Settings {
     languagesArray.sort((a, b) => (a.name &lt; b.name ? -1 : 1));
     countriesArray.sort((a, b) => (a.name &lt; b.name ? -1 : 1));
 
-    this.setSelectOptions('#languageSetting', languagesArray);
-    this.setSelectOptions('#countrySetting', countriesArray);
+    this.setSelectOptions("#languageSetting", languagesArray);
+    this.setSelectOptions("#countrySetting", countriesArray);
   }
 
   objectToArrayWithKey(obj) {
@@ -117,12 +115,7 @@ export default class Settings {
   setSelectOptions(selector, list) {
     const selectEl = document.querySelector(selector);
     list.forEach((item) =>
-      selectEl.appendChild(
-        new Option(
-          `${item.name} ${item.emoji ? item.emoji : ''}`,
-          item.key.toLocaleLowerCase(),
-        ),
-      ),
+      selectEl.appendChild(new Option(`${item.name} ${item.emoji ? item.emoji : ""}`, item.key.toLocaleLowerCase())),
     );
   }
 }
@@ -136,13 +129,13 @@ export default class Settings {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getMatches">getMatches</a></li><li><a href="global.html#getSuggestions">getSuggestions</a></li><li><a href="global.html#sort">sort</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 15 2024 01:52:01 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:08:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

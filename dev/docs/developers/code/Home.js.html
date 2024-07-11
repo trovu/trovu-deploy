@@ -27,17 +27,17 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/** @module Home */
-import '../../scss/style.scss';
-import Env from './Env.js';
-import Helper from './Helper.js';
-import Settings from './home/Settings.js';
-import Suggestions from './home/Suggestions.js';
+import "../../scss/style.scss";
+import Env from "./Env.js";
+import GitLogger from "./GitLogger.js";
+import Settings from "./home/Settings.js";
+import Suggestions from "./home/Suggestions.js";
 
 /* eslint-disable no-unused-vars */
-import BSN from 'bootstrap.native/dist/bootstrap-native.esm.min.js';
-import 'bootstrap/dist/css/bootstrap.css';
-import countriesList from 'countries-list';
-import 'font-awesome/css/font-awesome.min.css';
+import BSN from "bootstrap.native/dist/bootstrap-native.esm.min.js";
+import "bootstrap/dist/css/bootstrap.css";
+import countriesList from "countries-list";
+import "font-awesome/css/font-awesome.min.css";
 
 /** Set and manage the homepage. */
 
@@ -45,22 +45,23 @@ export default class Home {
   constructor() {}
 
   async initialize() {
-    Helper.logVersion();
-    document.querySelector('#version').textContent = Helper.getVersion();
-
     // Must be done before env.populate()
     // otherwise Chrome does not autodiscover.
     this.addLinkSearch();
 
-    this.env = new Env();
+    this.env = new Env({ context: "browser" });
 
     // Init environment.
     await this.env.populate();
 
-    this.queryInput = document.querySelector('#query');
+    const gitLogger = new GitLogger(this.env.gitInfo);
+    document.querySelector("#version").textContent = gitLogger.getVersion();
+    gitLogger.logVersion();
+
+    this.queryInput = document.querySelector("#query");
 
     if (this.env.isRunningStandalone()) {
-      document.querySelector('footer').style.display = 'none';
+      document.querySelector("footer").style.display = "none";
     }
 
     new Settings(this.env);
@@ -73,11 +74,11 @@ export default class Home {
       this.env.logger.showLog();
     }
 
-    document.getElementById('query-form').onsubmit = this.submitQuery;
-    document.querySelector('#reload').href = this.env.buildProcessUrl({
-      query: 'reload',
+    document.getElementById("query-form").onsubmit = this.submitQuery;
+    document.querySelector("#reload").href = this.env.buildProcessUrl({
+      query: "reload",
     });
-    document.documentElement.setAttribute('data-page-loaded', 'true');
+    document.documentElement.setAttribute("data-page-loaded", "true");
 
     Home.setHeights();
     this.setListeners();
@@ -90,30 +91,28 @@ export default class Home {
   }
 
   static setMaxHeightForSuggestions() {
-    const suggestionsDiv = document.querySelector('#suggestions');
+    const suggestionsDiv = document.querySelector("#suggestions");
     // Fallback value.
-    suggestionsDiv.style.maxHeight = '200px';
-    const suggestionsTop = document
-      .querySelector('#suggestions')
-      .getBoundingClientRect().top;
+    suggestionsDiv.style.maxHeight = "200px";
+    const suggestionsTop = document.querySelector("#suggestions").getBoundingClientRect().top;
     let footerTop;
-    if (document.querySelector('footer').style.display === 'none') {
+    if (document.querySelector("footer").style.display === "none") {
       footerTop = document.documentElement.clientHeight;
     } else {
-      footerTop = document.querySelector('footer').getBoundingClientRect().top;
+      footerTop = document.querySelector("footer").getBoundingClientRect().top;
     }
-    suggestionsDiv.style.maxHeight = footerTop - suggestionsTop + 'px';
+    suggestionsDiv.style.maxHeight = footerTop - suggestionsTop + "px";
   }
 
   setListeners() {
-    this.setListenersToSetQuery('namespace', 'ns');
-    this.setListenersToSetQuery('tag', 'tag');
+    this.setListenersToSetQuery("namespace", "ns");
+    this.setListenersToSetQuery("tag", "tag");
   }
   setListenersToSetQuery(className, prefix) {
     const elements = document.querySelectorAll(`span.${className}`);
     elements.forEach((element) => {
-      element.style.cursor = 'pointer';
-      element.addEventListener('click', () => {
+      element.style.cursor = "pointer";
+      element.addEventListener("click", () => {
         this.queryInput.value = `${prefix}:${element.textContent}`;
         this.suggestions.updateSuggestions();
         this.toggleByQuery();
@@ -124,61 +123,58 @@ export default class Home {
 
   setQueryElement() {
     switch (this.env.status) {
-      case 'deprecated':
+      case "deprecated":
         this.queryInput.value = this.env.alternative;
         break;
-      case 'reloaded':
-        this.queryInput.value = '';
+      case "reloaded":
+        this.queryInput.value = "";
         break;
       default:
-        this.queryInput.value = this.env.query || '';
+        this.queryInput.value = this.env.query || "";
         break;
     }
 
-    this.suggestions = new Suggestions('#query', '#suggestions', this.env);
+    this.suggestions = new Suggestions("#query", "#suggestions", this.env);
     this.setToggleByQuery();
   }
 
   setToggleByQuery() {
     this.queryInput.focus();
-    this.queryInput.addEventListener('input', () => {
+    this.queryInput.addEventListener("input", () => {
       this.toggleByQuery();
     });
-    document.querySelector('#suggestions').addEventListener('click', () => {
+    document.querySelector("#suggestions").addEventListener("click", () => {
       this.toggleByQuery();
     });
   }
 
   toggleByQuery() {
     // Toggle display of navbar and examples.
-    if (
-      this.queryInput.value.trim() === '' &amp;&amp;
-      this.suggestions.selected === -1
-    ) {
-      document.querySelector('nav.navbar').style.display = 'block';
+    if (this.queryInput.value.trim() === "" &amp;&amp; this.suggestions.selected === -1) {
+      document.querySelector("nav.navbar").style.display = "block";
       if (!this.env.isRunningStandalone()) {
-        document.querySelector('footer').style.display = 'block';
-        document.querySelector('#explainer').style.display = 'block';
-        document.querySelector('#intro').style.display = 'block';
+        document.querySelector("footer").style.display = "block";
+        document.querySelector("#explainer").style.display = "block";
+        document.querySelector("#intro").style.display = "block";
       }
-      document.querySelector('#lists').style.display = 'block';
-      document.querySelector('#suggestions').style.display = 'none';
-      document.querySelector('#help').style.display = 'none';
+      document.querySelector("#lists").style.display = "block";
+      document.querySelector("#suggestions").style.display = "none";
+      document.querySelector("#help").style.display = "none";
     } else {
-      document.querySelector('nav.navbar').style.display = 'none';
-      document.querySelector('#intro').style.display = 'none';
-      document.querySelector('footer').style.display = 'none';
-      document.querySelector('#suggestions').style.display = 'block';
-      document.querySelector('#help').style.display = 'block';
-      document.querySelector('#explainer').style.display = 'none';
-      document.querySelector('#lists').style.display = 'none';
+      document.querySelector("nav.navbar").style.display = "none";
+      document.querySelector("#intro").style.display = "none";
+      document.querySelector("footer").style.display = "none";
+      document.querySelector("#suggestions").style.display = "block";
+      document.querySelector("#help").style.display = "block";
+      document.querySelector("#explainer").style.display = "none";
+      document.querySelector("#lists").style.display = "none";
     }
     Home.setHeights();
   }
 
   setLocationHash() {
     const paramStr = this.env.buildUrlParamStr();
-    window.location.hash = '#' + paramStr;
+    window.location.hash = "#" + paramStr;
   }
 
   /**
@@ -186,49 +182,47 @@ export default class Home {
    */
   showInfoAlerts() {
     const params = Env.getParamsFromUrl();
-    const alert = document.querySelector('#alert');
-    const alertMsg = alert.querySelector('span');
-    const alertClose = alert.querySelector('button');
-    alertClose.addEventListener('click', () => {
-      const paramStr = this.env.buildUrlParamStr({ status: '' });
-      window.location.hash = '#' + paramStr;
+    const alert = document.querySelector("#alert");
+    const alertMsg = alert.querySelector("span");
+    const alertClose = alert.querySelector("button");
+    alertClose.addEventListener("click", () => {
+      const paramStr = this.env.buildUrlParamStr({ status: "" });
+      window.location.hash = "#" + paramStr;
     });
     if (params.status) {
-      alert.removeAttribute('hidden');
+      alert.removeAttribute("hidden");
     }
     switch (params.status) {
-      case 'not_found':
+      case "not_found":
         alertMsg.innerHTML =
           'No matching shortcut found. Did you use a &lt;a href="https://trovu.net/docs/">keyword&lt;/a>? Try &lt;a target="_blank" href="/docs/users/troubleshooting/">Troubleshooting&lt;/a>. ';
         break;
-      case 'not_reachable':
+      case "not_reachable":
         alertMsg.innerHTML = `This shortcut is not &lt;a target="_blank" href="https://trovu.net/docs/shortcuts/namespaces/#priority-of-namespaces">reachable&lt;/a>.  Change your settings (${this.env.language.toUpperCase()} ${
           countriesList.countries[this.env.country.toUpperCase()].emoji
         }) to &lt;span class="namespace">&lt;/span>.`;
-        alertMsg.querySelector('.namespace').textContent = params.namespace;
+        alertMsg.querySelector(".namespace").textContent = params.namespace;
         break;
-      case 'reloaded':
-        alertMsg.textContent = 'Shortcuts were reloaded in all namespaces.';
+      case "reloaded":
+        alertMsg.textContent = "Shortcuts were reloaded in all namespaces.";
         if (this.env.github) {
-          alertMsg.textContent +=
-            ' Changes on your GitHub might require a reload in 5 minutes due to caching.';
+          alertMsg.innerHTML +=
+            " Changes on your GitHub might require a reload in &lt;strong>5 minutes&lt;/strong> due to caching.";
         }
         break;
-      case 'deprecated':
-        alertMsg.innerHTML =
-          'Your shortcut &lt;strong>&lt;em class="query">&lt;/em>&lt;/strong> is deprecated. Please use:';
-        alertMsg.querySelector('.query').textContent = params.query;
+      case "deprecated":
+        alertMsg.innerHTML = 'Your shortcut &lt;strong>&lt;em class="query">&lt;/em>&lt;/strong> is deprecated. Please use:';
+        alertMsg.querySelector(".query").textContent = params.query;
         break;
-      case 'removed':
+      case "removed":
         alertMsg.innerHTML = `The shortcut &lt;a class="githubLink" target="_blank" href="">&lt;/a> was removed as does not adhere to our 
           &lt;a target="_blank" href="/docs/editors/policy/">Content policy&lt;/a>. 
           But you can &lt;a target="_blank" href="/docs/users/advanced/">
           create a user shortcut in your own namespace&lt;/a>.`;
-        alertMsg.querySelector('a.githubLink').textContent = params.query;
-        alertMsg.querySelector('a.githubLink').href =
-          `https://github.com/search?l=&amp;q=${encodeURIComponent(
-            params.key,
-          )}+repo%3Atrovu%2Ftrovu-data&amp;type=code`;
+        alertMsg.querySelector("a.githubLink").textContent = params.query;
+        alertMsg.querySelector("a.githubLink").href = `https://github.com/search?l=&amp;q=${encodeURIComponent(
+          params.key,
+        )}+repo%3Atrovu%2Ftrovu-data&amp;type=code`;
         break;
     }
   }
@@ -259,7 +253,7 @@ export default class Home {
     if (event) {
       event.preventDefault();
     }
-    this.queryInput.value = 'reload';
+    this.queryInput.value = "reload";
     this.submitQuery();
   };
 
@@ -274,25 +268,17 @@ export default class Home {
 
     // Only keep relevant parameters.
     for (const [key] of params.entries()) {
-      if (
-        ![
-          'configUrl',
-          'country',
-          'defaultKeyword',
-          'github',
-          'language',
-        ].includes(key)
-      ) {
+      if (!["configUrl", "country", "defaultKeyword", "github", "language"].includes(key)) {
         params.delete(key);
       }
     }
 
     const paramsString = params.toString();
-    const link = document.createElement('link');
-    link.rel = 'search';
-    link.type = 'application/opensearchdescription+xml';
+    const link = document.createElement("link");
+    link.rel = "search";
+    link.type = "application/opensearchdescription+xml";
     link.href = `/opensearch/?${paramsString}`;
-    link.title = 'Trovu';
+    link.title = "Trovu";
 
     document.head.appendChild(link);
   }
@@ -307,13 +293,13 @@ export default class Home {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getMatches">getMatches</a></li><li><a href="global.html#getSuggestions">getSuggestions</a></li><li><a href="global.html#sort">sort</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 15 2024 01:52:01 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:08:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

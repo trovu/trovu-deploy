@@ -39,17 +39,12 @@ export default class ShortcutFinder {
    *
    * @return {array} shortcuts  - The array of found shortcuts.
    */
-  static matchShortcuts(
-    keyword,
-    args,
-    namespaceInfos,
-    includeNonReachable = false,
-  ) {
+  static matchShortcuts(keyword, args, namespaceInfos, includeNonReachable = false) {
     for (const namespaceInfo of Object.values(namespaceInfos)) {
       if (!namespaceInfo.shortcuts) {
         continue;
       }
-      const shortcut = namespaceInfo.shortcuts[keyword + ' ' + args.length];
+      const shortcut = namespaceInfo.shortcuts[keyword + " " + args.length];
       if (shortcut &amp;&amp; (shortcut.reachable || includeNonReachable)) {
         return shortcut;
       }
@@ -64,11 +59,7 @@ export default class ShortcutFinder {
    * @return {object} shortcuts - Found shortcuts keyed by their source namespace.
    */
   static findShortcut(env) {
-    let shortcut = this.matchShortcuts(
-      env.keyword,
-      env.args,
-      env.namespaceInfos,
-    );
+    let shortcut = this.matchShortcuts(env.keyword, env.args, env.namespaceInfos);
 
     // If nothing found:
     // Try without commas, i.e. with the whole argumentString as the only argument.
@@ -76,11 +67,7 @@ export default class ShortcutFinder {
       env.logger.info(
         `No shortcut found for ${env.keyword} ${env.args.length} yet. Trying with the whole argument string as the only argument.`,
       );
-      shortcut = this.matchShortcuts(
-        env.keyword,
-        [env.argumentString],
-        env.namespaceInfos,
-      );
+      shortcut = this.matchShortcuts(env.keyword, [env.argumentString], env.namespaceInfos);
       if (shortcut) {
         env.args = [env.argumentString];
       }
@@ -89,14 +76,8 @@ export default class ShortcutFinder {
     // If nothing found:
     // Try default keyword.
     if (!shortcut &amp;&amp; env.defaultKeyword) {
-      env.logger.info(
-        `No shortcut found for ${env.keyword} ${env.args.length} yet. Trying with default keyword.`,
-      );
-      shortcut = this.matchShortcuts(
-        env.defaultKeyword,
-        [env.query],
-        env.namespaceInfos,
-      );
+      env.logger.info(`No shortcut found for ${env.keyword} ${env.args.length} yet. Trying with default keyword.`);
+      shortcut = this.matchShortcuts(env.defaultKeyword, [env.query], env.namespaceInfos);
       if (shortcut) {
         env.args = [env.query];
       }
@@ -104,15 +85,8 @@ export default class ShortcutFinder {
     // If still nothing found:
     // Try with non-reachable, to inform.
     if (!shortcut) {
-      env.logger.info(
-        `No shortcut found for ${env.keyword} ${env.args.length} yet. Trying with non-reachable.`,
-      );
-      shortcut = this.matchShortcuts(
-        env.keyword,
-        env.args,
-        env.namespaceInfos,
-        true,
-      );
+      env.logger.info(`No shortcut found for ${env.keyword} ${env.args.length} yet. Trying with non-reachable.`);
+      shortcut = this.matchShortcuts(env.keyword, env.args, env.namespaceInfos, true);
     }
     return shortcut;
   }
@@ -127,13 +101,13 @@ export default class ShortcutFinder {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getMatches">getMatches</a></li><li><a href="global.html#getSuggestions">getSuggestions</a></li><li><a href="global.html#sort">sort</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 15 2024 01:52:01 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:08:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

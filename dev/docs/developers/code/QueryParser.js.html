@@ -27,8 +27,8 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/** @module QueryParser */
-import Helper from './Helper.js';
-import countriesList from 'countries-list';
+import Helper from "./Helper.js";
+import countriesList from "countries-list";
 
 /** Parse a query. */
 
@@ -42,22 +42,17 @@ export default class QueryParser {
    */
   static parse(query) {
     const env = {};
-    env.query = query || '';
+    env.query = query || "";
     env.query = env.query.trim();
     Object.assign(env, QueryParser.setFlagsFromQuery(env));
 
-    [env.keyword, env.argumentString] = this.getKeywordAndArgumentString(
-      env.query,
-    );
+    [env.keyword, env.argumentString] = this.getKeywordAndArgumentString(env.query);
     env.keyword = env.keyword.toLowerCase();
     env.args = this.getArguments(env.argumentString);
 
     [env.extraNamespaceName, env.keyword] = this.getExtraNamespace(env.keyword);
     if (env.extraNamespaceName) {
-      const languageOrCountry =
-        this.getLanguageAndCountryFromExtraNamespaceName(
-          env.extraNamespaceName,
-        );
+      const languageOrCountry = this.getLanguageAndCountryFromExtraNamespaceName(env.extraNamespaceName);
       Object.assign(env, languageOrCountry);
     }
 
@@ -76,13 +71,13 @@ export default class QueryParser {
   static getKeywordAndArgumentString(query) {
     let keyword, argumentString;
 
-    [keyword, argumentString] = Helper.splitKeepRemainder(query, ' ', 2);
+    [keyword, argumentString] = Helper.splitKeepRemainder(query, " ", 2);
 
-    if (typeof keyword === 'undefined') {
-      keyword = '';
+    if (typeof keyword === "undefined") {
+      keyword = "";
     }
-    if (typeof argumentString === 'undefined') {
-      argumentString = '';
+    if (typeof argumentString === "undefined") {
+      argumentString = "";
     }
 
     return [keyword, argumentString];
@@ -98,7 +93,7 @@ export default class QueryParser {
   static getArguments(argumentString) {
     let args;
     if (argumentString) {
-      args = argumentString.split(',');
+      args = argumentString.split(",");
     } else {
       args = [];
     }
@@ -121,20 +116,12 @@ export default class QueryParser {
     //   but don't split up country namespace names.
     let extraNamespaceName;
     if (keyword.match(/.\./)) {
-      [extraNamespaceName, keyword] = Helper.splitKeepRemainder(
-        keyword,
-        '.',
-        2,
-      );
+      [extraNamespaceName, keyword] = Helper.splitKeepRemainder(keyword, ".", 2);
       // If extraNamespace started with a dot, it will be empty
       // so let's split it again, and add the dot.
-      if (extraNamespaceName == '') {
-        [extraNamespaceName, keyword] = Helper.splitKeepRemainder(
-          keyword,
-          '.',
-          2,
-        );
-        extraNamespaceName = '.' + extraNamespaceName;
+      if (extraNamespaceName == "") {
+        [extraNamespaceName, keyword] = Helper.splitKeepRemainder(keyword, ".", 2);
+        extraNamespaceName = "." + extraNamespaceName;
       }
     }
 
@@ -153,9 +140,7 @@ export default class QueryParser {
 
     if (extraNamespaceName in countriesList.languages) {
       env.language = extraNamespaceName;
-    } else if (
-      extraNamespaceName.substring(1).toUpperCase() in countriesList.countries
-    ) {
+    } else if (extraNamespaceName.substring(1).toUpperCase() in countriesList.countries) {
       env.country = extraNamespaceName.substring(1);
     }
 
@@ -167,12 +152,12 @@ export default class QueryParser {
       // Check for debug.
       if (env.query.match(/^debug:/)) {
         env.debug = true;
-        env.query = env.query.replace(/^debug:/, '');
+        env.query = env.query.replace(/^debug:/, "");
       }
       // Check for reload.
       if (env.query.match(/^reload:/) || env.query.match(/^reload$/)) {
         env.reload = true;
-        env.query = env.query.replace(/^reload(:?)/, '');
+        env.query = env.query.replace(/^reload(:?)/, "");
       }
     }
     return env;
@@ -188,13 +173,13 @@ export default class QueryParser {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-DataManager.html">DataManager</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-NamespaceFetcher.html">NamespaceFetcher</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-Suggestions.html">Suggestions</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Classes</h3><ul><li><a href="module-CallHandler.html">CallHandler</a></li><li><a href="module-Env.html">Env</a></li><li><a href="module-Helper.html">Helper</a></li><li><a href="module-Home.html">Home</a></li><li><a href="module-Logger.html">Logger</a></li><li><a href="module-QueryParser.html">QueryParser</a></li><li><a href="module-Settings.html">Settings</a></li><li><a href="module-ShortcutFinder.html">ShortcutFinder</a></li><li><a href="module-UrlProcessor.html">UrlProcessor</a></li></ul><h3>Global</h3><ul><li><a href="global.html#getMatches">getMatches</a></li><li><a href="global.html#getSuggestions">getSuggestions</a></li><li><a href="global.html#sort">sort</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Sat Jun 15 2024 01:52:01 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 11 2024 20:08:01 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
