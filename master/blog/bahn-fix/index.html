@@ -3,11 +3,179 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Blog | trovu.net</title>
-		<meta name="description" content="News and info around trovu.net">
+		<title>Fix der Bahn-Fahrplanauskunft</title>
+		<meta name="description" content="Bitte das Userscript installieren.">
 		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
-		<style>* { box-sizing: border-box; }
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
 /* Defaults */
 :root {
   --font-family: -apple-system, system-ui, sans-serif;
@@ -337,50 +505,38 @@ img.full-width {
 
 		<main id="skip">
 			
-<h1>Tags</h1>
+<h1>Fix der Bahn-Fahrplanauskunft</h1>
 
-<ul>
-
-	
-	<li><a href="/blog/tags/rss/" class="post-tag">rss</a></li>
-
-	
-	<li><a href="/blog/tags/config/" class="post-tag">config</a></li>
-
-	
-	<li><a href="/blog/tags/mobile/" class="post-tag">mobile</a></li>
-
-	
-	<li><a href="/blog/tags/app/" class="post-tag">app</a></li>
-
-	
-	<li><a href="/blog/tags/video/" class="post-tag">video</a></li>
-
-	
-	<li><a href="/blog/tags/advanced/" class="post-tag">advanced</a></li>
-
-	
-	<li><a href="/blog/tags/short/" class="post-tag">short</a></li>
-
-	
-	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a></li>
-
-	
-	<li><a href="/blog/tags/testimonial/" class="post-tag">testimonial</a></li>
-
-	
-	<li><a href="/blog/tags/shortcut/" class="post-tag">shortcut</a></li>
-
-	
+<ul class="post-metadata">
+	<li><time datetime="2024-07-14">14 July 2024</time></li>
+	<li><a href="/blog/tags/shortcut/" class="post-tag">shortcut</a>, </li>
 	<li><a href="/blog/tags/german/" class="post-tag">german</a></li>
-
 </ul>
 
+<p>Vor einigen Monaten hörte der Shortcut zur Fahrplanauskunft der Deutschen Bahn auf zu funktionieren (<code>db berlin, hamburg</code>). Grund dafür war, dass die Bahn ihre <a href="https://reiseauskunft.bahn.de/">alte Fahrplanauskunft</a> nun endgültig abgeschaltet hatte.</p>
+<p>Die neue Auskunft benötigte hingegen als Suchargument für den Ab- oder Ankunftsort nicht mehr nur den Namen (<code>berlin</code>), sondern auch dessen interne ID (<code>soid=…</code>). Damit konnte Trovu also nicht mehr direkt auf die Ergebnisseite weiterleiten.</p>
+<p>Ich hatte in den vergangenen Monaten versucht, <a href="https://github.com/trovu/trovu/issues/210">auf vielen Wegen eine Lösung zu finden</a>, u.a. bei mehreren Stellen der Deutschen Bahn und in einem Bahn-Nutzer-Forum gefragt. Ein direkter Link auf die Ergebnisseite scheint dennoch immer noch nicht möglich zu sein, ohne die ID zu kennen.</p>
+<p>Trotzdem gibt es jetzt eine (experimentelle) Lösung. Damit diese vollständig funktioniert, sollte auf Eurem Rechner ein sogenanntes Userscript installiert sein. Wie man das macht, ist hier <a href="https://trovu.net/docs/shortcuts/userscripts/">in der Dokumentation</a> beschrieben.</p>
+<p>Dann könnt Ihr wie gewohnt eine Suchanfrage starten, z.B.:</p>
+<pre><code>db berlin hamburg
+db b,hh,21
+dbn b,hh,8,mo  # Nur Nahverkehrszüge / mit Deutschlandticket
+</code></pre>
+<p>Diese Seite leitet Euch auf das Suchformular der Fahrplanauskunft, füllt es aber schon mit Euren Suchwerten aus. Das Userscript klickt dann auf den Suchen-Knopf. Wer das Userscript also nicht installiert hat, hat trotzdem etwas davon – er muss nur auf den Knopf selbst klicken.</p>
+<p>Zwei Punkte bleiben offen – falls Ihr dazu Abhilfe wisst, schreibt es gern <a href="https://github.com/trovu/trovu/issues/210">ins Ticket</a>:</p>
+<ol>
+<li>Das Userscript ist experimentell: Der Suchen-Knopf ist nicht sofort klickbar, weil offenbar die Seite im Hintergrund noch lädt. Idealerweise löst man das mit <code>window.onload</code> oder <code>DOMContentLoaded</code> – allerdings funktionierten diese Methoden nicht. Es ist jetzt mit einem <code>setTimeout</code> von 4 Sekunden gelöst.</li>
+<li>Die Bestpreissuche (<code>dbb</code>) funktioniert immer noch nicht. Ich habe noch nicht den passenden Parameter in der URL gefunden, die beim Klick auf <em>Suchen</em> sofort die Bestpreise anzeigt.</li>
+</ol>
+<p>Schreibt auch sonst gern ins Ticket (oder auf <a href="https://trovu.net/docs/users/support/">anderen Wegen</a>), wie gut der aktualisierte Shortcut für Euch funktioniert.</p>
+
+<ul class="links-nextprev"><li>Previous: <a href="/blog/how-i-use-trovu-hannes/">How I Use Trovu (Hannes)</a></li>
+</ul>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- Current page: /blog/tags/ -->
+		<!-- Current page: /blog/bahn-fix/ -->
 	</body>
 </html>
