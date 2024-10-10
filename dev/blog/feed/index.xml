@@ -4,12 +4,53 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2024-06-12T00:00:00Z</updated>
+	<updated>2024-07-28T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>How to Sponsor Trovu from $2/month</title>
+		<link href="https://trovu.net/blog/sponsor/"/>
+		<updated>2024-07-28T00:00:00Z</updated>
+		<id>https://trovu.net/blog/sponsor/</id>
+		<content type="html">&lt;p&gt;Trovu is and always will be &lt;a href=&quot;https://github.com/trovu/trovu/blob/master/LICENSE&quot;&gt;free&lt;/a&gt;. To support the work, there are a &lt;a href=&quot;https://trovu.net/docs/#sponsor&quot;&gt;few options that I just added to the docs&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;At the moment, you can:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Become a &lt;a href=&quot;https://github.com/sponsors/trovu&quot;&gt;sponsor on GitHub&lt;/a&gt;. There are various tiers, each with benefits, starting from $2 per month. Your sponsorship will be visible on GitHub, which is also a nice form of support.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://donate.stripe.com/8wM28saBA8jlays7st&quot;&gt;Donate via Stripe&lt;/a&gt;. There are many payment options, including credit cards, Google &amp;amp; Apple Pay, and SEPA direct debit.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If your preferred option is missing, please &lt;a href=&quot;https://trovu.net/docs/users/support/&quot;&gt;reach out&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Sponsorship is also a great way to gauge interest: How many of you like it enough to not only use it but also support it financially? That would be valuable feedback!&lt;/p&gt;
+&lt;p&gt;Indeed, the more sponsors there are, the easier it becomes to work on Trovu full-time.&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Fix der Bahn-Fahrplanauskunft</title>
+		<link href="https://trovu.net/blog/bahn-fix/"/>
+		<updated>2024-07-14T00:00:00Z</updated>
+		<id>https://trovu.net/blog/bahn-fix/</id>
+		<content type="html">&lt;p&gt;Vor einigen Monaten hörte der Shortcut zur Fahrplanauskunft der Deutschen Bahn auf zu funktionieren (&lt;code&gt;db berlin, hamburg&lt;/code&gt;). Grund dafür war, dass die Bahn ihre &lt;a href=&quot;https://reiseauskunft.bahn.de/&quot;&gt;alte Fahrplanauskunft&lt;/a&gt; nun endgültig abgeschaltet hatte.&lt;/p&gt;
+&lt;p&gt;Die neue Auskunft benötigte hingegen als Suchargument für den Ab- oder Ankunftsort nicht mehr nur den Namen (&lt;code&gt;berlin&lt;/code&gt;), sondern auch dessen interne ID (&lt;code&gt;soid=…&lt;/code&gt;). Damit konnte Trovu also nicht mehr direkt auf die Ergebnisseite weiterleiten.&lt;/p&gt;
+&lt;p&gt;Ich hatte in den vergangenen Monaten versucht, &lt;a href=&quot;https://github.com/trovu/trovu/issues/210&quot;&gt;auf vielen Wegen eine Lösung zu finden&lt;/a&gt;, u.a. bei mehreren Stellen der Deutschen Bahn und in einem Bahn-Nutzer-Forum gefragt. Ein direkter Link auf die Ergebnisseite scheint dennoch immer noch nicht möglich zu sein, ohne die ID zu kennen.&lt;/p&gt;
+&lt;p&gt;Trotzdem gibt es jetzt eine (experimentelle) Lösung. Damit diese vollständig funktioniert, sollte auf Eurem Rechner ein sogenanntes Userscript installiert sein. Wie man das macht, ist hier &lt;a href=&quot;https://trovu.net/docs/shortcuts/userscripts/&quot;&gt;in der Dokumentation&lt;/a&gt; beschrieben.&lt;/p&gt;
+&lt;p&gt;Dann könnt Ihr wie gewohnt eine Suchanfrage starten, z.B.:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;db berlin hamburg
+db b,hh,21
+dbn b,hh,8,mo  # Nur Nahverkehrszüge / mit Deutschlandticket
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Diese Seite leitet Euch auf das Suchformular der Fahrplanauskunft, füllt es aber schon mit Euren Suchwerten aus. Das Userscript klickt dann auf den Suchen-Knopf. Wer das Userscript also nicht installiert hat, hat trotzdem etwas davon – er muss nur auf den Knopf selbst klicken.&lt;/p&gt;
+&lt;p&gt;Zwei Punkte bleiben offen – falls Ihr dazu Abhilfe wisst, schreibt es gern &lt;a href=&quot;https://github.com/trovu/trovu/issues/210&quot;&gt;ins Ticket&lt;/a&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Das Userscript ist experimentell: Der Suchen-Knopf ist nicht sofort klickbar, weil offenbar die Seite im Hintergrund noch lädt. Idealerweise löst man das mit &lt;code&gt;window.onload&lt;/code&gt; oder &lt;code&gt;DOMContentLoaded&lt;/code&gt; – allerdings funktionierten diese Methoden nicht. Es ist jetzt mit einem &lt;code&gt;setTimeout&lt;/code&gt; von 4 Sekunden gelöst.&lt;/li&gt;
+&lt;li&gt;Die Bestpreissuche (&lt;code&gt;dbb&lt;/code&gt;) funktioniert immer noch nicht. Ich habe noch nicht den passenden Parameter in der URL gefunden, die beim Klick auf &lt;em&gt;Suchen&lt;/em&gt; sofort die Bestpreise anzeigt.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Schreibt auch sonst gern ins Ticket (oder auf &lt;a href=&quot;https://trovu.net/docs/users/support/&quot;&gt;anderen Wegen&lt;/a&gt;), wie gut der aktualisierte Shortcut für Euch funktioniert.&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>How I Use Trovu (Hannes)</title>
