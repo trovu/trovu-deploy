@@ -18,6 +18,8 @@
 		<id>https://trovu.net/blog/browser-extension/</id>
 		<content type="html">&lt;p&gt;I have created a browser extension for Trovu. With it, you can define a keyboard shortcut, for instance &lt;em&gt;Ctrl-1&lt;/em&gt; which opens a light version of the Trovu homepage, and with your language &amp;amp; country (or Github) settings.&lt;/p&gt;
 &lt;p&gt;It is available for &lt;a href=&quot;https://chromewebstore.google.com/detail/trovunet/iadcllehbnbepkalhgljhdfhjbkgkajo&quot;&gt;Chrome&lt;/a&gt; and &lt;a href=&quot;https://addons.mozilla.org/firefox/addon/trovu/&quot;&gt;Firefox&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Watch here how to install and use it:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://youtu.be/PlC_2GgvZwU&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;&lt;picture&gt;&lt;source type=&quot;image/avif&quot; srcset=&quot;https://trovu.net/blog/img/Q2fI0VLbxG-500.avif 500w&quot; sizes=&quot;&quot;&gt;&lt;source type=&quot;image/webp&quot; srcset=&quot;https://trovu.net/blog/img/Q2fI0VLbxG-500.webp 500w&quot; sizes=&quot;&quot;&gt;&lt;img alt=&quot;Browser extension: Installation &amp;amp; Usage&quot; loading=&quot;lazy&quot; decoding=&quot;async&quot; src=&quot;https://trovu.net/blog/img/Q2fI0VLbxG-500.jpeg&quot; width=&quot;500&quot; height=&quot;422&quot;&gt;&lt;/picture&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;For Safari users on Mac OS, please consider the &lt;a href=&quot;https://trovu.net/blog/docs/users/integration/#raycast&quot;&gt;Raycast extension&lt;/a&gt;.&lt;/p&gt;
 </content>
 	</entry>
