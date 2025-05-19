@@ -4,12 +4,29 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2024-11-16T00:00:00Z</updated>
+	<updated>2025-05-19T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>20 Years of Trovu / FindFind.it / Serchilo</title>
+		<link href="https://trovu.net/blog/20years/"/>
+		<updated>2025-05-19T00:00:00Z</updated>
+		<id>https://trovu.net/blog/20years/</id>
+		<content type="html">&lt;p&gt;Trovu&#39;s first version, named Serchilo, registered its domain on May 20, 2005. This will be 20 years ago tomorrow, on Tuesday. 🎉&lt;/p&gt;
+&lt;p&gt;I decided to celebrate this with a &lt;a href=&quot;https://www.gather.town/&quot;&gt;Gather.town&lt;/a&gt; gathering open to everyone interested.&lt;/p&gt;
+&lt;p&gt;Gather.town is like a combination of a Zoom call and a 2D avatar game. You only need a browser; just click &lt;a href=&quot;http://trovu.net/20years&quot;&gt;the link&lt;/a&gt;, and you will arrive in a 2D room. You can walk around, and when you come close to others, a video chat will open.&lt;/p&gt;
+&lt;p&gt;Come and share your user story with me and others, or ask me anything about Trovu&#39;s future or past. I look forward to meeting you!&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tuesday, May 20, 2025&lt;/li&gt;
+&lt;li&gt;20:00 - 21:00 CEST (1800-1900 UTC)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://trovu.net/20years&quot;&gt;https://trovu.net/20years&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>New: Browser Extension for Chrome &amp; Firefox</title>

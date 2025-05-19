@@ -3,11 +3,179 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Blog | trovu.net</title>
-		<meta name="description" content="News and info around trovu.net">
+		<title>20 Years of Trovu / FindFind.it / Serchilo</title>
+		<meta name="description" content="Come to Celebrate on Tuesday at 8 PM.">
 		<link rel="alternate" href="/blog/feed/" type="application/atom+xml" title="Blog | trovu.net">
 		
-		<style>* { box-sizing: border-box; }
+		<style>/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #272822;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #8292a2;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.token.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #f92672;
+}
+
+.token.boolean,
+.token.number {
+	color: #ae81ff;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #a6e22e;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #e6db74;
+}
+
+.token.keyword {
+	color: #66d9ef;
+}
+
+.token.regex,
+.token.important {
+	color: #fd971f;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+/*
+ * New diff- syntax
+ */
+
+pre[class*="language-diff-"] {
+	--eleventy-code-padding: 1.25em;
+	padding-left: var(--eleventy-code-padding);
+	padding-right: var(--eleventy-code-padding);
+}
+.token.deleted {
+	background-color: hsl(0, 51%, 37%);
+	color: inherit;
+}
+.token.inserted {
+	background-color: hsl(126, 31%, 39%);
+	color: inherit;
+}
+
+/* Make the + and - characters unselectable for copy/paste */
+.token.prefix.unchanged,
+.token.prefix.inserted,
+.token.prefix.deleted {
+	-webkit-user-select: none;
+	user-select: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.token.prefix.inserted,
+.token.prefix.deleted {
+	width: var(--eleventy-code-padding);
+	background-color: rgba(0,0,0,.2);
+}
+
+/* Optional: full-width background color */
+.token.inserted:not(.prefix),
+.token.deleted:not(.prefix) {
+	display: block;
+	margin-left: calc(-1 * var(--eleventy-code-padding));
+	margin-right: calc(-1 * var(--eleventy-code-padding));
+	text-decoration: none; /* override del, ins, mark defaults */
+	color: inherit; /* override del, ins, mark defaults */
+}
+* { box-sizing: border-box; }
 /* Defaults */
 :root {
   --font-family: -apple-system, system-ui, sans-serif;
@@ -337,59 +505,30 @@ img.full-width {
 
 		<main id="skip">
 			
-<h1>Tags</h1>
+<h1>20 Years of Trovu / FindFind.it / Serchilo</h1>
 
-<ul>
-
-	
-	<li><a href="/blog/tags/rss/" class="post-tag">rss</a></li>
-
-	
-	<li><a href="/blog/tags/config/" class="post-tag">config</a></li>
-
-	
-	<li><a href="/blog/tags/mobile/" class="post-tag">mobile</a></li>
-
-	
-	<li><a href="/blog/tags/app/" class="post-tag">app</a></li>
-
-	
-	<li><a href="/blog/tags/video/" class="post-tag">video</a></li>
-
-	
-	<li><a href="/blog/tags/advanced/" class="post-tag">advanced</a></li>
-
-	
-	<li><a href="/blog/tags/short/" class="post-tag">short</a></li>
-
-	
-	<li><a href="/blog/tags/beginner/" class="post-tag">beginner</a></li>
-
-	
-	<li><a href="/blog/tags/testimonial/" class="post-tag">testimonial</a></li>
-
-	
-	<li><a href="/blog/tags/shortcut/" class="post-tag">shortcut</a></li>
-
-	
-	<li><a href="/blog/tags/german/" class="post-tag">german</a></li>
-
-	
-	<li><a href="/blog/tags/sponsor/" class="post-tag">sponsor</a></li>
-
-	
-	<li><a href="/blog/tags/integration/" class="post-tag">integration</a></li>
-
-	
+<ul class="post-metadata">
+	<li><time datetime="2025-05-19">19 May 2025</time></li>
 	<li><a href="/blog/tags/event/" class="post-tag">event</a></li>
-
 </ul>
 
+<p>Trovu's first version, named Serchilo, registered its domain on May 20, 2005. This will be 20 years ago tomorrow, on Tuesday. 🎉</p>
+<p>I decided to celebrate this with a <a href="https://www.gather.town/">Gather.town</a> gathering open to everyone interested.</p>
+<p>Gather.town is like a combination of a Zoom call and a 2D avatar game. You only need a browser; just click <a href="http://trovu.net/20years">the link</a>, and you will arrive in a 2D room. You can walk around, and when you come close to others, a video chat will open.</p>
+<p>Come and share your user story with me and others, or ask me anything about Trovu's future or past. I look forward to meeting you!</p>
+<ul>
+<li>Tuesday, May 20, 2025</li>
+<li>20:00 - 21:00 CEST (1800-1900 UTC)</li>
+<li><a href="http://trovu.net/20years">https://trovu.net/20years</a></li>
+</ul>
+
+<ul class="links-nextprev"><li>Previous: <a href="/blog/browser-extension/">New: Browser Extension for Chrome &amp; Firefox</a></li>
+</ul>
 
 		</main>
 
 		<footer></footer>
 
-		<!-- Current page: /blog/tags/ -->
+		<!-- Current page: /blog/20years/ -->
 	</body>
 </html>
