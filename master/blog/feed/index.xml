@@ -4,12 +4,37 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2025-05-19T00:00:00Z</updated>
+	<updated>2025-05-21T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>Story of Trovu: The Startpage Generator</title>
+		<link href="https://trovu.net/blog/startpage-generator/"/>
+		<updated>2025-05-21T00:00:00Z</updated>
+		<id>https://trovu.net/blog/startpage-generator/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;This article was published before in German on &lt;a href=&quot;https://techniktagebuch.tumblr.com/post/752163378352504832/2001&quot;&gt;Techniktagebuch&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;A few days ago, Kilian wrote &lt;a href=&quot;https://techniktagebuch.tumblr.com/post/749989061656182784/seit-2007&quot;&gt;his usergraphy&lt;/a&gt; about &lt;a href=&quot;http://trovu.net/&quot;&gt;trovu.net&lt;/a&gt;. As its developer, I’d now like to say something about its origin and its predecessor.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;2001.&lt;/strong&gt; Although DSL already exists, the internet is still slow in some places. Our shared flat has the bad luck of being located in the fiber-optic &amp;quot;valley of the clueless&amp;quot; in Berlin-Friedrichshain (South Kiez): the most modern lines were laid there very early on, through which ultra-fast internet would someday be available — but at that point, no provider offered service over them yet, and we no longer had the copper cables required for DSL.&lt;/p&gt;
+&lt;p&gt;So we’re online via ISDN. With six people, that can get slow, so — like in modem times — I’m looking for every possible optimization.&lt;/p&gt;
+&lt;p&gt;I notice that I always need two steps for Google searches and GMX logins:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;one to open the homepage with the search or login form,&lt;/li&gt;
+&lt;li&gt;and another to load the results page after submitting the form.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;What does work, though: I can define a homepage in the browser. When I open a new window, it loads that page first.&lt;/p&gt;
+&lt;p&gt;So I could set Google or GMX as my homepage — but only one of them. And even that one often reloads!&lt;/p&gt;
+&lt;p&gt;And so &lt;a href=&quot;https://web.archive.org/web/20050205115012/http://www.mstart.de/&quot;&gt;mstart.de&lt;/a&gt; is born, a startpage generator: I can configure once what I want — Google, Altavista, dmoz, GMX [1] — then it generates a page with all the forms, and I can even save it locally.&lt;/p&gt;
+&lt;p&gt;The nice thing is that this works without a user database (an approach I would revisit almost 20 years later with trovu.net): users click together the forms they want, which generates a URL with many GET parameters (like &lt;code&gt;mstart.de/?google=1&amp;amp;gmx=1&amp;amp;…&lt;/code&gt;), and that information is enough for the PHP script to generate a personal homepage.&lt;/p&gt;
+&lt;p&gt;With mstart.de, I now have all my essential search forms at hand, no extra load time, neatly stacked on one page, and I can jump between them with TAB or mouse and start searching right away. A great improvement.&lt;/p&gt;
+&lt;p&gt;In the following months and years, I continue using my homepage — and eventually wonder: pressing TAB a few times or clicking the mouse just to get to the right form — couldn’t that be easier?&lt;/p&gt;
+&lt;p&gt;That’s when the idea for &lt;strong&gt;Serchilo&lt;/strong&gt; begins to take root — which I’ll write about in my next article.&lt;/p&gt;
+&lt;p&gt;[1] &lt;em&gt;Yes, offering a GMX login and telling users to enter their email password on our site was, of course, not a good idea from a security perspective.&lt;/em&gt;&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>20 Years of Trovu / FindFind.it / Serchilo</title>
