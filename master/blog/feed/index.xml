@@ -4,12 +4,48 @@
 	<subtitle>News and info around trovu.net</subtitle>
 	<link href="https://trovu.net/blog/feed/index.xml" rel="self"/>
 	<link href="https://trovu.net/blog/"/>
-	<updated>2025-05-21T00:00:00Z</updated>
+	<updated>2025-05-22T00:00:00Z</updated>
 	<id>https://trovu.net/blog/</id>
 	<author>
 		<name>Georg Jähnig</name>
 		<email>georg@trovu.net</email>
 	</author>
+	
+	<entry>
+		<title>Story of Trovu: From Generated Forms to the Command Line</title>
+		<link href="https://trovu.net/blog/form-to-cmdline/"/>
+		<updated>2025-05-22T00:00:00Z</updated>
+		<id>https://trovu.net/blog/form-to-cmdline/</id>
+		<content type="html">&lt;p&gt;&lt;em&gt;This article was published before in German on &lt;a href=&quot;https://techniktagebuch.tumblr.com/post/752527931803418624/2005&quot;&gt;Techniktagebuch&lt;/a&gt;.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In my &lt;a href=&quot;https://trovu.net/blog/startpage-generator&quot;&gt;previous article&lt;/a&gt;, I wrote about mstart.de, one of several predecessors of (as of 2024, the time of writing) today’s &lt;a href=&quot;https://trovu.net/&quot;&gt;trovu.net&lt;/a&gt;, which Kilian &lt;a href=&quot;https://techniktagebuch.tumblr.com/post/749989061656182784/seit-2007&quot;&gt;previously described from a user’s perspective&lt;/a&gt;. This is where the story continues: how a homepage generator turned into a command line for the web.&lt;/p&gt;
+&lt;p&gt;With mstart, I had collected all my frequently used search forms on one (locally downloaded) web page. To search Google, I just had to click in the appropriate field; Infoseek and stock searches were also easily accessible. But I still needed several clicks or keystrokes, and due to space limitations, only a limited number of services could fit.&lt;/p&gt;
+&lt;p&gt;At the same time, I knew a great feature from the &lt;a href=&quot;https://de.wikipedia.org/wiki/Opera_%28Browser%29&quot;&gt;Opera browser&lt;/a&gt;: assigning shortcuts for specific web searches. So I could set “g” for Google and simply type &lt;code&gt;g berlin&lt;/code&gt; to get Google’s search results for “berlin.”&lt;/p&gt;
+&lt;p&gt;What didn’t work, though: defining a shortcut with multiple arguments — for example, having &lt;code&gt;db Berlin, Hamburg&lt;/code&gt; open the Deutsche Bahn connection search. Nor could I easily use my own shortcuts on another computer (I’d have to migrate my browser config) or access other users’ shortcuts and maintain them collaboratively.&lt;/p&gt;
+&lt;p&gt;And that’s exactly why I developed &lt;strong&gt;Serchilo&lt;/strong&gt; in 2005: There’s just one input field, and I can type commands like &lt;code&gt;g berlin&lt;/code&gt;, but also &lt;code&gt;db berlin hamburg&lt;/code&gt; — and it takes me directly to the appropriate results page. The shortcut database is stored online: all shortcuts are available on any new computer — I just need to visit &lt;a href=&quot;http://serchilo.net&quot;&gt;serchilo.net&lt;/a&gt; (or set it as the browser’s default search engine).&lt;/p&gt;
+&lt;p&gt;The name, by the way, comes from &lt;a href=&quot;https://de.wikipedia.org/wiki/Esperanto&quot;&gt;Esperanto&lt;/a&gt; (meaning “search tool”), due to my (then and still ongoing) enthusiasm for the language: learning it after English and French in school is like discovering Python when you’ve only known C++.&lt;/p&gt;
+&lt;p&gt;I wasn’t the only one with the command-line idea: alternatives included YubNub, Yeah Way, Yahoo Open Shortcuts, Sugarcodes, Dozomo, and DuckDuckGo Bangs.&lt;/p&gt;
+&lt;p&gt;As a database and interface for managing shortcuts, I used &lt;a href=&quot;https://de.wikipedia.org/wiki/MediaWiki&quot;&gt;MediaWiki&lt;/a&gt; (the same platform powering Wikipedia at the time): it already had user management and version control built-in. However, creating a new shortcut was quite complex: each required its own wiki page, and initially, you even needed to know &lt;a href=&quot;https://de.wikipedia.org/wiki/Regul%C3%A4rer_Ausdruck&quot;&gt;regular expressions&lt;/a&gt;. Here’s what the Google command looked like, for example:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;query: /^g([&#92;w]{2})? (.*)$/
+url: http://www.google.com/search?hl=$subdomain&amp;amp;lr=lang_$1&amp;amp;q=$2&amp;amp;ie=utf-8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That was probably a bottleneck at first, accessible mainly to programmers — but the Serchilo way of searching already fit their style.&lt;/p&gt;
+&lt;p&gt;Over the next nearly 20 years, I kept working on it — it became my main hobby project. Creating new shortcuts got easier, user-specific commands became possible, internationalization was added (a German user might want a different Wikipedia than a French one), and eventually there was even a Firefox extension and Android app.&lt;/p&gt;
+&lt;p&gt;Serchilo became my sandbox for experimenting with new technologies:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;After MediaWiki, I reimplemented it in &lt;a href=&quot;https://de.wikipedia.org/wiki/Ruby_on_Rails&quot;&gt;Ruby on Rails&lt;/a&gt; in 2011 (but never launched it live — I didn’t end up liking it).&lt;/li&gt;
+&lt;li&gt;In 2012, I moved to &lt;a href=&quot;https://de.wikipedia.org/wiki/Drupal&quot;&gt;Drupal&lt;/a&gt;, because that’s what my freelancing friends used — which I wanted to try too.&lt;/li&gt;
+&lt;li&gt;In 2014, I built it again in Drupal, but better, with everything I had learned — and &lt;a href=&quot;https://github.com/georgjaehnig/serchilo-drupal&quot;&gt;open-sourced it&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In 2015, I also renamed it to &lt;strong&gt;FindFind.it&lt;/strong&gt;, to have something easier to spell and remember — but I never really liked the name.&lt;/p&gt;
+&lt;p&gt;Looking back, there was a lot of &lt;a href=&quot;https://en.wikipedia.org/wiki/Shiny_object_syndrome&quot;&gt;Shiny Object Syndrome&lt;/a&gt; and unfortunately less user communication: some changes confused users, usage numbers stagnated, and only later did I get into the habit of responding quickly to feedback.&lt;/p&gt;
+&lt;p&gt;Eventually, a sense of responsibility also emerged: for many users, they told me, it had become an essential part of their browser setup — they couldn’t use the internet without Serchilo. So shutting it down was never an option. Making it open source was also motivated by the idea that it could survive without me.&lt;/p&gt;
+&lt;p&gt;One change, though, had to happen: all user search queries were going through my server — and at some point, I no longer found that acceptable from a privacy perspective.&lt;/p&gt;
+&lt;p&gt;Interestingly, in 2018 I learned that parameters can also be sent after the hash in a URL (like &lt;code&gt;example.com/#query=search&lt;/code&gt;) — and that they are processed only locally.&lt;/p&gt;
+&lt;p&gt;And so the idea for today&#39;s &lt;strong&gt;trovu.net&lt;/strong&gt; was born — which I’ll cover in the next and final article.&lt;/p&gt;
+</content>
+	</entry>
 	
 	<entry>
 		<title>Story of Trovu: The Startpage Generator</title>
