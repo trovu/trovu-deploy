@@ -590,17 +590,17 @@ img.full-width {
 	</url>
 	
 	<url>
-		<loc>https://trovu.net/blog/tags/event/</loc>
-		<lastmod>2026-02-10</lastmod>
-	</url>
-	
-	<url>
 		<loc>https://trovu.net/blog/tags/shortcut/</loc>
 		<lastmod>2026-02-10</lastmod>
 	</url>
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/german/</loc>
+		<lastmod>2026-02-10</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/event/</loc>
 		<lastmod>2026-02-10</lastmod>
 	</url>
 	
