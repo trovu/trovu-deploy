@@ -1,0 +1,1339 @@
+# [trovu.net](https://trovu.net/) – Web shortcuts: social, private, free.
+
+_by [Georg Jähnig](https://github.com/georgjaehnig/) & [contributors](https://github.com/trovu/trovu/graphs/contributors)_
+
+Search 1000+ websites in a command-line way, with
+
+- [curated](https://trovu.net/docs/editors/) and [personal shortcuts](https://trovu.net/docs/users/advanced/),
+- organized by [namespaces](https://trovu.net/docs/shortcuts/namespaces/),
+- allowing [multiple and typed arguments](https://trovu.net/docs/shortcuts/url/),
+- with [maximum privacy](https://trovu.net/docs/privacy/).
+
+It's like [DuckDuckGo bangs](https://duckduckgo.com/bangs), but on steroids. And it's [free](https://github.com/trovu/trovu/blob/master/LICENSE).
+
+Use it from
+
+- your [browser](https://trovu.net/docs/users/integration)
+- [smartphone](https://trovu.net/docs/users/integration#android), or
+- [Raycast](https://trovu.net/docs/users/integration#raycast)
+
+There is also a [video summarizing Trovu in 30 seconds](https://www.youtube.com/watch?v=gOUNhCion9M).
+
+## Examples
+
+### Web search
+
+- [`g berlin`](https://trovu.net/process/index.html#query=g+berlin) – Search Google for Berlin
+- [`w berlin`](https://trovu.net/process/index.html#query=w+berlin) – Go to the Wikipedia article about Berlin
+- [`fr.w berlin`](https://trovu.net/process/index.html#query=fr.w+berlin) – Go to the French Wikipedia article about Berlin
+
+### Travel
+
+- [`gm berlin`](https://trovu.net/process/index.html#query=gm+berlin) – Open Google Maps with Berlin
+- [`gd london, liverpool`](https://trovu.net/process/index.html#query=gd+london%2Cliverpool) – Search for a route on Google Directions from London to Liverpool
+- [`gfl ber, ibiza, fr, 28`](https://trovu.net/process/index.html#query=gfl+ber%2Cibiza%2Cfr%2C28) – Search on Google Flights for a flight from Berlin to Ibiza, leaving next Friday, returning on the 28th
+- [`gfl1 ber, lpa, 1`](https://trovu.net/process/index.html#query=gfl1+ber%2Clpa%2C1) - search one-way flights with Google from Berlin to Las Palmas, on the first of next month
+- [`bkg hh, 1, 3`](https://trovu.net/process/index.html#country=de&language=en&query=bkg+hh%2C1%2C3) - search accommodation on Booking.com in Hamburg from first to the third of next month
+- [`wg berlin`](https://trovu.net/process/index.html#query=wg+berlin) – Search Wikipedia for all mentions of "berlin" via Google
+
+### Video
+
+- [`yt cats`](https://trovu.net/process/index.html#query=yt+cats) – Search Youtube for `cats`
+- [`gv cats`](https://trovu.net/process/index.html#query=gv+cats) – Search Google Video for `cats`
+- [`tik cats`](https://trovu.net/process/index.html#query=tik+cats) – Search TikTok for `cats`
+- [`yt cats`](https://trovu.net/process/index.html#query=ytd+cats) – Search Youtube for `cats`, sorted by date
+
+### Programming
+
+- [`php strlen`](https://trovu.net/process/index.html#query=php+strlencsv) – Open PHP docs for `strlen()`
+- [`npm csv`](https://trovu.net/process/index.html#query=npm+csv) – Search the Node Package Manager for modules projects about CSV
+
+## Full raw data
+
+All shortcuts can be found in the [data.json](https://trovu.net/data.json).
+
+## Links
+
+to Trovu profiles around the web:
+
+- [Facebook](https://facebook.com/trovu.net)
+- [GitHub](https://github.com/trovu)
+- [TikTok](https://www.tiktok.com/@trovu.net)
+- [X (Twitter)](https://twitter.com/trovu_net)
+- [Youtube](https://www.youtube.com/@trovu_net)
+
+## Sponsor
+
+Trovu will always be [free](https://github.com/trovu/trovu/blob/master/LICENSE). If you'd like to support the work, you can:
+
+- Become a sponsor on [GitHub](https://github.com/sponsors/trovu). There are various tiers with benefits, starting from $2 per month, and your sponsorship will be visible on the GitHub sponsor page (which is also a nice form of support).
+
+## Legacy
+
+Trovu is the successor of [Serchilo](https://github.com/georgjaehnig/serchilo-drupal) / [FindFind.it](https://www.findfind.it/). Read about the [differences](https://trovu.net/docs/legacy/differences/).
+
+## Read more
+
+Follow the outline of the [Table of Contents](https://trovu.net/docs/). Feel free to ask for [support](https://trovu.net/docs/users/support/).
+# Privacy Policy
+
+Trovu does not log your personal information.
+
+In particular:
+
+-   We do not record IP addresses.
+-   We do not record search queries.
+-   We do not serve cookies.
+
+Your search queries are not even sent to the Trovu server;
+the entire processing happens in your browser.
+
+## How a Query is Processed
+
+Every query is attempted to be matched with a shortcut.
+Shortcuts are organized by [Namespaces](shortcuts/namespaces.md):
+Each shortcut belongs exactly to one namespace.
+
+### Namespace Setting
+
+When calling Trovu without query parameters, three default namespaces will be set based on the browser's language settings.
+For instance, if the browser's language is `de-DE`, these namespaces and their shortcut files will be used:
+
+-   [o.yml](https://github.com/trovu/trovu/tree/master/data/shortcuts/o.yml) – planet namespace
+-   [de.yml](https://github.com/trovu/trovu/tree/master/data/shortcuts/de.yml) – German language namespace
+-   [.de.yml](https://github.com/trovu/trovu/tree/master/data/shortcuts/.de.yml) – Germany namespace
+
+### Processing a Query
+
+Let's look at the processing of a query:
+
+1. A query comes in, e.g., `g foobar`.
+2. The current namespace setting is `o,de,.de`.
+3. Given the namespaces, all the shortcuts are fetched from a [precompiled JSON file](/data.json) (based on the [data in the GitHub repo](https://github.com/trovu/trovu/tree/master/data/shortcuts)) into a JavaScript variable in the client.
+    - The `fetch()` call also checks if the JSON is already in the browser cache, and only requests it from remote if is not cached yet.
+    - To reload the shortcuts, use the `reload` command (see below).
+4. The query is parsed – in the client by JavaScript – into
+    - keyword: `g`
+    - argument: `foobar`
+5. Based on the query and the namespace settings, the loaded shortcuts are searched whether they match a query with the keyword `g` and one argument, i.e., if they contain a shortcut keyed with `g 1`.
+6. We find two matches:
+    - one in [o](https://github.com/trovu/trovu/tree/master/data/shortcuts/o.yml), pointing to `google.com`
+    - and one in [.de](https://github.com/trovu/trovu/tree/master/data/shortcuts/.de.yml), pointing to `google.de`
+7. From the found matches, the results are evaluated in namespace order.
+8. Since namespace `.de` has higher priority than `o`, its URL is used for further processing
+    - `https://www.google.de/search?hl=<$language>&q=<query>&ie=utf-8`
+9. The `<$language>` placeholder is replaced with the variable `de`.
+10. The `<query>` placeholder is replaced with the query argument `foobar`.
+11. A redirect to the URL is made.
+
+### Reloading Shortcuts
+
+Since shortcuts are cached in the browser cache, you may want to reload them once they are updated.
+Do so by
+
+-   either prefixing a query: `reload:g foobar`
+-   or only calling `reload`.
+# Alternatives
+
+Projects similar to Trovu.
+
+## [Yubnub](https://yubnub.org/)
+
+- It's also [OpenSource](https://github.com/JonathanAquino/yubnub), MIT license.
+- No custom (personal) shortcuts are possible.
+- Multiple arguments need more typing (-optionname argument)
+- English-centric: Dictionaries only from/to English. Trovu solves this with [namespaces](shortcuts/namespaces.md).
+- Yubnub processes queries on the server (so you share all your searches with them). Trovu [processes entirely in your browser](privacy.md).
+
+## [DuckDuckGo](https://duckduckgo.com/)
+
+- Is a full web search engine
+- but also offers so-called [!bangs](https://duckduckgo.com/bangs)
+- Those bangs can only take 1 argument.
+- To add or edit them, one must message their support.
+# General
+
+## Prerequisites
+
+- NodeJS [version as stated here](https://github.com/trovu/trovu/blob/master/.nvmrc) (`node-version:`)
+    - [How to install a specific version](https://chatgpt.com/share/ef365047-6653-48de-85b1-f7a4565ebfac)
+- npm (correct version should be automatically installed by NodeJS)
+
+## Configuration
+
+You can override the [default configuration](https://github.com/trovu/trovu/blob/master/trovu.config.default.yml) in `trovu.config.default.yml` by placing a `trovu.config.yml` next to it, and overriding the values you want to set differently for your instance.
+
+For example, if your local Trovu shall have additional (or different) shortcuts available by default, you can create a new [namespace](../shortcuts/namespaces.md) file `/data/shortcuts/foo.yml`, and then set `trovu.config.yml` to
+
+```yaml
+namespaces:
+    - o
+    - <$language>
+    - .<$country>
+    - foo
+```
+
+Also, if you don't want to build the `/docs` and the `/blog`, and instead link to the ones on trovu.net, adjust the URLs to:
+
+```yaml
+url:
+    blog: https://trovu.net/blog/
+    docs: https://trovu.net/docs/
+```
+
+## Installation
+
+For the minimal installation, run:
+
+```bash
+git clone https://github.com/trovu/trovu.git
+cd trovu
+npm clean-install      # Install dependencies
+npm run build          # Build the website including data
+npm run dev-server     # Run the local development server
+```
+
+For building more, like the blog and the docs, have a look on the [GitHub workflow](https://github.com/trovu/trovu/blob/master/.github/workflows/deploy.yml).
+
+Now, open the displayed URL of the local server in your browser. You should see the Trovu website.
+
+## Testing
+
+If you made changes, you can run automated tests with
+
+```bash
+npm run test
+```
+
+For more test-related commands, run
+
+```bash
+npm run
+```
+
+## Add custom shortcuts
+
+If you want to add custom shortcuts to your local installation (that shall be available as [site namespaces](../shortcuts/namespaces.md)), simply put one (or more) YAML files into [/data/shortcuts/](https://github.com/trovu/trovu/tree/master/data/shortcuts). Then, run `npm run build` again.
+
+## Use Local Installation
+
+If you prefer a local installation over the use of the public version [trovu.net](https://trovu.net/), you can [set your local Trovu version as your default search engine](../users/integration.md) (just use your web server's domain or your localhost as its domain).
+# Editors
+
+You are welcome to contribute to Trovu [shortcuts](../shortcuts/namespaces.md), [cities](../shortcuts/urls.md#city), [code](https://github.com/trovu/trovu) and more.
+
+## Edit directly or fork + pull request
+
+Members of the [editors](https://github.com/orgs/trovu/teams/editors) team can edit directly the [Trovu repo](https://github.com/trovu/trovu). Others please fork and edit it, and create a pull request.
+
+## Contribute shortcuts
+
+Shortcuts are part of the [/data](https://github.com/trovu/trovu/tree/master/data) subdirectory. Add shortcuts to a matching [namespace](../shortcuts/namespaces.md), following the [content policy](policy.md).
+
+## Contribute cities
+
+Also, city abbreviations are part of the [/data](https://github.com/trovu/trovu/tree/master/data) subdirectory, organized by countries. You are welcome to add abbreviations for new countries. They should follow a system or pattern well-known to the country's citizens (e.g. [vehicle registration plates](https://en.wikipedia.org/wiki/Vehicle_registration_plate) in Germany).
+
+## Contribute documentation
+
+Documentation lives in the [/docs](https://github.com/trovu/trovu/tree/master/docs) subdirectory. You are welcome to make any improvements.
+
+## Deploy via GitHub Actions
+
+For every contribution to the monorepo, be it data (shortcuts) or documentation, be aware that it needs to be deployed. This happens automatically after changes to the `master` branch.
+
+You can follow the execution of the action execution on [GitHub Actions](https://github.com/trovu/trovu/actions). Seconds after it finished successfully, the changes should be published on [trovu.net](https://trovu.net/)
+
+During deployment, shortcuts and other contents from the [/data](https://github.com/trovu/trovu/tree/master/data) directory get compiled into [trovu.net/data.json](https://trovu.net/data.json). This is your first place to check if anything does not work as expected.
+
+Before deployment, the current build is pushed to [trovu/trovu-deploy](https://github.com/trovu/trovu-deploy). This is the second place to check if your change is missing.
+# Content policy
+
+This policy is for our **[curated shortcuts](https://github.com/trovu/trovu/tree/master/data/shortcuts)**, and how they should look like.
+
+Note that you can [add any shortcut to your user repository](../users/advanced.md#personal-shortcuts), completely ignoring this policy.
+
+_Caveat: You might note that many curated shortcuts at this moment don't match the listed criteria. This is because Trovu's first version (named **Serchilo**) has existed since 2005, with user-created shortcuts available since 2007, and this policy started to be written in 2023. Thus, the goal is to finally define some standards and then slowly applying them, with as little as possible breaking of existing user habits._
+
+## Shortcuts
+
+### Avoid pure bookmark shortcuts
+
+Bookmark shortcuts refer to shortcuts with 0 arguments, e.g.:
+
+    g 0:
+      url: https://www.google.com/search?hl=<$language>
+      title: Google Web Homepage
+
+You use it by simply entering `g` and hitting Enter.
+
+This shortcut to the Google Web Homepage is fine because it is not alone: There is also a shortcut for the Google Web search `g 1`.
+
+But a bookmark shortcut that has no corresponding 1-or-more-argument shortcut should be avoided. You may put them into [your user shortcuts](../users/advanced.md#personal-shortcuts).
+
+## Namespaces
+
+If a shortcut is relevant only for a certain country, add it to its country [namespace](../shortcuts/namespaces.md) (they start with a dot, e.g. `.us`, `.de`).
+
+Language-related shortcuts go into their language namespace (e.g. `en`, `de`).
+
+If a website has different language versions, create a shortcut for each language in its language namespace, and for the English version, in the planet namespace (`o`).
+
+If a website is only in English, create the shortcut in `o`.
+
+## Keywords
+
+### Avoid common words
+
+Many users use Trovu with a [default keyword](../users/advanced.md#default-keyword): They can enter any query, and if it's not matched with a shortcut, the default keyword will be used – often it refers to Google.
+
+Thus, such users often perform their Google searches without `g` – because it will be applied automatically if not shortcut is found.
+
+However, if there _is_ a shortcut with a keyword `apple` or `app`, this breaks.
+
+This is why we want to avoid such common words as keywords:
+
+- Instead of `app`, we use `gpa` (_Google Play App search_), and
+- instead of `apple`, we use `apl` (omitting the vowels, shorter)
+
+### Abbreviate properly
+
+The rule of thumb: The more popular the website, the shorter may be its keyword. If we abbreviate, here are the rules.
+
+### 1-letter keywords: Only for top 50
+
+The English alphabet has 26 Latin letters. Keyword of only 1 letter should therefore be only applied if the website belongs to the top 50 in visitor's count of the world (namespace `o`), to minimize the likelihood of clashes.
+
+If the shortcut shall belong to a language or country namespace, then its website should be top 50 of that country.
+
+### 2-letter keywords: Language codes have priority
+
+If a two-letter combination corresponds to an [ISO-639-1 language code](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes#Table_of_all_possible_two_letter_codes) (e.g., `en`, `fr`, `de`), the keyword should be treated as a dictionary for that language.
+
+It may only be used as a keyword for other purposes if it does not match a language code."
+
+### Abbreviate by first sounds of words and/or syllables
+
+A good keyword shall be easily memorable, and also not a word itself. We try to achieve this by taking the first letters of the website's name (if it contains multiple words) or syllables. For example:
+
+- `fb` for _FaceBook_
+- `db` for _Deutsche Bahn_
+- `ad` for _AnDroid_
+- `bmf` for _Besser MitFahren_
+- `bmn` for _BugMeNot_
+# Differences to Serchilo and FindFind.it
+
+[Trovu](https://trovu.net/) is the official successor of Serchilo / [FindFind.it](https://www.findfind.it/).
+
+If you know FindFind.it, then you almost know how Trovu works. However, a few things are different:
+
+-   **Main difference:** search queries are not sent out to the server, all processing is done in the client.
+    -   This means much more privacy.
+-   The placeholder syntax [changed](../shortcuts/url.md), from `{%query}` to `<query>`.
+-   Country namespaces are not 3-letter but 2-letter-codes, prefixed with a dot. So they are much easier to remember, as they (mostly) follow top-level domains. For example:
+    -   `.de` is the namespace for Germany (not `deu`),
+    -   `.pl`is the namespace for Poland (not `pol`)
+-   There are now also [namespaces](../shortcuts/namespaces.md) for dictionaries, making it easy for [advanced users](../users/advanced.md) set preferred dictionaries.
+-   Trovu makes much more use of [typed arguments](../shortcuts/url.md), like `city` and `date`. So many Google Maps shortcuts like `gmb brandenburger tor` (for Berlin) could be replaced with a single `gm b,brandenburger tor` (where `b` can be any city abbreviation in Germany)
+-   An [include](../shortcuts/include.md) functionality was added where shortcuts can share settings with other shortcuts, and where [advanced users](../users/advanced.md) can easily override keywords for themselves while style benefitting from the curated URL of a shorcut.
+-   Instead in a server database, shortcuts are kept in [YAML files](../shortcuts/namespaces.md), in a [subdirectory](https://github.com/trovu/trovu/tree/master/data/). There, we can stand on Git's shoulders to keep track of shortcut additions and changes. Pull and merge requests are welcome.
+-   Once you open Trovu, all shortcuts are loaded into your client and remain cached there, (until you [reload](../users/troubleshooting.md#i-edited-a-shortcut-but-it-has-no-effect)). So even if the Trovu server is down, you can keep using Trovu.
+-   If you have personal **user shortcuts**, for Trovu you host them on [your GitHub account, or on your web server](../users/advanced.md).
+
+Read more about how [migrate from FindFind.it to Trovu](migrate.md).
+# [Berlin Hack & Tell](https://bhnt.c-base.org/2024-05-28-no96-portal-hacks)
+
+-   successor of Serchilo and FindFind.it
+-   allows to search the web as if from your command line
+-   `es arbol`
+-   change language
+-   `es arbol`
+-   `db berlin, hamburg`
+-   `db b,hh,10,fr`
+    -   typed arguments
+-   `gfl1 ber,ibiza,fr`
+    -   suggestions also search in titles
+-   entire processing locally,
+    -   data in [YAML files](https://github.com/trovu/trovu/blob/master/data/shortcuts/.de.yml#L706)
+-   [Opensearch plugin, PWA, (Rayscast)](https://trovu.net/docs/users/integration/)
+-   customizable via your [GitHub repo](https://github.com/georgjaehnig/trovu-data-user/)
+-   free software: AGPL
+# Presentations
+
+- 2019-03: FOSSASIA: [pdf](/pdf/fossasia.pdf)
+- 2024-05: [Polyglot Gathering](pg.md)
+- 2024-05-28: [BHNT](bhnt.md)
+# [Polygot Gathering](https://www.polyglotgathering.com/2024/en/)
+
+-   es arbol
+-   Change language and country
+-   pl.es arbol
+-   frv baum
+-   pick tag "language"
+-   arch -> click on example
+-   gfl1 prg,ber
+-   gd b,hh
+-   everything in the browser
+-   user shortcuts
+-   Client
+-   Open source, add shortcuts, give feedback
+# shortcut.deprecated
+
+Let's assume a keyword of a shortcut has be renamed. We want to inform the users about the change when the use the old keyword. This is how it is done:
+
+```yaml
+oldkeyword 1:
+    deprecated:
+        alternative:
+            query: newkeyword <1>
+        created: '2023-01-01'
+newkeyword 1:
+    url: http://www.example.com/?q=<query>
+    # ... and other attributes
+```
+
+In `query:`, make sure to only use placeholders like `<1>`, `<2>`. They will be filled with the user's arguments in their order.
+
+If the user now calls a query e.g. `oldkeyword foo`, a status message about the deprecation will be shown, and the input field will be prefilled with the correct query. So the user only needs to click the submit button to proceed.
+
+The `created:` attribute is only an information. We can use it if at some later point, we want to use `oldkeyword` again (e.g. for another shortcut), and check, if enough time has passed already.
+# shortcut.include
+
+Includes allow to use the same shortcut properties in different shortcuts. They are heavily used for dictionary shortcuts.
+
+## Simple includes
+
+Includes are defined with `include:`. For example, [dcm](https://github.com/trovu/trovu/tree/master/data/shortcuts/dcm.yml) contains:
+
+```yaml
+de-en 1:
+    url: https://www.dict.com/german-english/<word>
+    title: German-English (dict.com)
+    tags:
+        - dictionary
+        - english
+        - german
+        - language
+    examples:
+        arguments: baum
+        description: English translation of "baum"
+        arguments: tree
+        description: German translation of "tree"
+```
+
+Additionally, there is:
+
+```yaml
+en-de 1:
+    title: Englisch-Deutsch (dict.com)
+    include: de-en 1
+    examples:
+        arguments: tree
+        description: Deutsch-Übersetzung von "tree"
+        arguments: baum
+        description: Englisch-Übersetzung von "baum"
+```
+
+Both are separate shortcuts and can be called individually. But `en-de 1` includes from `de-en 1` all properties that it does not define itself. In this case, these are `url:` and `tags:`.
+
+This way, the shortcut URL needs to be maintained only once.
+
+## Includes with variables
+
+`include.key` may also use variables:
+
+```yaml
+en 1:
+    include: en-<$language> 1
+```
+
+If the language from settings is e.g. `de`, it includes from `en-de 1`. (And if `en-de 1` contains `include:`, it also includes from there, and so on.)
+
+## Includes from another namespace
+
+`include` may also include from another namespace:
+
+```yaml
+en 1:
+    include:
+        key: en 1
+        namespace: leo
+```
+
+This can for example be set in one's user settings, to ensure using leo.org as the dictionary for English, no matter what is used in the site [namespaces](namespaces.md).
+
+## Multiple include propositions
+
+`include:` may instead of only one `key:` (and `namespace:`) also contain several ones. For instance, in [o](https://github.com/trovu/trovu/tree/master/data/shortcuts/o.yml) we have:
+
+```yaml
+ar 1:
+    include:
+        - key: ar 1
+          namespace: ard
+        - key: ar 1
+          namespace: dcm
+        - key: ar 1
+          namespace: bab
+        - key: ar 1
+          namespace: lgs
+        - key: ar 1
+          namespace: rvs
+        - key: ar 1
+          namespace: pka
+```
+
+This shortcut for an Arabic dictionary tries first to include from [ard](https://github.com/trovu/trovu/tree/master/data/shortcuts/ard.yml), the namespace for arabdict.com. And there also exists:
+
+```yaml
+ar 1:
+    include:
+        key: ar-<$language> 1
+```
+
+However, this namespace only contains Arabic dictionaries for a few languages (`de`, `en`, `fr`, `it`, `tr`).
+
+If the user's language is e.g. `pl`, the include process will fail at this point, as there is no `ar-pl 1` in this namespace.
+
+In this case, the process goes back to [o](https://github.com/trovu/trovu/tree/master/data/shortcuts/o.yml) and tries the second entry:
+
+```yaml
+- key: ar 1
+  namespace: dcm
+```
+
+As [dcm](https://github.com/trovu/trovu/tree/master/data/shortcuts/dcm.yml) does contain `ar-pl 1`, this inclusion succeeds, and the Arabic dictionary is taken from dict.com.
+# Shortcuts
+
+Shortcuts are defined in YAML files, organized by [namespaces](namespaces.md). In each file, shortcuts are an associative array, with `KEYWORD ARGUMENT_COUNT` as its key. Keys must be unique.
+
+For the value, there is a short and a long notation possible. Curated shortcuts in `/data` should follow the long notation.
+
+You can find a detailled definition in the public [schema](https://trovu.net/schema/shortcuts.yml).
+
+### Short notation
+
+In the short notation, the [URL](url.md) is directly the value of the shortcut.
+
+This shortcut will match for `examplekeyword` with no arguments:
+
+```yaml
+examplekeyword 0: http://www.example.com/
+```
+
+This shortcut will match for `examplekeyword foo`, so for the same keyword but with one argument:
+
+```yaml
+examplekeyword 1: http://www.example.com/?q=<param1>
+```
+
+And with more arguments: `examplekeyword foo, bar`:
+
+```yaml
+examplekeyword 2: http://www.example.com/?q=<param1>&p=<param2>
+```
+
+### Long notation
+
+In the long notation, further info can be defined:
+
+```yaml
+examplekeyword 2:
+    url: http://www.example.com/?q=<param1>&p=<param2>
+    title: Custom shortcut
+    description: My custom shortcut with the keyword examplekeyword and two arguments.
+    tags:
+        - example
+        - custom
+```
+
+These attributes serve only for informational purposes, they have no effect on which shortcut is matched to a query:
+
+- The `title:` can be any string. It will be shown in the list of shortcuts on the homepage.
+- `description:` can be a longer string. It will be shown in the list of shortcuts when a shortcut is expanded.
+- `tags:` can be a list of labels. See [tags](tags.md) for more.
+- `examples:` can be a list of example usages of the shortcuts:
+- `tests:` can be a list of test calls to check the validity of the shortcut.
+
+#### Examples
+
+```yaml
+examplekeyword 2:
+    ...
+    examples:
+    - arguments: foo, bar
+      description: Search example.com for "foo" and "bar"
+```
+
+An example must have a `description` and, if there are >0 arguments, also an `arguments:` string. For the query of the example call, the arguments will be preceded with the keyword.
+
+Instead of `arguments:`, one can also set a full `query:`. This can be useful for giving an example with an extra namespace, e.g. `query: fr.w berlin`.
+
+#### Tests
+
+Tests are run regularly in the background, to check if shortcuts still work as they did when they were added.
+
+```yaml
+examplekeyword 2:
+    ...
+    tests:
+    - arguments: foo, bar
+      expect: <title>Results for foo, bar</title>
+```
+
+A test must have an `expect:` value that shall be part of the contents of the target webpage. If there are >0 arguments, add also an `arguments:` string.
+
+#### More
+
+The next attributes matter for matching a query:
+
+- [`url:`](url.md)
+- [`include:`](include.md)
+- [`deprecated:`](deprecated.md)
+# Namespaces
+
+Shortcuts are stored in [YAML](https://en.wikipedia.org/wiki/YAML) files, organized by namespaces. They are part of the [/data](https://github.com/trovu/trovu/tree/master/data) subdirectory.
+
+Every shortcut belongs to exactly one namespace. Namespaces allow the same keyword to be used for different shortcuts – according to the user's language, location or personal setup. This comes in handy e.g. for multi-country websites like Amazon:
+
+-   `a shakespeare` shall search Amazon for books from Shakespeare – but Amazon from which country?
+
+Thanks to namespaces, we can have the keyword `a` both
+
+-   in the US country namespace `.us`,
+-   as also in the Germany namespace `.de`
+
+Depending on the country in your settings and thus the namespaces you use, the correct shortcut for Amazon will be picked.
+
+But even more: You can also override shortcuts: For instance, while all other users use the keyword `g` for Google, you might use it for something else – with your user namespace.
+
+Namespaces work well together with [Includes](include.md), especially for dictionaries.
+
+## Namespace types
+
+| Namespace type | Example namespaces                                                                                                                                                      | Naming convention                                                                         | Contains                                         | Example shortcuts                                                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| language       | [de](https://github.com/trovu/trovu/tree/master/data/shortcuts/de.yml), [en](https://github.com/trovu/trovu/tree/master/data/shortcuts/en.yml)                          | 2 chars, by [ISO 639-1](http://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)             | shortcuts related to a particular language       | Merriam-Webster dictionary: `en.mw tree` (from [en](https://github.com/trovu/trovu/tree/master/data/shortcuts/en.yml))                   |
+| country        | [.de](https://github.com/trovu/trovu/tree/master/data/shortcuts/.de.yml), [.us](https://github.com/trovu/trovu/tree/master/data/shortcuts/.us.yml)                      | dot and 2 chars, by [ISO 3166-1 alpha2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) | shortcuts related to a particular country        | Deutsche Bahn Fahrplanauskunft: `.de.db berlin, hamburg` (from [.de](https://github.com/trovu/trovu/tree/master/data/shortcuts/.de.yml)) |
+| dictionary     | [dcm](https://github.com/trovu/trovu/tree/master/data/shortcuts/dcm.yml) (dict.com), [lge](https://github.com/trovu/trovu/tree/master/data/shortcuts/lge.yml) (Linguee) | 3 chars, by their abbreviated name                                                        | shortcuts from a dictionary website              | German-English: `dcm.de-en tree`, `dcm.en-de tree`, `dcm.en-<$language> tree` (using `language` variable from settings)                  |
+| user           | [georgjaehnig](https://github.com/georgjaehnig/trovu-data-user/blob/master/shortcuts.yml)                                                                               | a GitHub username (can be overridden with a custom name)                                  | custom shortcuts created by a user in their repo | Trains from my home station: `db> hamburg`                                                                                               |
+| planet         | [o](https://github.com/trovu/trovu/tree/master/data/shortcuts/o.yml)                                                                                                    | the shape of the planet                                                                   | shortcuts unrelated to a language or country     | Google web search: `g berlin`                                                                                                            |
+
+`language`, `country`, `dictionary` and `o (planet)` are **site namespaces**. They are curated and
+[here to find](https://github.com/trovu/trovu/tree/master/data/shortcuts). (Pull requests are welcome.)
+
+### Dictionary namespaces
+
+Currently, the following dictionary namespaces are defined:
+
+| Namespace | Dictionary                                                  |
+| --------- | ----------------------------------------------------------- |
+| `alm`     | [Online Latein Wörterbuch](https://albertmartin.de/latein/) |
+| `ard`     | [arabdict](https://www.arabdict.com/)                       |
+| `bab`     | [bab.la](https://bab.la/)                                   |
+| `beo`     | [BEOLINGUS](https://dict.tu-chemnitz.de/)                   |
+| `crd`     | [croDict](https://crodict.com/)                             |
+| `dcc`     | [dict.cc](https://dict.cc/)                                 |
+| `dcm`     | [Dictionary.com](https://www.dictionary.com/)               |
+| `deo`     | [Dans-Esperanto ordbog](https://www.vortaro.dk/)            |
+| `dtn`     | [Deutsch-Tuerkisch.net](https://deutsch-tuerkisch.net/)     |
+| `esd`     | [SpanishDictionary.com](https://www.spanishdict.com/)       |
+| `flx`     | [Folkets lexikon](https://folkets-lexikon.csc.kth.se/)      |
+| `hzn`     | [Heinzelnisse](https://www.heinzelnisse.info/)              |
+| `irs`     | [Irishionary.com](https://www.irishionary.com/)             |
+| `leo`     | [leo.org](https://www.leo.org/)                             |
+| `lge`     | [Linguee](https://www.linguee.com/)                         |
+| `lgs`     | [Langenscheidt](https://www.langenscheidt.com/)             |
+| `mdb`     | [MDBG Chinese Dictionary](https://www.mdbg.net/)            |
+| `pka`     | [pauker.at](https://www.pauker.at/)                         |
+| `pns`     | [PONS dictionary](https://pons.com/)                        |
+| `rvs`     | [Reverso](https://www.reverso.net/)                         |
+| `umt`     | [uitmuntend](https://www.uitmuntend.de/)                    |
+| `wdk`     | [Wadoku](https://www.wadoku.de/)                            |
+| `zrg`     | [Zargan](https://www.zargan.com/)                           |
+
+## Uniqueness in a namespace
+
+In a namespace, there can be only one shortcut with the same keyword and the same number of arguments: So in [o](https://github.com/trovu/trovu/tree/master/data/shortcuts/o), there is only one shortcut `g` with one argument, the [Google web search](https://github.com/search?q=repo%3Atrovu%2Ftrovu+path%3A**%2Fo.yml+%2F%5Eg+1%2F&type=code).
+
+## Using namespaces
+
+### Basic
+
+The namespaces you use are derived from your settings (language code and flag next to the burger menu). For instance, having set
+
+-   language: English
+-   country: Unites States
+
+your namespaces will be:
+
+-   `o` (`planet` namespace)
+-   `en` (English language)
+-   `.us` (USA)
+
+### Advanced (with your GitHub account)
+
+Your namespaces are [derived from your config.yml](../users/advanced.md). With your personal configuration, you can use more than 3 namespaces. This can be useful when you like to use shortcuts from multiple languages and countries, e.g. dictionaries or public transport while travelling.
+
+## Priority of namespaces
+
+The lower a namespace is in the `namespaces` list, the higher it's precedence. This is similar to [Object-oriented programming](https://en.wikipedia.org/wiki/Object-oriented_programming), when a method needs to be picked from inheriting classes.
+
+So in the example before, shortcuts from `.us` override those from `en`, and both those from `o`. Overriden shortcuts become _not reachable_.
+
+## Per-call namespace, also overrides `language` or `country`
+
+Let's say you have configured `language=en` but this time, you want to search the German Wikipedia. In this case, call
+
+```
+de.w berlin
+```
+
+So for a single call, you can prefix your query with `NAMESPACE.`. This namespace will then have the highest priority.
+
+If that prefixed namespace happens to be a language or country namespace, it will also override the current language or country.
+
+### Example in detail
+
+#### Settings
+
+Let's assume we use Trovu with these [settings](https://github.com/trovu/trovu-data-user/blob/master/config.yml):
+
+```yaml
+language: en
+country: us
+namespaces:
+    - o
+    - en
+    - .us
+```
+
+#### Query
+
+Now we call this query:
+
+    de.w berlin
+
+Here, we add the namespace [de](https://github.com/trovu/trovu/tree/master/data/shortcuts/de.yml). This means that for this very query
+
+-   the [de](https://github.com/trovu/trovu/tree/master/data/shortcuts/de.yml) namespace is added to the `namespaces` list, with the highest priority.
+-   Also, since `de` is a language, the language setting is changed to `de`.
+
+So this query is now processed as if the settings were:
+
+```yaml
+language: de
+country: us
+namespaces:
+    - o
+    - en
+    - .us
+    - de
+```
+
+#### Result
+
+Instead of the English Wikipedia (that would have been used with `language: en`), the German Wikipedia is used, because `language` is now set to `de`, and the Wikipedia shortcut's URL is defined as `url: https://<$language>.wikipedia.org/...`.
+
+Had another shortcut `w 1` existed in namespace [de](https://github.com/trovu/trovu/tree/master/data/shortcuts/de.yml), then this shortcut would have been called, because we had added these namespaces to the subscribed namespaces, with the highest priority.
+
+## Default language and country
+
+Calling the homepage URL without any namespaces will set the default language and country based on [navigator.language](https://developer.mozilla.org/en-US/docs/Web/API/NavigatorLanguage/language).
+# shortcut.tags
+
+Tags allow for the grouping of shortcuts. Unlike [namespaces](namespaces.md), tags do not affect the precedence of shortcuts.
+
+## Special Tags
+
+However, certain tags will alter the way shortcuts are displayed in suggestions.
+
+### `is-affiliate`
+
+Shortcuts tagged with `is-affiliate` are created in partnership with the destination websites, and we receive a commission when users make purchases through these links, with no extra cost to the users. This process is known as [Affiliate marketing](https://en.wikipedia.org/wiki/Affiliate_marketing).
+
+For example, the Amazon shortcut is an affiliate link: when you use it and make a purchase, Trovu earns a small percentage of the sale.
+
+Affiliate shortcuts enable us to generate revenue without disrupting the user experience.
+
+### `needs-userscript`
+
+To use shortcuts tagged with `needs-userscript`, please ensure that the [userscript](userscripts.md) is installed for them to work correctly.
+# shortcut.url
+
+The `url:` item of a shortcut may contain placeholders. This page is about them.
+
+## Example
+
+Consider for instance the URL of the Google shortcut:
+
+```yaml
+url: https://www.google.com/search?hl=<$language>&q=<query>&ie=utf-8
+```
+
+It contains 2 placeholders: `<query>` and `<$language>`.
+
+## Placeholders
+
+Placeholders are either
+
+- arguments (starting with `<` and ending with `>`): They are replaced with the input from the current query,
+- variables (starting with `<$` and ending with `>`): They are replaced with settings from the current configuration.
+
+The contents of a placeholder follows [YAML Flow Style](https://www.yaml.info/learn/flowstyle.html).
+
+### Argument placeholders
+
+Argument placeholders can be given any name.
+
+| Example                                                          | Will be replaced with                                                                                                                              |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<foobar>`                                                       | argument from query. <br>If there is more than one argument placeholder, their order in URL also defines the expected order in the shortcut query. |
+| `<foobar: {encoding: iso-8859-1}>`                               | ... with encoding specified. See Input encoding below.                                                                                             |
+| `<Datum: {type: date, output: Y-m-d}>`<br>`<Ziel: {type: city}>` | ... with a specified type. See Argument types below.                                                                                               |
+| `<IATA-Code: {transform: uppercase}>`                            | ... with a transformation definition. See [Transforming](#transforming) below.                                                                     |
+
+### Variable placeholders
+
+| Example                   | Will be replaced with                                                                                                                                                       |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<$language>`             | configured language                                                                                                                                                         |
+| `<$now: {output: HH-mm}>` | current date and time, attribute `output` defines the output format which must be based on [dayjs's format](https://day.js.org/docs/en/display/format). Default is `HH-mm`. |
+
+## Input encoding
+
+### iso-8859-1
+
+Encodes the argument as ISO-8859-1.
+
+## Argument types
+
+### _date_
+
+The input will be parsed as a date.
+
+- American and European inputs will be distinguished.
+- An input containing only a number will be assumed as a day of month.
+- A date in the future will be enforced.
+- Also, relative inputs are possible.
+- Weekday abbreviations are understood, too. The language is assumed from the configured language.
+- With the attribute `output`, an output format based on [dayjs's format](https://day.js.org/docs/en/display/format) can be specified. Defaults to YYYY-MM-DD.
+
+| Example input | Example output | Explanation                                                                                     |
+| ------------- | -------------- | ----------------------------------------------------------------------------------------------- |
+| `7.6.`        | `2015-06-07`   | assumes German format                                                                           |
+| `7/6`         | `2015-07-06`   | assumes American format                                                                         |
+| `7`           | `2015-06-07`   | assumes current month & year                                                                    |
+| `1`           | `2015-07-01`   | enforced future date: increases month and even year if computed date would be in past otherwise |
+| `+10`         | `2015-06-17`   | today plus 10 days                                                                              |
+| `-5`          | `2015-06-02`   | today minus 5 days                                                                              |
+| `mo`          | `2015-06-08`   | next Monday                                                                                     |
+
+### _time_
+
+The input will be parsed as a time.
+
+- Hours and minutes can be separated by `.` or `:`.
+- It is allowed to only provide an hour.
+- Relative hours work, too.
+- With the attribute `output`, an output format based on [dayjs's format](https://day.js.org/docs/en/display/format) can be specified. Defaults to `HH:mm`.
+
+| Example input | Example output | Explanation       |
+| ------------- | -------------- | ----------------- |
+| `11.00`       | `11:00`        | Hours and minutes |
+| `11`          | `11:00`        | only hour given   |
+| `+2`          | `13:00`        | 2 hours from now  |
+
+### _city_
+
+The input will be parsed as an abbreviation for a city name, depending on the current setting for `country`. Usually, the mappings are based on the local vehicle registration plates' abbreviations.
+
+| `country` | Example input | Example output |
+| --------- | ------------- | -------------- |
+| `de`      | `hh`          | `Hamburg`      |
+| `pl`      | `dw`          | `Wrocław`      |
+| `ch`      | `be`          | `Bern`         |
+
+The mappings are stored in [/data/types/city](https://github.com/trovu/trovu/tree/master/data/types/city).
+
+## Transforming
+
+Finally, with `<foo: {transform: uppercase}>` the output string can be transformed.
+
+| Property    | Conversion                           | Example input             | Example output      | Explanation                                |
+| ----------- | ------------------------------------ | ------------------------- | ------------------- | ------------------------------------------ |
+| `uppercase` | The output will be uppercased.       | `lpa`                     | `LPA`               | Makes sure all letters are uppercase.      |
+| `lowercase` | The output will be lowercased.       | `Lpa`                     | `lpa`               | Makes sure all letters are lowercase.      |
+| `eo-cx`     | `cx gx hx jx sx ux` to `ĉ ĝ ĥ ĵ ŝ ŭ` | `ehxosxangxo cxiujxauxde` | `eĥoŝanĝo ĉiuĵaŭde` | Converts transcribed Esperanto characters. |
+
+## Filling and submitting with userscripts
+
+If a website does not allow passing arguments via (GET) parameters, a solution can be targetting the search form, and then [letting the fields fill by a userscript](userscripts.md#fill-and-submit).
+This page moved to [/url](url.md).
+# Userscripts
+
+## fill-and-submit
+
+Userscript for autofilling and submitting forms on target websites. This may help when queries cannot be passed by URL. Then one can define inputs by their CSS selectors that shall be filled with URL-passed arguments once the destination website is loaded, and a form button that shall be clicked automatically by JavaScript.
+
+### For users
+
+#### Requirements
+
+-   for Firefox: [Tampermonkey](https://addons.mozilla.org/firefox/addon/tampermonkey/)
+-   for Chrome: [Tampermonkey](https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo)
+    -   Note that there is now a [requirement to enable Developer Mode](https://www.tampermonkey.net/faq.php?locale=en#Q209) in Chrome.
+
+#### Install
+
+1. In your browser, open [https://trovu.net/userscripts/fill-and-submit.user.js](https://trovu.net/userscripts/fill-and-submit.user.js)
+2. If you have installed the requirements before there should be now a dialog opening offering to install the user script.
+3. Install and you are done.
+
+### For shortcut editors
+
+#### Creating a shortcut that use the userscript
+
+The [shortcut URL](url.md) should look like this (line breaks only for clarity):
+
+    https://patentscope.wipo.int/search/en/search.jsf#
+      trovu[fill][%23simpleSearchForm\:fpSearch\:input]=<query>&
+      trovu[submit]=%5Bid%5E%3D%22simpleSearchForm%3AfpSearch%3Aj%22%5D
+
+So to make use of the userscript, add a hash parameter (after a `#`), called `trovu`. It must contain the properties `[fill]` and `[submit]`.
+
+Given the example above, it:
+
+1. calls the URL
+2. fills input field found with CSS selector `#simpleSearchForm:fpSearch:input` with value from `<query>`
+3. submits form with submit button selected by `[id^="simpleSearchForm:fpSearch:j"]`
+
+#### Documentation:
+
+-   `trovu[fill]`: array containing selectors and values
+
+    -   `trovu[fill][selector1]=value1`
+    -   `trovu[fill][selector2]=value2`
+    -   `...`
+
+-   `trovu[submit]`: string with selector of element to click on.
+
+##### Notation: selector string must escape some chars:
+
+-   `:` = `\:`
+-   `.` = `\.`
+-   `#` = `%23`
+
+### For developers
+
+#### Edit and install
+
+-   Edit `src/js/userscripts/fill-and-submit.user.js`
+-   `npm run deploy` will also deploy `fill-and-submit.user.js`.
+# Advanced settings & personal shortcuts
+
+You can create and manage your own user shortcuts and set advanced settings via GitHub, or a self-hosted config file.
+
+There is also this [tutorial video](https://www.youtube.com/watch?v=DA9GjWr4WbY).
+
+## Set up a custom configuration
+
+### Via GitHub (recommended)
+
+1. If you don't have one, [create a GitHub.com account](https://github.com/signup). It is free.
+1. Fork [trovu-data-user](https://github.com/trovu/trovu-data-user) into your own GitHub account.
+1. In there, adjust `config.yml` to your needs, and add your own shortcuts to `shortcuts.yml`. (Both are [YAML files](https://en.wikipedia.org/wiki/YAML).)
+1. Call Trovu with `https://trovu.net/?#github=YOUR_GITHUB_USERNAME`
+
+### Via a self-hosted file
+
+1. Put a file online matching the structure of [config.yml](https://github.com/trovu/trovu-data-user/blob/master/config.yml).
+1. Call Trovu with `https://trovu.net/?#configUrl=URL_TO_YOUR_CONFIG_YML`.
+
+Note that creating your own shortcuts won't work with `github: .`
+
+Instead, you will need to define them within the config file, see [Namespaces](#namespaces).
+
+## Custom configuration
+
+You may adjust `config.yml` to your needs.
+
+### Namespaces
+
+```yaml
+namespaces:
+    - o
+    - en
+    - .us
+    - github: john-doe
+      name: john
+    - github: .
+      name: my
+    - url: https://example.com/shortcuts.yml
+      name: mydomain
+```
+
+This is an array of the [namespaces](../shortcuts/namespaces.md) you want to use. Every entry may be either
+
+- a string: Then it refers to an (official) site namespace, i.e. one in the [`/data` subdirectory](https://github.com/trovu/trovu/tree/master/data/) repository. Shortcuts in there are curated by the Trovu community.
+- key/value pairs, then they refer to a user namespace, e.g. your (or someone else's) user namespace in GitHub. Read more below.
+
+The **order** is also relevant: The later the namespace appears in the list, the higher priority it has. So in the example above, shortcuts in `mydomain` have the highest precedence.
+
+#### User namespaces
+
+User namespaces can look like this:
+
+```yaml
+namespaces:
+    - github: .
+```
+
+This is the most common setting. It refers to the current (=your) `trovu-data-user` repo. It will look for a `shortcuts.yml`, next to this very `config.yml`.
+
+```yaml
+namespaces:
+    - github: .
+      name: my
+```
+
+You can also give it a custom name. Defaults to the current repo's name.
+
+```yaml
+namespaces:
+    - github: johndoe
+```
+
+Will look for a repo `https://github.com/johndoe/trovu-data-user/` and use its shortcuts. Setting another `name:` is possible.
+
+```yaml
+namespaces:
+    - name: mydomain
+      url: https://example.com/shortcuts.yml
+```
+
+Will take shortcuts from this URL. Make sure [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) is enabled.
+
+```yaml
+namespaces:
+    - name: righthere
+      shortcuts:
+          examplekeyword 0:
+              url: https://example.com/
+```
+
+Define a namespace with shortcuts just right here.
+
+(Beware: Unlike having them in a separate `shortcuts.yml`, this approach makes it impossible for others to use them.)
+
+### Default keyword
+
+```yaml
+defaultKeyword: g
+```
+
+If no keyword is recognized in a query, this one will be used. Useful for setting up a much used shortcut.
+
+### Language
+
+```yaml
+language: en
+```
+
+For Wikipedia in your language (or other shortcuts using `<$language>`). Basically, it fills the `<$language>` variable in the shortcut URLs. Now, using the `w` shortcut will get you to the Wikipedia in your language, as its shortcut URL is set as `https://<$language>.wikipedia.org/`.
+
+### Country
+
+```yaml
+country: de
+```
+
+For shortcuts that use `<$country>` in their URL. Works similarly as `<$language>`.
+
+## Personal shortcuts
+
+Add personal [shortcuts](../shortcuts/index.md) to `shortcuts.yml`.
+# Users
+
+To start, you can try out Trovu on its Web UI: https://trovu.net/
+
+## Find shortcuts
+
+To find relevant shortcuts for you, you can
+
+-   click on a tag (yellow background): This will list all shortcuts with this tag,
+-   click on a language or country namespace (red background): This will list all shortcuts related to this country or language.
+
+You also can freely search by typing into the input field. The search will match with shortcut keywords, titles, tags and URLs.
+
+You can also filter listed shortcuts. For instance, `ns:.de google` will list Google-related shortcuts but only from the Germany namespace.
+
+These filters are available:
+
+-   `ns:` namespace (full match)
+-   `tag:` tag (full match)
+-   `url:` URL (any fragment)
+
+## Call a shortcut
+
+When calling a shortcut, don't forget to
+
+-   start with a keyword, e.g. `g berlin`
+-   separate multiple arguments with a comma, e.g. `gd london, liverpool`
+
+## Further reading
+
+-   How to [integrate Trovu in your browser or smartphone](integration.md)
+-   how to [set personal settings and personal shortcuts](advanced.md)
+-   How to [get support](support.md)
+# Use Trovu on your device
+
+Quicklinks:
+
+- [Firefox browser add-on](#browser-add-on)
+- [Chrome browser add-on](#browser-extension)
+- [Raycast extension](#raycast)
+
+## General
+
+You can integrate Trovu into your web browsing experience using one of two methods:
+
+### Set Trovu as Your Default Search Engine
+
+- By replacing your current default search engine with Trovu, all your searches will be directed to Trovu.
+- You can enhance this setup with a [Default Keyword](advanced.md#default-keyword), allowing any unrecognized Trovu shortcut to revert to your usual default search engine.
+
+### Add Trovu as an Additional Search Engine
+
+- This method allows you to keep your current default search engine while adding Trovu alongside it.
+- To use Trovu shortcuts, simply prefix your query with a designated keyword (e.g., `t`).
+
+I recommend the second option for beginners. Many users who chose the first option found that their intended searches were disrupted when the first word of their query triggered a Trovu shortcut.
+
+With Option 2, you maintain greater control and predictability over your searches, allowing you to experiment with Trovu shortcuts only when you choose to.
+
+## Desktop web browser
+
+### Firefox
+
+#### Browser add-on
+
+The easiest way to use Trovu in Firefox is the [browser add-on](https://addons.mozilla.org/firefox/addon/trovu/). It allows you to set keyboard shortcuts which open a Trovu input with suggestions in a new tab or window.
+
+![Screenshot](img/web-ext.png)
+
+➡️ [Get the browser add-on](https://addons.mozilla.org/firefox/addon/trovu/)
+
+#### (Default) search engine
+
+Another option is adding Trovu as a search engine, optionally making it default.
+
+However, no shortcut suggestions are available here.
+
+1.  Open [trovu.net](https://trovu.net/), either [with your GitHub username](advanced.md) or without:
+    - `https://trovu.net/?#github=YOUR_GITHUB_USERNAME`, or
+    - `https://trovu.net/?#country=gb&language=en`. (adjust to your country & language)
+1.  In the **browser address bar**, right-click.
+1.  Select **Add "Trovu"**. It is the last item.
+1.  Open a [new tab](about:blank) with the URL:
+
+        about:preferences#search
+
+1.  Optional: Under **Default Search Engine**, select _Trovu_.
+
+![Screenshot](img/firefox.png)
+
+### Chrome
+
+#### Browser extension
+
+The easiest way to use Trovu in Chrome is the [browser extension](https://chromewebstore.google.com/detail/trovunet/iadcllehbnbepkalhgljhdfhjbkgkajo). It allows you to set keyboard shortcuts which open a Trovu input with suggestions in a new tab or window.
+
+![Screenshot](img/web-ext.png)
+
+➡️ [Get the browser extension](https://chromewebstore.google.com/detail/trovunet/iadcllehbnbepkalhgljhdfhjbkgkajo)
+
+#### (Default) search engine
+
+Another option is adding Trovu as a search engine, optionally making it default.
+
+However, no shortcut suggestions are available here.
+
+1.  Open [trovu.net](https://trovu.net/), either [with your GitHub username](advanced.md) or without:
+    - `https://trovu.net/?#github=YOUR_GITHUB_USERNAME`, or
+    - `https://trovu.net/?#country=gb&language=en`. (adjust to your country & language)
+1.  Open a [new tab](about:blank) with the URL:
+
+        chrome://settings/searchEngines
+
+1.  There, right to **Manage search engines** is a search field. Search for _Trovu_.
+1.  Now you can either
+    - Make Trovu your default search engine:
+        1.  When found, click the 3 dots right to it.
+        1.  Select **Make default**.
+    - Set a keyword for Trovu, and use it only with this keyword
+        - Click the 🖊️ pen.
+        - Edit _shortcut_, e.g. to `t`.
+
+### Other
+
+Use one of these URL templates and add it where your browser allows to set custom browser search engines:
+
+    https://trovu.net/process/?#country=gb&language=en&query=%s
+    https://trovu.net/process/?#github=YOUR_GITHUB_USERNAME&query=%s
+
+(Note the `process/` part in the URL! You may need to adjust your `country`, `language` or `github` parameter.)
+
+## Mac OS
+
+### Raycast
+
+[Raycast](<https://en.wikipedia.org/wiki/Raycast_(software)>) is an extendable launcher for Mac OS. The [Trovu extension](https://www.raycast.com/jorges/trovu) allows calling Trovu shortcuts from everywhere in Mac OS, incl. an interface showing shortcut suggestions:
+
+![Screenshot](img/raycast.jpg)
+
+## Android
+
+### Simple Search
+
+A free, generic app, allows also adding custom search engines.
+
+1. With your Android device, [visit the app in the Play store](https://play.google.com/store/apps/details?id=de.tobiasbielefeld.searchbar)
+1. Install it on your device.
+1. Open the app.
+1. Tap on the 3 dots in the upper right corner
+1. Tap on _Settings_
+1. Tap on _Search engine_
+1. Pick one of the _Custom_ ones
+1. In the input field, enter a URL template like in [Browser / other](#other)
+1. Tap _Confirm_
+
+![Screenshot](img/simple_search.jpg)
+
+### SearchBar Ex - Search Widget
+
+This a free, generic app to search any search engine that supports URL with a `%s` placeholder.
+
+1. With your Android device, [visit the app in the Play store](https://play.google.com/store/apps/details?id=com.devhomc.search)
+1. Install it on your device.
+1. Open the app.
+1. Left to the search input, click on the icon.
+1. At the botton, click **+ Add**
+1. Select **Search**
+1. Select **Custom Search**
+1. For _name_, enter "Trovu"
+1. For _URL_, enter a URL template like in [Browser / other](#other).
+1. Click the back button of the app in the upper left corner
+
+Now, you can enter Trovu queries which will be redirected to your browser.
+
+### Firefox for Android
+
+Firefox allows adding custom search engines: Any URL with a `%s` placeholder works.
+
+1. Tap on the address bar
+1. Tap on the search engine icon left to the address bar. Likely, it will be the Google icon
+1. Tap on _⚙️ Search settings_
+1. Tap on _Default search engine_
+1. Tap on _➕ Add search engine_
+1. Enter a name, e.g. `Trovu`
+1. Enter the _URL to use for search_, like described under [Other](#other)
+1. Tap on _Save_ (in the upper right corner)
+1. Now you are back on the list of search engines. You may pick your newly added _Trovu_ as the default one.
+
+Here is an example setting for the user `georgjaehnig`:
+
+![Screenshot](img/chrome.png)
+
+### Nova Launcher
+
+If you use [Nova Launcher](https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher), you can add Trovu to Nova's search bar to search directly from the home screen.
+
+How to set up:
+
+1. Open the _Nova Settings_ app.
+1. Open the _Search_ section
+1. Scroll down to _Search More providers_ and open that section
+1. Tap the floating _+_ button
+1. Enter the _URL to use for search_, as described under [Other](#other).
+1. Enter a name, e.g. `Trovu`
+1. Tap _OK_
+1. Scroll all the way down to find your newly added search provider. Make sure the checkbox next to it is ticked. You may also use the handle on the right to move it all the way to the top of the list, so search with Trovu will get prioritized.
+1. Tap the home button (or perform the corresponding gesture) to leave the settings app.
+
+How to use:
+
+1. From the home screen, tap on the Nova search bar.
+1. Type a query. You should see a little Trovu icon appear underneath it, along with other search provider icons.
+1. Start the search by tapping the Trovu icon. If the Trovu icon is in first position among the search provider icons (on the left), you may also just tap _Enter_. Your default browser should open with the search results.
+
+## PWA (Progressive web app)
+
+On many operating systems, you can also install a [Progressive web app](https://en.wikipedia.org/wiki/Progressive_web_app) of Trovu.
+
+1. Open [trovu.net](https://trovu.net/) in the browser.
+1. Open the browser menu.
+1. Tap on _Install app_.
+1. In the dialog, tap on _Install_.
+1. In the next dialog, tap on _Add to homescreen_.
+1. Go to your home screen.
+1. You will find a new icon _Trovu_. Tap on it. The Trovu PWA will open.
+1. To change the language or country, tap on the language/country in the upper right corner. By tapping on _Advanced_, you can also [set your GitHub account](advanced.md).
+
+Now, you will find the Trovu icon on your phone home screen. Tap on it to open the Trovu PWA.
+This page moved to [Privacy](../privacy.md).
+# Support
+
+Here you can find support:
+
+- Some problems may be listed in [Troubleshooting](troubleshooting.md).
+- Ask any Trovu-related question in the Telegram group: https://t.me/trovu_net
+- Send an email: info@trovu.net
+- [Open an issue on Github](https://github.com/trovu/trovu/issues)
+# Troubleshooting
+
+## General
+
+### Reload
+
+Config and shortcut files are usually only fetched once, and after that are only taken from the browser cache. So if you have made changes to one of them, you need to reload them.
+
+You can reload by:
+
+- prefixing your query with `reload:`, e.g. `reload:g foobar`
+- sending a query only containing `reload`
+- opening the Trovu homepage with https://trovu.net/?#reload=1.
+
+### Debugging mode
+
+Enter debugging mode with
+
+- https://trovu.net/?#debug=1 , or
+- a query starting with `debug:`, e.g.: `debug:g foobar`
+
+In debug, all the processing will be done – but without the actual redirect. You will be able to see
+
+- which config and shortcut URLs are being fetched
+- whether they are found in the browser cache or not
+- how a query got matched.
+
+You can also combine debugging and reloading, e.g. `debug:reload:g foobar`
+
+## FAQ
+
+### I Edited a Shortcut, but It Has No Effect
+
+This might be a caching issue.
+
+First, make sure if your edit arrived in [https://trovu.net/data.json](https://trovu.net/data.json) . It should get updated automatically by a GitHub webhook on the _git push_ event.
+
+Then, you can either
+
+- call a query containing only `reload`,
+- call your query prefixed with `reload:`, e.g. `reload:g foobar`.
+
+Both will cause your browser to reload [data.json](https://trovu.net/data.json).
+
+If that did not help, try debugging mode (see above).
+
+And if that did not help, clear your browser cache. There are extensions that make this easy, such as [Clear Cache](https://addons.mozilla.org/de/firefox/addon/clearcache/) for Firefox or [Clear Cache](https://chrome.google.com/webstore/detail/clear-cache/cppjkneekbjaeellbfkmgnhonkkjfpdn) for Chrome.
