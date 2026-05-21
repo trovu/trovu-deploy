@@ -3,13 +3,12 @@
     "short_name": "trovu.net",
     "description": "Search 1000+ websites in a command-line way, with curated and personal shortcuts, organized by namespaces, allowing multiple and typed arguments, with maximum privacy. It's like DuckDuckGo bangs, but on steroids. And it's free.",
     "id": "net.trovu",
-    "scope": "/process/",
+    "scope": "/",
     "launch_handler": {
         "client_mode": [
             "auto"
         ]
     },
-    "display": "standalone",
     "orientation": "any",
     "screenshots": [
         {
@@ -41,7 +40,8 @@
         }
     ],
     "background_color": "#ffffff",
-    "start_url": "/process/index.html",
+    "start_url": "/index.html",
+    "display": "standalone",
     "theme_color": "#343a40",
     "dir": "auto",
     "lang": "en",
