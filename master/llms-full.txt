@@ -220,7 +220,7 @@ If you want to add custom shortcuts to your local installation (that should be a
 If you prefer a local installation over using the public version [trovu.net](https://trovu.net/), you can [set your local Trovu version as your default search engine](../users/integration.md) by using your web server's domain or your localhost as its domain.
 # Editors
 
-You are welcome to contribute to Trovu [shortcuts](../shortcuts/namespaces.md), [cities](../shortcuts/urls.md#city), [code](https://github.com/trovu/trovu) and more.
+You are welcome to contribute to Trovu [shortcuts](../shortcuts/namespaces.md), [cities](../shortcuts/url.md#city), [code](https://github.com/trovu/trovu) and more.
 
 ## Edit directly or fork + pull request
 
@@ -340,7 +340,7 @@ If you know FindFind.it, then you almost know how Trovu works. However, a few th
 -   Once you open Trovu, all shortcuts are loaded into your client and remain cached there, (until you [reload](../users/troubleshooting.md#i-edited-a-shortcut-but-it-has-no-effect)). So even if the Trovu server is down, you can keep using Trovu.
 -   If you have personal **user shortcuts**, for Trovu you host them on [your GitHub account, or on your web server](../users/advanced.md).
 
-Read more about how to [migrate from FindFind.it to Trovu](migrate.md).
+This page summarizes the main differences between FindFind.it and Trovu.
 # [Berlin Hack & Tell](https://bhnt.c-base.org/2024-05-28-no96-portal-hacks)
 
 -   successor of Serchilo and FindFind.it
@@ -360,7 +360,7 @@ Read more about how to [migrate from FindFind.it to Trovu](migrate.md).
 -   free software: AGPL
 # Presentations
 
-- 2019-03: FOSSASIA: [pdf](/pdf/fossasia.pdf)
+- 2019-03: FOSSASIA: [pdf](../pdf/fossasia.pdf)
 - 2024-05: [Polyglot Gathering](pg.md)
 - 2024-05-28: [BHNT](bhnt.md)
 # [Polyglot Gathering](https://www.polyglotgathering.com/2024/en/)
