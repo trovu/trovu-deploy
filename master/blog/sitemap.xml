@@ -655,6 +655,11 @@ img.full-width {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/tags/suggestions/</loc>
+		<lastmod>2026-05-30</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/tags/video/</loc>
 		<lastmod>2026-05-30</lastmod>
 	</url>
@@ -666,11 +671,6 @@ img.full-width {
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/short/</loc>
-		<lastmod>2026-05-30</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/suggestions/</loc>
 		<lastmod>2026-05-30</lastmod>
 	</url>
 </urlset>
