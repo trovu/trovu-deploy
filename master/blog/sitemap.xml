@@ -635,6 +635,11 @@ img.full-width {
 	</url>
 	
 	<url>
+		<loc>https://trovu.net/blog/tags/sponsor/</loc>
+		<lastmod>2026-05-31</lastmod>
+	</url>
+	
+	<url>
 		<loc>https://trovu.net/blog/tags/mobile/</loc>
 		<lastmod>2026-05-31</lastmod>
 	</url>
@@ -645,17 +650,7 @@ img.full-width {
 	</url>
 	
 	<url>
-		<loc>https://trovu.net/blog/tags/sponsor/</loc>
-		<lastmod>2026-05-31</lastmod>
-	</url>
-	
-	<url>
 		<loc>https://trovu.net/blog/tags/rss/</loc>
-		<lastmod>2026-05-31</lastmod>
-	</url>
-	
-	<url>
-		<loc>https://trovu.net/blog/tags/suggestions/</loc>
 		<lastmod>2026-05-31</lastmod>
 	</url>
 	
@@ -671,6 +666,11 @@ img.full-width {
 	
 	<url>
 		<loc>https://trovu.net/blog/tags/short/</loc>
+		<lastmod>2026-05-31</lastmod>
+	</url>
+	
+	<url>
+		<loc>https://trovu.net/blog/tags/suggestions/</loc>
 		<lastmod>2026-05-31</lastmod>
 	</url>
 </urlset>
